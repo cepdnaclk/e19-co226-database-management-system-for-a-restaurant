@@ -11,7 +11,6 @@ Title: AMBROSIA BISTRO
 A powerful and user-friendly database management system designed exclusively for restaurants. Our system will completely transform the way customer information is managed, making it easier and more efficient. Restaurants will be able to effortlessly store, organize, and retrieve customer data, allowing for personalized interactions and improved customer service. Additionally, the system will ensure smooth tracking of menu item inventory, staff schedules, and reservations, creating a seamless experience for both customers and restaurant staff. Our goal is to simplify restaurant operations and enhance the overall customer experience.
 
 ## Team
-### Group 9
 
 -  E/19/008 Adhikari R.A.J.C. [email](mailto:e19008@eng.pdn.ac.lk)
 -  E/19/009 Adikari A.M.K.M. [email](mailto:e19009@eng.pdn.ac.lk)
