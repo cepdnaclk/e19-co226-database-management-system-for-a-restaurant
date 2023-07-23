@@ -1,0 +1,187 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #faf8f3;
+  
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+.auth-form-cantainer {
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  text-align: center;
+
+  background-image: url(./assets/4357397.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: invert(100%);
+}
+
+.auth-form-cantainer,
+.login-form,
+.register-form {
+  display: flex;
+  flex-direction: column;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif,
+    Euclid Circular A;
+  color-scheme: light dark;
+}
+
+.auth-form-cantainer {
+  padding: 4.5rem;
+  border: 1px solid white;
+  border-radius: 15px;
+  margin: 0.5rem;
+}
+
+@media (width >= 500px) {
+  .login-form {
+    margin: 0;
+    width: 350px;
+  }
+
+  .register-form {
+    width: 421.68px;
+  }
+}
+
+.auth-form-cantainer > h2 {
+  font-size: 36px;
+  font-weight: 600;
+  margin: 0 0 12px;
+  color: #ffffff;
+}
+
+.auth-form-cantainer > h3 {
+  color: rgba(255, 255, 255, 0.733);
+  margin: 0 0 30px;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.login-form {
+  width: 100%;
+  margin: 0;
+  display: grid;
+  gap: 16px;
+  justify-items: center;
+}
+
+.login-form > input,
+.login-form > button {
+  width: 100%;
+  height: 45px;
+}
+
+.login-form > input {
+  border: 2px solid #ebebeb;
+  font-family: inherit;
+  font-size: 16px;
+  padding: 0 16px;
+  border-radius: 10px;
+  height: 45px;
+  width: 100%;
+}
+
+.Fname > input {
+  border: 2px solid #ebebeb;
+  font-family: inherit;
+  font-size: 16px;
+  border-radius: 10px;
+  height: 45px;
+  padding: 0 16px;
+  max-width: 200px;
+}
+
+#firstname {
+  margin-right: 15px;
+}
+
+@media (width <= 620px) {
+  .Fname > input {
+    max-width: none;
+    align-items: center;
+    gap: 16px;
+  }
+
+  #firstname {
+    margin-bottom: 16px;
+    margin-right: 0px;
+  }
+}
+
+.login-form > button {
+  cursor: pointer;
+  width: 100%;
+  height: 56px;
+  padding: 0 16px;
+  border-radius: 0.5rem;
+  background: #2d3f84d8;
+  color: #f9f9f9;
+  border: 0;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight:bolder;
+  text-align: center;
+  letter-spacing: 2px;
+  transition: all 0.375s;
+  transition: color 0.3s;
+  
+}
+
+.login-form > button:hover {
+  background: #c7beb1;
+  color: #000;
+}
+
+
+/* .register-form {
+  width: 100%;
+  margin: 0;
+  display: grid;
+  gap: 16px;
+}
+
+.register-form > input,
+.register-form > button {
+  width: 100%;
+  height: 45px;
+}
+
+.register-form > input {
+  border: 2px solid #ebebeb;
+  font-family: inherit;
+  font-size: 16px;
+  padding: 0 16px;
+  border-radius: 10px;
+}
+
+.register-form > button {
+  cursor: pointer;
+  width: 100%;
+  height: 56px;
+  padding: 5px;
+  border-radius: 0.5rem;
+  background: #216ce7;
+  color: #f9f9f9;
+  border: 0;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 2px;
+  transition: all 0.375s;
+}
+
+.register-form > button:hover {
+  background: #085a3a;
+} */

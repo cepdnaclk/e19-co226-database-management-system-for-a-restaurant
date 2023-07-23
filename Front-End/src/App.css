@@ -1,0 +1,22 @@
+.logo:hover {
+  filter: drop-shadow(0 0 2em #f4d07daa);
+}
+
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  color: rgb(12, 0, 0);
+  font-family: "Euclid Circular A";
+}
+
+@media (width < 620px) {
+  .App {
+    scale: 0.98;
+  }
+
+  
+}
