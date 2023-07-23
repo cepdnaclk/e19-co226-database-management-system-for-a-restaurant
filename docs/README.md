@@ -13,7 +13,6 @@ title: AMBROSIA BISTRO
 <p align="center"><img align="center" alt="GIF" src="./images/My_project.png"/></p>
 <!-- 
 This is a sample image, to show how to add images to your page. To learn more options, please refer [this](https://projects.ce.pdn.ac.lk/docs/faq/how-to-add-an-image/)
-
  -->
 
 ## Team
@@ -30,7 +29,7 @@ This is a sample image, to show how to add images to your page. To learn more op
 
 ## Introduction
 
-A powerful and user-friendly database management system designed exclusively for restaurants. Our system will completely transform the way customer information is managed, making it easier and more efficient. Restaurants will be able to effortlessly store, organize, and retrieve customer data, allowing for personalized interactions and improved customer service. Additionally, the system will ensure smooth tracking of menu item inventory, staff schedules, and reservations, creating a seamless experience for both customers and restaurant staff. Our goal is to simplify restaurant operations and enhance the overall customer experience.
+ A powerful and user-friendly database management system designed exclusively for restaurants. Our system will completely transform the way customer information is managed, making it easier and more efficient. Restaurants will be able to effortlessly store, organize, and retrieve customer data, allowing for personalized interactions and improved customer service. Additionally, the system will ensure smooth tracking of menu item inventory, staff schedules, and reservations, creating a seamless experience for both customers and restaurant staff. Our goal is to simplify restaurant operations and enhance the overall customer experience.
 
 ## Other Sub Topics
 
