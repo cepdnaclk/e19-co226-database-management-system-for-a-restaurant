@@ -1,28 +1,25 @@
 ---
 layout: home
 permalink: index.html
-
-# Please update this with your repository name and title
-repository-name: eYY-XXX-project-template
-title:
+repository-name: e19-co226-database-management-system-for-a-restaurant
+title: AMBROSIA BISTRO
 ---
 
 [comment]: # "This is the standard layout for the project, but you can clean this and use your own template"
 
-# Project Title
+# AMBROSIA BISTRO
 
 ---
-
+<p align="center"><img align="center" alt="GIF" src="./images/My_project.png"/></p>
 <!-- 
 This is a sample image, to show how to add images to your page. To learn more options, please refer [this](https://projects.ce.pdn.ac.lk/docs/faq/how-to-add-an-image/)
 
-![Sample Image](./images/sample.png)
  -->
 
 ## Team
--  eNumber, Name, [email](mailto:name@email.com)
--  eNumber, Name, [email](mailto:name@email.com)
--  eNumber, Name, [email](mailto:name@email.com)
+-  E/19/008 Adhikari R.A.J.C. [email](mailto:e19008@eng.pdn.ac.lk)
+-  E/19/009 Adikari A.M.K.M. [email](mailto:e19009@eng.pdn.ac.lk)
+-  E/19/063 Dassanayake D.M.G.S. [email](mailto:e19063@eng.pdn.ac.lk)
 
 ## Table of Contents
 1. [Introduction](#introduction)
@@ -33,7 +30,7 @@ This is a sample image, to show how to add images to your page. To learn more op
 
 ## Introduction
 
- description of the real world problem and solution, impact
+A powerful and user-friendly database management system designed exclusively for restaurants. Our system will completely transform the way customer information is managed, making it easier and more efficient. Restaurants will be able to effortlessly store, organize, and retrieve customer data, allowing for personalized interactions and improved customer service. Additionally, the system will ensure smooth tracking of menu item inventory, staff schedules, and reservations, creating a seamless experience for both customers and restaurant staff. Our goal is to simplify restaurant operations and enhance the overall customer experience.
 
 ## Other Sub Topics
 
