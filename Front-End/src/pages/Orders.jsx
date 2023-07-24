@@ -1,7 +1,7 @@
-import { Nav } from "./Nav";
-import {MenuPanel} from "./MenuPanel";
+import { Nav } from "../components/Nav";
+import {MenuPanel} from "../components/menuPanel";
 
-export const Reservations = () => {
+export const Orders = () => {
   return (
     <div>
       <Nav />

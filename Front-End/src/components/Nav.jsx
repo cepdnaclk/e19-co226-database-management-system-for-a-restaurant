@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import "./nav.css";
+import "../styles/nav.css";
 
 export const Nav = () => {
   const navigate = useNavigate();
@@ -51,7 +51,9 @@ export const Nav = () => {
       });
     });
 
-    document.removeEventListener("click", handleBackgroundClick);
+    return () => {
+      document.removeEventListener("click", handleBackgroundClick);
+    };
   }, []);
 
   const handleItemClick = (path) => {

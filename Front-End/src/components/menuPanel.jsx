@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./MenuPanel.css";
+import "../styles/MenuPanel.css";
 import { Routes, Route, Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
@@ -20,7 +20,7 @@ export const MenuPanel = () => {
       </div>
       <div className="menu-panel__content">
         <img
-          src="src/assets/My_project.png"
+          src="assets/My_project.png"
           alt="Logo"
           className="menu-panel__logo"
           onClick={() => navigate("/Home")}
