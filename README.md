@@ -5,7 +5,7 @@ Title: AMBROSIA BISTRO
 ---
 # AMBROSIA BISTRO
 
-<a align="center"> ![Logo](Front-End/public/assets/My_project.png) </a>
+<p align="center"><img align="center" alt="GIF" src="./Front-End/public/assets/My_project.png"/></p>
 
 
 A powerful and user-friendly database management system designed exclusively for restaurants. Our system will completely transform the way customer information is managed, making it easier and more efficient. Restaurants will be able to effortlessly store, organize, and retrieve customer data, allowing for personalized interactions and improved customer service. Additionally, the system will ensure smooth tracking of menu item inventory, staff schedules, and reservations, creating a seamless experience for both customers and restaurant staff. Our goal is to simplify restaurant operations and enhance the overall customer experience.
