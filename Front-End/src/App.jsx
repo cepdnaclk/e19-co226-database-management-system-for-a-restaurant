@@ -1,9 +1,9 @@
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import { Login } from "./Login";
-import { Home } from "./Home";
-import { Orders } from "./Orders";
-import { Reservations } from "./Reservations";
+import { Login } from "../src/pages/Login";
+import { Home } from "../src/pages/Home";
+import { Orders } from "../src/pages/Orders";
+import { Reservations } from "../src/pages/Reservations";
 
 function App() {
   (function () {

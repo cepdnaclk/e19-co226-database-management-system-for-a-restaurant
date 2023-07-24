@@ -1,5 +1,5 @@
-import { Nav } from "./Nav";
-import {MenuPanel} from "./MenuPanel";
+import { Nav } from "../components/Nav";
+import { MenuPanel } from "../components/menuPanel";
 
 export const Home = () => {
   return (

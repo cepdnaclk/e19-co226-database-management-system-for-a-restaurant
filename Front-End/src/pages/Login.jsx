@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 //import axios from "axios";
-import AuthService from "./services/auth.service";
-import "./Login.css";
-import { MenuPanel } from "./MenuPanel";
+import AuthService from "../services/auth.service";
+import "../styles/Login.css";
+import { MenuPanel } from "../components/menuPanel";
 
 export const Login = () => {
   const [email, setName] = useState("");
