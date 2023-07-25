@@ -81,7 +81,7 @@ export const Nav = () => {
           >
             Reservations<span></span>
           </li>
-          <li className="logout-button" onClick={() => handleLogout()}>
+          <li className="logout-button" style={{border:'2px solid rgb(56,56,38)' }} onClick={() => handleLogout()}>
             <i className="fa fa-sign-out" aria-hidden="true"></i>&nbsp;Log Out
             <span></span>
           </li>
