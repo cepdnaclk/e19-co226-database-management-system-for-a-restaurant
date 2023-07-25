@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import './IngredientTable.css';
+import styles from '../styles/IngredientTable.module.scss';
 export const IngredientTable = ({ data }) => {
     const [isTableVisible, setIsTableVisible] = useState(true);
 
@@ -14,7 +14,7 @@ export const IngredientTable = ({ data }) => {
       <button onClick={toggleTableVisibility}>
         {isTableVisible ? 'Hide Table' : 'Show Table'}
       </button>
-      <table className="ingredient-table">
+      <table className={styles.ingredientTable}>
         <thead>
           <tr>
             <th>Name</th>
