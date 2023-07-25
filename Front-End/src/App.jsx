@@ -3,6 +3,7 @@ import "./App.css";
 import { Login } from "../src/pages/Login";
 import { Home } from "../src/pages/Home";
 import { Orders } from "../src/pages/Orders";
+import { Inventory } from "./pages/Inventory";
 import { Reservations } from "../src/pages/Reservations";
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
         <Route path="/authenticate" element={<Login />} />
         <Route path="/orders" element={<Orders />} />
         <Route path="/reservations" element={<Reservations />} />
+        <Route path="/inventory" element={<Inventory />} />
       </Routes>
     </div>
   );

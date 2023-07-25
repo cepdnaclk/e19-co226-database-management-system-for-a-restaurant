@@ -35,6 +35,9 @@ export const MenuPanel = () => {
           <li data-name="Reservation" onClick={() => navigate("/Reservations")}>
             <i className="fa fa-bookmark" aria-hidden="true"></i>{" "}
           </li>
+          <li data-name="Inventory" onClick={() => navigate("/Inventory")}>
+            <i className="fa fa-server" aria-hidden="true"></i>{" "}
+          </li>
           <li data-name="About" onClick={() => navigate("/About")}>
             <i className="fas fa-info-circle"></i>
           </li>

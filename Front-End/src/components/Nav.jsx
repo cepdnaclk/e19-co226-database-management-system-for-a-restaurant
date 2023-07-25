@@ -102,6 +102,12 @@ export const Nav = () => {
           >
             Reservations<span></span>
           </li>
+          <li
+            className={location.pathname === "/inventory" ? "active" : ""}
+            onClick={() => handleItemClick("/inventory")}
+          >
+            Inventory<span></span>
+          </li>
           <li className="logout-button" onClick={() => handleLogout()}>
             <i className="fa fa-sign-out" aria-hidden="true"></i>&nbsp;Log Out
             <span></span>
