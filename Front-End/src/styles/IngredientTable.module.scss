@@ -1,21 +1,22 @@
-.ingredient-table {
+.ingredientTable {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+    border-radius: 10px;
   }
   
-  .ingredient-table th,
-  .ingredient-table td {
+  .ingredientTable th,
+  .ingredientTable td {
     padding: 10px;
     border: 1px solid #ccc;
     text-align: left;
   }
   
-  .ingredient-table th {
+  .ingredientTable th {
     background-color: #f2f2f2;
   }
   
-  .ingredient-table tr:nth-child(even) {
+  .ingredientTable tr:nth-child(even) {
     background-color: #f2f2f2;
   }
   
