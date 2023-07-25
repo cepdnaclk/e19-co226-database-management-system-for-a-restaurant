@@ -1,15 +1,16 @@
 import { Nav } from "../components/Nav";
 import { MenuPanel } from "../components/menuPanel";
+import "../styles/reservation.scss";
 
 export const Reservations = () => {
   return (
     <div>
       <Nav />
       <MenuPanel />
-      <dev>
+      <dev className="Hero">
         <h1>Manage Reservations</h1>
-        <h2>"AMBROSIA BISTRO Ambrosia"</h2>
-        <h3>"Savor the Divine Essence of Cuisine"</h3>
+        {/* <h2>AMBROSIA BISTRO</h2>
+        <p>Savor the Divine Essence of Cuisine</p> */}
       </dev>
     </div>
   );
