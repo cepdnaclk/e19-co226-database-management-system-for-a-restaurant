@@ -4,8 +4,9 @@ $bgcolor: #ebedee;
 $disabledTextColor: rgb(175, 175, 175);
 $waitingColor: rgb(233, 190, 110);
 $confirmedColor: rgb(106, 187, 160);
+$editColor: rgb(76, 120, 156);
 $accentColor:  rgba(0, 0, 0, 0.8);
-$bodyTextColor: hsl(0, 0, 20%);
+$bodyTextColor: hsl(0, 0%, 20%);
 @keyframes fadeIn {
   0% {
     opacity: 0;

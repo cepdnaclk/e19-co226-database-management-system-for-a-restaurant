@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/restaurant_management_system
+    url: jdbc:mysql://localhost:3306/restaurant
     username: root
     password:
 

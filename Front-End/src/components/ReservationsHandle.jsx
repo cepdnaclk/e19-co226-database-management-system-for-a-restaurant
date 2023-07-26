@@ -22,7 +22,7 @@ export const ReservationsHandle = ({allReservations}) => {
             return (date <= currentDate)? true : false;
           })
         );
-        console.log(pastReservations);
+        // console.log(pastReservations);
         setCurrentReservations(
           reservations.filter((res) => {
             const date = new Date(res.date);

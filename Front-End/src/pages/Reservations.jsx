@@ -8,8 +8,8 @@ import { useState } from "react";
 
 export const Reservations = () => {
   const [isWaiting, setIsWaiting] = useState(false);
-  console.log(reservations);
-  console.log(waitings);
+  // console.log(reservations);
+  // console.log(waitings);
   return (
     <>
       <Nav />

@@ -11,7 +11,7 @@ h2 {
   font-weight: 600;
   text-align: left;
   margin-left: 1em;
-
+  animation: fadeIn 800ms ease-in;
   &:hover{
     scale:1.01;
     margin-left: 1.5em;
@@ -22,8 +22,7 @@ h2 {
 .NoReservations {
   margin-left: calc(6 * 1.2em);
   margin-top: 0.6em;
-  color: hsl(0, 0, 50%);
-  animation: fadeIn 300ms ease-in;
+  color: hsl(0, 0%, 50%);
   visibility: hidden;
   opacity: 0;
   font: 1em sans-serif;
