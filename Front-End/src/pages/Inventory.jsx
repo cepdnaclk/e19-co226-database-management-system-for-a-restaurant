@@ -5,12 +5,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 export const Inventory = () => {
-
-    const [ingredients, setIngredients] = useState([
-        { name : 'Tomato', quantity: 7, Description: 'Fresh and juicy red tomatoes' },
-        { name : 'Cheese', quantity: 4, Description: 'Your favorite type of cheese' },
-        
-      ]);
+  const [ingredients, setIngredients] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     fetchIngredients();
@@ -25,18 +21,33 @@ export const Inventory = () => {
     }
   };
 
-    const data = [
-        { name : 'Tomato', quantity: 7, Description: 'Fresh and juicy red tomatoes' },
-        { name : 'Cheese', quantity: 4, Description: 'Your favorite type of cheese' },
-        
-      ];
+  const handleSearchInputChange = async (event) => {
+    setSearchQuery(event.target.value);
+    try {
+      const response = await axios.get(`http://localhost:8080/api/v1/ingredients/search?name=${event.target.value}`);
+      setIngredients(response.data);
+    } catch (error) {
+      console.error('Error fetching filtered ingredients:', error);
+    }
+  };
+
+  
+
   return (
     <div>
-        
       <Nav />
       <MenuPanel />
-      <h2>Ambrosia Bistro</h2>
+      
+      <br/>
+      <br/>
+    
       <h3>Inventory and Suppliers</h3>
+      <input
+        type="text"
+        value={searchQuery}
+        onChange={handleSearchInputChange}
+        placeholder="Search ingredients..."
+      />
       <IngredientTable data={ingredients} />
     </div>
   );
