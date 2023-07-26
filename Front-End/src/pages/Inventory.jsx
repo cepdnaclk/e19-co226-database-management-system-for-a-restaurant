@@ -1,22 +1,34 @@
 import { Nav } from "../components/Nav";
 import { MenuPanel } from "../components/menuPanel"; 
 import {IngredientTable} from "../components/IngredientTable"
+import { SupplierTable } from "../components/SupplierTable";
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import styleTable from "../styles/IngredientTable.module.scss"
+import styleTable from "../styles/IngredientTable.module.scss";
+import style from "../styles/Inventory.module.scss";
 
 export const Inventory = () => {
   const [ingredients, setIngredients] = useState([]);
+  const [suppliers,setSuppliers] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     fetchIngredients();
+    fetchSuppliers();
   }, []);
 
   const fetchIngredients = async () => {
     try {
       const response = await axios.get('http://localhost:8080/api/v1/ingredients');
       setIngredients(response.data);
+    } catch (error) {
+      console.error('Error fetching ingredients:', error);
+    }
+  };
+  const fetchSuppliers = async () => {
+    try {
+      const response = await axios.get('http://localhost:8080/api/v1/suppliers');
+      setSuppliers(response.data);
     } catch (error) {
       console.error('Error fetching ingredients:', error);
     }
@@ -45,9 +57,12 @@ export const Inventory = () => {
     <br/>
     <br/>
     <br/>
-      <div>
+    <div >
         <h1>Inventory and Suppliers</h1>
       </div>
+    <div className={style.main_container}>
+      <div>
+      
       {/* <h2>Ambrosia Bistro</h2> */}
       <input
         type="text"
@@ -58,6 +73,10 @@ export const Inventory = () => {
       
 
       <IngredientTable data={ingredients} />
+      </div>
+      <SupplierTable data={suppliers} />
+      </div>
     </div>
+
   );
 };
