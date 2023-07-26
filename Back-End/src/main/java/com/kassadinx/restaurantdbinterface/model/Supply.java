@@ -33,5 +33,5 @@ public class Supply {
 
     private LocalTime time;
 
-    // Constructors, getters, and setters
+
 }
