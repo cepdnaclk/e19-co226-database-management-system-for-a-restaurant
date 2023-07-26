@@ -1,16 +1,16 @@
 
 import React,{useState} from 'react';
-import styles from '../styles/IngredientTable.module.scss';
+import styles from '../styles/ReservationsTable.module.scss';
 
 export const IngredientTable = ({ data }) => {
 
-
+  console.log(data);
   return (
-    <div>
+    <div className={styles.container}>
 
-      <h2>Ingredient Table</h2>
       
-      <table className={styles.ingredientTable}>
+      
+      <table className={styles.Table}>
 
         <thead>
           <tr>

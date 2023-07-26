@@ -92,7 +92,7 @@ export const Nav = () => {
           </li>
         </ul>
         <div className="menu-btn">
-          <div className="menu-btn__burger"></div>
+          {/* <div className="menu-btn__burger"></div> */}
         </div>
       </div>
       {showLogoutConfirmation && (
