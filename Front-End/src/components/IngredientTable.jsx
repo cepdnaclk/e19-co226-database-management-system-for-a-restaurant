@@ -1,13 +1,19 @@
-import React from 'react';
-import './IngredientTable.css';
+
+import React,{useState} from 'react';
+import styles from '../styles/IngredientTable.module.scss';
+
 export const IngredientTable = ({ data }) => {
 
 
   return (
     <div>
-      
-      
-      <table className="ingredient-table">
+
+      <h2>Ingredient Table</h2>
+      <button onClick={toggleTableVisibility}>
+        {isTableVisible ? 'Hide Table' : 'Show Table'}
+      </button>
+      <table className={styles.ingredientTable}>
+
         <thead>
           <tr>
             <th>Id</th>

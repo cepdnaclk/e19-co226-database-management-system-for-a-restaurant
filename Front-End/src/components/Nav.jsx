@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import "../styles/nav.css";
+import "../styles/nav.scss";
 
 export const Nav = () => {
   const navigate = useNavigate();
@@ -16,27 +16,6 @@ export const Nav = () => {
 
     document.addEventListener("click", handleBackgroundClick);
 
-    var prevScrollpos = window.pageYOffset;
-    window.onscroll = function () {
-      if (
-        /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)
-      ) {
-        document.querySelector(".nav").classList.add("mobile");
-        return;
-      }
-      var currentScrollPos = window.pageYOffset;
-      if (prevScrollpos > currentScrollPos) {
-        document.querySelector(".nav").style.top = "0";
-      } else {
-        document.querySelector(".nav").style.top = "-100px";
-      }
-      prevScrollpos = currentScrollPos;
-    };
-
-    menuBtn.removeEventListener("click", () => {
-      menuBtn.classList.toggle("open");
-      navUl.classList.toggle("open");
-    });
 
     menuItems.forEach((item) => {
       ["mouseenter", "mouseout"].forEach((evt) => {
@@ -102,19 +81,13 @@ export const Nav = () => {
           >
             Reservations<span></span>
           </li>
-          <li
-            className={location.pathname === "/inventory" ? "active" : ""}
-            onClick={() => handleItemClick("/inventory")}
-          >
-            Inventory<span></span>
-          </li>
-          <li className="logout-button" onClick={() => handleLogout()}>
+          <li className="logout-button" style={{border:'2px solid rgb(56,56,38)' }} onClick={() => handleLogout()}>
             <i className="fa fa-sign-out" aria-hidden="true"></i>&nbsp;Log Out
             <span></span>
           </li>
         </ul>
         <div className="menu-btn">
-          <div class="menu-btn__burger"></div>
+          <div className="menu-btn__burger"></div>
         </div>
       </div>
       {showLogoutConfirmation && (

@@ -3,6 +3,7 @@ import { MenuPanel } from "../components/menuPanel";
 import {IngredientTable} from "../components/IngredientTable"
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import styleTable from "../styles/IngredientTable.module.scss"
 
 export const Inventory = () => {
   const [ingredients, setIngredients] = useState([]);
@@ -37,17 +38,16 @@ export const Inventory = () => {
     <div>
       <Nav />
       <MenuPanel />
+
       
-      <br/>
-      <br/>
-    
-      <h3>Inventory and Suppliers</h3>
-      <input
-        type="text"
-        value={searchQuery}
-        onChange={handleSearchInputChange}
-        placeholder="Search ingredients..."
-      />
+
+
+      <div>
+        <h1>Inventory and Suppliers</h1>
+      </div>
+      {/* <h2>Ambrosia Bistro</h2> */}
+      
+
       <IngredientTable data={ingredients} />
     </div>
   );
