@@ -1,4 +1,4 @@
-<<<<<<< HEAD:Front-End/src/components/IngredientTable.css
+
 .ingredient-table {
   width: 100%;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
@@ -30,27 +30,4 @@
   background-color: #baccd0;
 }
 
-=======
-.ingredientTable {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    border-radius: 10px;
-  }
-  
-  .ingredientTable th,
-  .ingredientTable td {
-    padding: 10px;
-    border: 1px solid #ccc;
-    text-align: left;
-  }
-  
-  .ingredientTable th {
-    background-color: #f2f2f2;
-  }
-  
-  .ingredientTable tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-  
->>>>>>> 2fa9ead13c084161470f31109f7a7176e563c749:Front-End/src/styles/IngredientTable.module.scss
+
