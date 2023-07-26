@@ -41,4 +41,8 @@ public class SupplierController {
         supplierService.deleteSupplier(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    //TODO
+    //Supplier Search
+    //Supplier Update
 }
