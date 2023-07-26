@@ -41,11 +41,20 @@ export const Inventory = () => {
 
       
 
-
+    <br/>
+    <br/>
+    <br/>
+    <br/>
       <div>
         <h1>Inventory and Suppliers</h1>
       </div>
       {/* <h2>Ambrosia Bistro</h2> */}
+      <input
+        type="text"
+        value={searchQuery}
+        onChange={handleSearchInputChange}
+        placeholder="Search ingredients..."
+      />
       
 
       <IngredientTable data={ingredients} />

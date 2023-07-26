@@ -9,9 +9,7 @@ export const IngredientTable = ({ data }) => {
     <div>
 
       <h2>Ingredient Table</h2>
-      <button onClick={toggleTableVisibility}>
-        {isTableVisible ? 'Hide Table' : 'Show Table'}
-      </button>
+      
       <table className={styles.ingredientTable}>
 
         <thead>
