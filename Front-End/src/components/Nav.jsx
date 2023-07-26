@@ -10,7 +10,6 @@ export const Nav = () => {
 
   useEffect(() => {
     const menuItems = document.querySelectorAll(".nav li");
-
     const menuBtn = document.querySelector(".menu-btn");
     const navUl = document.querySelector(".nav ul");
 
@@ -19,15 +18,21 @@ export const Nav = () => {
 
     menuItems.forEach((item) => {
       ["mouseenter", "mouseout"].forEach((evt) => {
-        item.removeEventListener(evt, (e) => {
+        item.addEventListener(evt, (e) => {
           const parentOffset = item.getBoundingClientRect();
           const relX = e.clientX - parentOffset.left;
           const relY = e.clientY - parentOffset.top;
           const span = item.querySelector("span");
+
           span.style.top = relY + "px";
           span.style.left = relX + "px";
         });
       });
+    });
+
+    menuBtn.addEventListener("click", () => {
+      menuBtn.classList.toggle("open");
+      navUl.classList.toggle("open");
     });
 
     return () => {
