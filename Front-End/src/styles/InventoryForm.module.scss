@@ -12,6 +12,7 @@
   justify-content: center;
   padding: 1rem;
   justify-self: center;
+  animation: fadeIn 500ms ease-in;
 
   fieldset {
     display: flex;
@@ -71,6 +72,7 @@
     border: 1px solid darken($color: $accentColor, $amount: 2);;
     border-radius: 1rem;
     cursor: pointer;
+    animation: fadeIn 500ms ease-in;
   }
 }
 
