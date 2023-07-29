@@ -2,8 +2,8 @@ import { Nav } from "../components/Nav";
 import { MenuPanel } from "../components/menuPanel";
 import { reservations, waitings } from "../data/Reservations";
 import styles from "../styles/Reservations.module.scss";
-import { ReservationsHandle } from "../components/ReservationsHandle";
-import { Waitings } from "../components/WaitingReservations";
+import { ReservationsHandle } from "../components/Reservations/ReservationsHandle";
+import { Waitings } from "../components/Reservations/WaitingReservations";
 import { useState } from "react";
 
 export const Reservations = () => {

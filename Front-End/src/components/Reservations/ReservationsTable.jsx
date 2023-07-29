@@ -1,9 +1,9 @@
-import styles from "../styles/ReservationsTable.module.scss";
+import styles from "../../styles/ReservationsTable.module.scss";
 import { MdClose, MdCheck } from "react-icons/md";
 import React from "react";
-import { spaces } from "../data/Reservations";
+import { spaces } from "../../data/Reservations";
 import classNames from "classnames";
-import { getTimeString, getDateInFormat } from "../utils";
+import { getTimeString, getDateInFormat } from "../../utils";
 
 const ReservationTable = ({ reservations, isActionable, isAcceptable }) => {
   // console.log(reservations);

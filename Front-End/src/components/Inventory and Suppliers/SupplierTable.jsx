@@ -1,10 +1,10 @@
 
 import React,{useState} from 'react';
-import styles from '../styles/ReservationsTable.module.scss';
+import styles from '../../styles/ReservationsTable.module.scss';
 
-export const IngredientTable = ({ data }) => {
+export const SupplierTable = ({ data }) => {
 
-  console.log(data);
+
   return (
     <div className={styles.container}>
 
@@ -16,21 +16,21 @@ export const IngredientTable = ({ data }) => {
           <tr>
             <th>Id</th>
             <th>Name</th>
-            <th>Quantity</th>
-            <th>Quantity Type</th>
-            <th>Description</th>
+            <th>Address</th>
+            <th>Email</th>
+            
             <th></th>
 
           </tr>
         </thead>
         <tbody>
-          {data.map((ingredient, index) => (
+          {data.map((supplier, index) => (
             <tr key={index}>
-              <td>{ingredient.id}</td>
-              <td>{ingredient.name}</td>
-              <td>{ingredient.quantity}</td>
-              <td>{ingredient.quantity_type}</td>
-              <td>{ingredient.description}</td>
+              <td>{supplier.id}</td>
+              <td>{supplier.name}</td>
+              <td>{supplier.address}</td>
+              <td>{supplier.email}</td>              
+              
               <td>
                 <button>Edit</button>
                 <button>Delete</button>
