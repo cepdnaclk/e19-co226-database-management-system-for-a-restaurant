@@ -10,7 +10,7 @@ export const IngredientTable = ({ data }) => {
       <table className={styles.Table}>
         <thead>
           <tr>
-            <th>Id</th>
+            {/* <th>Id</th> */}
             <th>Name</th>
             <th>Quantity</th>
             <th>Quantity Type</th>
@@ -19,9 +19,9 @@ export const IngredientTable = ({ data }) => {
           </tr>
         </thead>
         <tbody>
-          {data.map((ingredient, index) => (
-            <tr key={index}>
-              <td>{ingredient.id}</td>
+          {data.map((ingredient) => (
+            <tr key={ingredient.id}>
+              {/* <td>{ingredient.id}</td> */}
               <td>{ingredient.name}</td>
               <td>{ingredient.quantity}</td>
               <td>{ingredient.quantity_type}</td>

@@ -16,23 +16,21 @@ export const SupplierTable = ({ data }) => {
 
         <thead>
           <tr>
-            <th>Id</th>
             <th>Name</th>
             <th>Address</th>
             <th>Email</th>
-            
+            <th>Contact Number</th>
             <th></th>
 
           </tr>
         </thead>
         <tbody>
-          {data.map((supplier, index) => (
-            <tr key={index}>
-              <td>{supplier.id}</td>
+          {data.map((supplier) => (
+            <tr key={supplier.id}>
               <td>{supplier.name}</td>
               <td>{supplier.address}</td>
               <td>{supplier.email}</td>              
-              
+              <td>{supplier.number}</td>
               <td className={styles.actionColCell}>
                 <button className={classNames(styles.btn, styles.editBtn)}>
                   <MdCreate />
