@@ -1,15 +1,45 @@
 import { Nav } from "../components/Nav";
 import { MenuPanel } from "../components/menuPanel";
-import { reservations, waitings } from "../data/Reservations";
 import styles from "../styles/Reservations.module.scss";
 import { ReservationsHandle } from "../components/Reservations/ReservationsHandle";
 import { Waitings } from "../components/Reservations/WaitingReservations";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+import { fetchReservations,fetchWaitings } from "../services/Reservations.service";
+
+
 
 export const Reservations = () => {
   const [isWaiting, setIsWaiting] = useState(false);
+  const [waitings, setWaitings] = useState([]);
+  const [reservations, setResevations] = useState([]);
   // console.log(reservations);
   // console.log(waitings);
+
+  useEffect(() => {
+    handlefetchReservations();
+    handlefetchWaitings();
+  }, []);
+
+  const handlefetchReservations = async () => {
+    try {
+      const response = await fetchReservations();
+      setResevations(response);
+      console.log(response);
+    } catch (error) {
+      console.error("Error fetching reservatins:", error);
+    }
+  };
+  const handlefetchWaitings = async () => {
+    try {
+      const response = await fetchWaitings();
+      setWaitings(response);
+      console.log(response);
+    } catch (error) {
+      console.error("Error fetching waitings:", error);
+    }
+  };
+
   return (
     <>
       <Nav />

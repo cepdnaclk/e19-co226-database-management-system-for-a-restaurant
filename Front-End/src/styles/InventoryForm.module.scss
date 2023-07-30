@@ -50,6 +50,7 @@
     color: #000;
   }
 
+  input[type="time"],
   input[type="text"],
   input[type="date"] {
     width: 83%;
@@ -63,13 +64,19 @@
 
   [type="date"]::-webkit-calendar-picker-indicator {
     background-color: #acacac;
+    color: #000;
+  }
+
+  [type="time"]::-webkit-calendar-picker-indicator {
+    background-color: #acacac;
+    color: #000;
   }
 
   .button {
     background-color: darken($color: $accentColor, $amount: 2);
     margin-top: 15px;
     width: 26%;
-    border: 1px solid darken($color: $accentColor, $amount: 2);;
+    border: 1px solid darken($color: $accentColor, $amount: 2);
     border-radius: 1rem;
     cursor: pointer;
     animation: fadeIn 500ms ease-in;
@@ -89,19 +96,18 @@
 }
 
 .close_button {
-    color: darken($color: $accentColor, $amount: 2);
-    background-color: rgb(216, 162, 81);
-    cursor: pointer;
-    border: none;
-    font-size: 18px;
-    font-weight: bolder;
-    border-radius: 50%;
-    justify-self: left;
-    justify-content: center;
-    align-content: center;
-    height: 50px;
-    margin-left: 19rem;
-    margin-top: -0.5em;
-    position: absolute;
-  }
-
+  color: darken($color: $accentColor, $amount: 2);
+  background-color: rgb(216, 162, 81);
+  cursor: pointer;
+  border: none;
+  font-size: 18px;
+  font-weight: bolder;
+  border-radius: 50%;
+  justify-self: left;
+  justify-content: center;
+  align-content: center;
+  height: 50px;
+  margin-left: 19rem;
+  margin-top: -0.5em;
+  position: absolute;
+}

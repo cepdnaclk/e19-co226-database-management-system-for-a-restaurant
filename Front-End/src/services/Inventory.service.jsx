@@ -44,12 +44,11 @@ export const handleForm = (data) => {
   try {
     const response = axios.post(API_URL + "/supply", data);
     console.log("Response:", response.data);
-    alert("Supply record Added sucessfully");
     return response.data
     // Handle successful response here, if needed
   } catch (error) {
     console.error("Error:", error);
-    alert("Error:", error);
+    // alert("Error:", error);
     // Handle error here, if needed
   }
 };
