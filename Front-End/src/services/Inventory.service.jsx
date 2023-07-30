@@ -40,7 +40,7 @@ export const SearchInputChange = async (event) => {
 };
 
 export const handleForm = (data) => {
-
+  console.log("Response:", response.data);
   try {
     const response = axios.post(API_URL + "/supply", data);
     console.log("Response:", response.data);

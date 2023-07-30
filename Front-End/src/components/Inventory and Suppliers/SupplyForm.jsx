@@ -9,10 +9,10 @@ export const SupplyForm = ({ suppliers, ingredients, onClose }) => {
   const [quantity, setQuantity] = useState(0);
   const [time, setTime] = useState("15:30");
 
-  const handleSubmit = (event) => {
+  const handleSubmit = () => {
     // event.preventDefault();
-    console.log(ingredient);
-    console.log(supplier);
+    // console.log(ingredient);
+    // console.log(supplier);
 
     const data = {
       supplierId: supplier, // Replace 'supplier' with the actual supplier value
@@ -21,6 +21,7 @@ export const SupplyForm = ({ suppliers, ingredients, onClose }) => {
       date: date, // Replace 'date' with the actual date value
       time: time, // Replace 'time' with the actual time value
     };
+    console.log(data);
 
     try {
       const response = handleForm(data);
@@ -53,8 +54,7 @@ export const SupplyForm = ({ suppliers, ingredients, onClose }) => {
                 <option disabled selected hidden></option>
                 {ingredients.map((ingredient) => (
                   <option key={ingredient.id} value={ingredient.id}>
-                    {ingredient.id} || {ingredient.name} || {ingredient.type} ||
-                    age(months): {ingredient.ageInMonths}
+                    {ingredient.name}
                   </option>
                 ))}
               </select>
@@ -71,8 +71,7 @@ export const SupplyForm = ({ suppliers, ingredients, onClose }) => {
                 <option disabled selected hidden></option>
                 {suppliers.map((supplier) => (
                   <option key={supplier.id} value={supplier.id}>
-                    {supplier.id} || {supplier.name} || {supplier.type} ||
-                    age(months): {supplier.ageInMonths}
+                    {supplier.name}
                   </option>
                 ))}
               </select>
@@ -80,7 +79,7 @@ export const SupplyForm = ({ suppliers, ingredients, onClose }) => {
             <div className={styles.select}>
               <p>Quantity &ensp;:</p>
               <input
-                type="text"
+                type="number"
                 value={quantity}
                 onChange={(input) => setQuantity(input.target.value)}
                 required="requred"

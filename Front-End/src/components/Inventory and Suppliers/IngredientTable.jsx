@@ -4,7 +4,7 @@ import classNames from "classnames";
 import { MdClose, MdCreate } from "react-icons/md";
 
 export const IngredientTable = ({ data }) => {
-  console.log(data);
+  // console.log(data);
   return (
     <div className={styles.container}>
       <table className={styles.Table}>

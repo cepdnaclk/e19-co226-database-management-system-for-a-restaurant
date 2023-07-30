@@ -25,7 +25,7 @@ export const Reservations = () => {
     try {
       const response = await fetchReservations();
       setResevations(response);
-      console.log(response);
+      // console.log(response);
     } catch (error) {
       console.error("Error fetching reservatins:", error);
     }
@@ -34,7 +34,7 @@ export const Reservations = () => {
     try {
       const response = await fetchWaitings();
       setWaitings(response);
-      console.log(response);
+      // console.log(response);
     } catch (error) {
       console.error("Error fetching waitings:", error);
     }

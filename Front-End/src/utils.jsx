@@ -23,3 +23,8 @@ export const getDateInFormat = (date) => {
 
   return new Intl.DateTimeFormat("en-US", dateOptions).format(date);
 };
+
+export const calPrice = (quantity, item) => {
+  const price = quantity * parseInt(item.price);
+  return price;
+};
