@@ -6,6 +6,7 @@ import { OrdersHandle } from "../components/Orders/OrdersHandle";
 import { Waitings } from "../components/Orders/WaitingOrders";
 import {OrderForm } from "../components/Orders/OrderForm"
 import { fetchOrders,fetchWaitingOrders } from "../services/Orders.service";
+import { menuItemsData } from "../data/Menu";
 
 export const Orders = () => {
   const [isWaiting, setIsWaiting] = useState(false);
@@ -77,7 +78,7 @@ export const Orders = () => {
         </button>}
         {showForm && <div className={styles.cardContainer} ref={backgroundClick}>
           <OrderForm
-            menuItems={menuItems}
+            menuItems={menuItemsData}
             onClose={() => {
               setShowForm(false);
             }}
