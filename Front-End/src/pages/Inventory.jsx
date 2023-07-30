@@ -5,6 +5,7 @@ import { SupplierTable } from "../components/Inventory and Suppliers/SupplierTab
 import { SupplyForm } from "../components/Inventory and Suppliers/SupplyForm";
 import React, { useState, useEffect ,useRef} from "react";
 import styles from "../styles/Inventory.module.scss";
+import { ingredients_sample, suppliers_sample } from "../data/InventoryAndSuppliers";
 
 import {
   fetchIngredients,
@@ -13,8 +14,8 @@ import {
 } from "../services/Inventory.service";
 
 export const Inventory = () => {
-  const [ingredients, setIngredients] = useState([]);
-  const [suppliers, setSuppliers] = useState([]);
+  const [ingredients, setIngredients] = useState(ingredients_sample);
+  const [suppliers, setSuppliers] = useState(suppliers_sample);
   const [searchQuery, setSearchQuery] = useState("");
   const [showForm, setShowForm] = useState(false);
   const backgroundClick = useRef(null);

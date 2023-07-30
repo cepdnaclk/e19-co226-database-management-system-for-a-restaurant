@@ -108,13 +108,13 @@
   }
 
   .cancelBtn {
-    border: 1px solid rgb(227, 104, 104);
+    border: 1px solid $cancelColor;
     border-radius: 1em;
     background-color: inherit;
     color: rgb(227, 104, 104);
 
     &:hover {
-      background-color: rgb(227, 104, 104);
+      background-color: $cancelColor;
       color: white;
     }
   }
@@ -125,6 +125,16 @@
 
     &:hover {
       background-color: darken($confirmedColor, $amount: 25);
+    }
+  }
+
+  .editBtn {
+    background-color: $editColor;
+    border: 1px solid rgba(76, 120, 156, 0);
+    border-radius: 1em;
+  
+    &:hover {
+      background-color: darken($editColor, $amount: 25);
     }
   }
 }

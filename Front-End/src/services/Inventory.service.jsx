@@ -1,5 +1,6 @@
 import axios from "axios";
 import { authHeader } from "./auth_header";
+import { ingredients_sample, suppliers_sample } from "../data/InventoryAndSuppliers";
 
 const API_URL = "http://localhost:8080/api/v1";
 
@@ -12,6 +13,7 @@ export const fetchIngredients = async () => {
     return response.data;
   } catch (error) {
     console.error("Error fetching ingredients:", error);
+    return ingredients_sample;
   }
 };
 export const fetchSuppliers = async () => {
@@ -22,6 +24,7 @@ export const fetchSuppliers = async () => {
     return response.data;
   } catch (error) {
     console.error("Error fetching suppliers:", error);
+    return suppliers_sample;
   }
 };
 

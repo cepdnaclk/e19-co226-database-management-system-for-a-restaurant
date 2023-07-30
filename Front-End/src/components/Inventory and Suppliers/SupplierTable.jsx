@@ -1,6 +1,8 @@
 
 import React,{useState} from 'react';
 import styles from '../../styles/ReservationsTable.module.scss';
+import classNames from "classnames";
+import { MdClose, MdCreate } from "react-icons/md";
 
 export const SupplierTable = ({ data }) => {
 
@@ -31,9 +33,15 @@ export const SupplierTable = ({ data }) => {
               <td>{supplier.address}</td>
               <td>{supplier.email}</td>              
               
-              <td>
-                <button>Edit</button>
-                <button>Delete</button>
+              <td className={styles.actionColCell}>
+                <button className={classNames(styles.btn, styles.editBtn)}>
+                  <MdCreate />
+                  Edit
+                </button>
+                <button className={classNames(styles.btn, styles.cancelBtn)}>
+                  <MdClose />
+                  Delete
+                </button>
               </td>
             </tr>
           ))}
