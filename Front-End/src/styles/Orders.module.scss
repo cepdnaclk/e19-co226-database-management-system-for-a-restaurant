@@ -1,4 +1,23 @@
 @use "variables" as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 87%;
+  animation: fadeIn 500ms ease-in;
+}
+
+.cardContainer{
+  position: fixed;
+    top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 100vh;
+  width: 100vw;
+  backdrop-filter: blur(3px);
+  background-color: #00000050;
+  z-index: 999;
+}
 .Hero {
   height: auto;
   width: 100%;
@@ -107,4 +126,18 @@
   padding-bottom: 2em;
   background-color: $bgcolor;
   width: 100%;
+}
+
+.button {
+  background-color: darken($color: $accentColor, $amount: 2);
+  border: 1px solid darken($color: $accentColor, $amount: 2);
+  border-radius: 1.15rem;
+  width: 11rem;
+  cursor: pointer;
+
+  &:hover{
+    background-color: darken($color: $accentColor, $amount: 12);
+  border: 1px solid darken($color: $accentColor, $amount: 12);
+  scale: 1.03;
+  }
 }

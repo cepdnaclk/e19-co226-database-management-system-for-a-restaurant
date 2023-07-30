@@ -42,7 +42,7 @@ export const Inventory = () => {
     try {
       const response = await fetchIngredients();
       setIngredients(response);
-      console.log(response);
+      // console.log(response);
     } catch (error) {
       console.error("Error fetching ingredients:", error);
     }
@@ -51,7 +51,7 @@ export const Inventory = () => {
     try {
       const response = await fetchSuppliers();
       setSuppliers(response);
-      console.log(response);
+      // console.log(response);
     } catch (error) {
       console.error("Error fetching suppliers:", error);
     }

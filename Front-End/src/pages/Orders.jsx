@@ -1,23 +1,38 @@
 import { Nav } from "../components/Nav";
 import {MenuPanel} from "../components/menuPanel";
-import { confirmedOrders, waitingOrders } from "../data/Orders";
 import styles from "../styles/Orders.module.scss";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { OrdersHandle } from "../components/Orders/OrdersHandle";
 import { Waitings } from "../components/Orders/WaitingOrders";
-
+import {OrderForm } from "../components/Orders/OrderForm"
 import { fetchOrders,fetchWaitingOrders } from "../services/Orders.service";
 
 export const Orders = () => {
   const [isWaiting, setIsWaiting] = useState(false);
   const [waitings, setWaitings] = useState([]);
   const [orders, setOrders] = useState([]);
+  const [menuItems, setMenuItems] = useState([]);
+  const [showForm, setShowForm] = useState(false);
+  const backgroundClick = useRef(null);
 
   useEffect(() => {
     handlefetchOrders();
     handlefetchWaitings();
   }, []);
+
+  useEffect(() => {
+    document.addEventListener("click", handleBackgroundClick);
+    return () => {
+      document.removeEventListener("click", handleBackgroundClick);
+    };
+  },[]);
   
+  const handleBackgroundClick = (e) => {
+    if (e.target === backgroundClick.current) {
+      setShowForm(false);
+    }
+  };
+
   const handlefetchOrders = async () => {
     try {
       const response = await fetchOrders();
@@ -55,6 +70,20 @@ export const Orders = () => {
           <p className={styles.toggleItem}>Confirmed Orders</p>
           <p className={styles.toggleItem}>Waiting List</p>
         </button>
+      </div>
+      <div className={styles.container}>
+        {!showForm && <button className={styles.button} onClick={() => setShowForm(true)}>
+          Make New Order
+        </button>}
+        {showForm && <div className={styles.cardContainer} ref={backgroundClick}>
+          <OrderForm
+            menuItems={menuItems}
+            onClose={() => {
+              setShowForm(false);
+            }}
+            
+          />
+        </div>}
       </div>
       <div className={styles.tableContainer}>
         {/* Conditionally Render the Confirmed Reservations and Waiting List according to state */}
