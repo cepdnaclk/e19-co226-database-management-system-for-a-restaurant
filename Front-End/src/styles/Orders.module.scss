@@ -1,0 +1,110 @@
+@use "variables" as *;
+.Hero {
+  height: auto;
+  width: 100%;
+  font: 1em sans-serif;
+  background-color: $bgcolor;
+  text-align: center;
+  padding: 10em 2em 5em 2em;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 500ms ease-in;
+  // background-image: linear-gradient(180deg, #fdfbfb 0%, $bgcolor 100%);
+
+  h1 {
+    font-size: 2.4em;
+    margin-bottom: 0.2em;
+    color: rgb(39, 39, 39);
+  }
+
+  h2 {
+    font-size: 1.6em;
+    margin-bottom: 0.2em;
+    color: rgb(39, 39, 39);
+  }
+
+  p {
+    font-size: 1.1em;
+    color: hsl(0, 0%, 0%, 0.7);
+  }
+  span {
+    color: $accentColor;
+  }
+}
+
+.toggleSwitch {
+  background-color: white;
+  width: fit-content;
+  padding: 0.8em 1.4em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 5em;
+  border-color: rgba(255, 255, 255, 0);
+  gap: 2em;
+  margin-top: 1em;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+
+  .toggleItem {
+    display: inline-block;
+    font-size: 1.1em;
+    z-index: 10;
+    color: white;
+    font-weight: 600;
+  }
+
+  .toggleItem:last-child {
+    color: $disabledTextColor;
+    font-weight: 400;
+    &:hover{
+      scale:1.03;
+    }
+  }
+
+  &.waiting {
+    .toggleItem:first-child {
+      color: $disabledTextColor;
+      font-weight: 400;
+      &:hover{
+        scale:1.03;
+      }
+    }
+
+    .toggleItem:last-child {
+      color: white;
+      font-weight: 600;
+    }
+
+    &::before {
+      width: 44%;
+      transform: translateY(-50%) translateX(61%);
+      background-color: $waitingColor;
+    }
+  }
+
+  &::before {
+    content: " ";
+    position: absolute;
+    width: 59%;
+    height: 90%;
+    border-radius: 5em;
+    top: 50%;
+    transform: translateY(-50%) translateX(-33.5%);
+    background-color: $waitingColor;
+    transition: transform 300ms cubic-bezier(0.18, 0.89, 0.35, 1.15),
+      width 50ms ease-in-out, background-color 250ms ease-in-out;
+  }
+}
+
+.tableContainer {
+  padding: 0em 6dvw;
+  padding-bottom: 2em;
+  background-color: $bgcolor;
+  width: 100%;
+}

@@ -101,6 +101,13 @@ export const Inventory = () => {
         />
         <IngredientTable data={ingredients} />
         <h2 className={styles.tableHeadings}>Supplier Table</h2>
+        <input
+          type="text"
+          value={searchQuery}
+          onChange={handleSearchInputChange}
+          placeholder="Search Suppliers..."
+          className={styles.searchbar}
+        />
         <SupplierTable data={suppliers} />
       </div>
     </>
