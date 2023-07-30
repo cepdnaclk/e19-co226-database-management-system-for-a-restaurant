@@ -3,8 +3,9 @@ import { handleForm } from "../../services/Orders.service";
 import styles from "../../styles/OrderForm.module.scss";
 import { calPrice } from "../../utils";
 
+
 export const OrderForm = ({ menuItems, onClose }) => {
-  const [item, setItem] = useState("");
+  const [item, setItem] = useState(0);
   const [quantity, setQuantity] = useState(0);
   const [address, setAddress] = useState("");
   const [number, setNumber] = useState("");
@@ -13,7 +14,7 @@ export const OrderForm = ({ menuItems, onClose }) => {
     // event.preventDefault();
 
     const data = {
-      item: item.id,
+      item: item,
       quantity: quantity, // Replace 'quantity' with the actual quantity value
       address: address,
       number: number,
@@ -52,7 +53,7 @@ export const OrderForm = ({ menuItems, onClose }) => {
                 <option disabled selected hidden></option>
                 {menuItems.map((item) => (
                   <option key={item.id} value={item.id}>
-                    {item.id} || {item.name} || {item.price}
+                    {item.category} || {item.title} || {item.price}
                   </option>
                 ))}
               </select>
@@ -84,7 +85,7 @@ export const OrderForm = ({ menuItems, onClose }) => {
             </div>
             <div className={styles.select}>
               <p>Price &emsp;&emsp;&ensp;:&ensp;</p>
-              <p>{calPrice(quantity,item)}</p>
+              <p className={styles.price}>Rs. {calPrice(parseInt(quantity),parseInt(item))}.00</p>
             </div>
             <button type="submit" className={styles.button} onClick={handleSubmit()}>
               Submit Order
