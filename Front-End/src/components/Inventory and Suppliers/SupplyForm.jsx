@@ -95,6 +95,15 @@ export const SupplyForm = ({ suppliers, ingredients, onClose }) => {
                 required="requred"
               />
             </div>
+            <div className={styles.select}>
+              <p>Time &emsp;&emsp;:</p>
+              <input
+                type="time"
+                value={time}
+                onChange={(input) => setTime(input.target.value)}
+                required="requred"
+              />
+            </div>
             <button type="submit" className={styles.button} onClick={handleSubmit()}>
               Add Supply Record
             </button>
