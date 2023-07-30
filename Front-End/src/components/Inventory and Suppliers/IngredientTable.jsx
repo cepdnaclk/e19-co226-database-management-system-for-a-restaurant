@@ -1,17 +1,13 @@
-
-import React,{useState} from 'react';
-import styles from '../../styles/ReservationsTable.module.scss';
+import React, { useState } from "react";
+import styles from "../../styles/ReservationsTable.module.scss";
+import classNames from "classnames";
+import { MdClose, MdCreate } from "react-icons/md";
 
 export const IngredientTable = ({ data }) => {
-
   console.log(data);
   return (
     <div className={styles.container}>
-
-      
-      
       <table className={styles.Table}>
-
         <thead>
           <tr>
             <th>Id</th>
@@ -20,7 +16,6 @@ export const IngredientTable = ({ data }) => {
             <th>Quantity Type</th>
             <th>Description</th>
             <th></th>
-
           </tr>
         </thead>
         <tbody>
@@ -31,9 +26,15 @@ export const IngredientTable = ({ data }) => {
               <td>{ingredient.quantity}</td>
               <td>{ingredient.quantity_type}</td>
               <td>{ingredient.description}</td>
-              <td>
-                <button>Edit</button>
-                <button>Delete</button>
+              <td className={styles.actionColCell}>
+                <button className={classNames(styles.btn, styles.editBtn)}>
+                  <MdCreate />
+                  Edit
+                </button>
+                <button className={classNames(styles.btn, styles.cancelBtn)}>
+                  <MdClose />
+                  Delete
+                </button>
               </td>
             </tr>
           ))}
@@ -42,5 +43,3 @@ export const IngredientTable = ({ data }) => {
     </div>
   );
 };
-
-

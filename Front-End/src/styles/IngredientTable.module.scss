@@ -1,3 +1,4 @@
+@use "./variables" as *;
 
 .ingredient-table {
   width: 100%;
@@ -6,20 +7,18 @@
   font-size: 0.9em;
   font-family: sans-serif;
   border-collapse: collapse;
-  
 }
 
 .ingredient-table th,
 .ingredient-table td {
   padding: 12px 15px;
   border: 1px solid #372e2e;
-  
+
   text-align: left;
 }
 
 .ingredient-table th {
   background-color: #75c7ea;
-  
 }
 
 .ingredient-table tr {
@@ -30,4 +29,46 @@
   background-color: #baccd0;
 }
 
+.actionColCell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+}
 
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2em;
+  padding: 0.4em 1em 0.4em 0.8em;
+  color: white;
+  border-radius: 1em;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9em;
+  transform: translateX(-12%);
+  transition: background-color 200ms ease-in-out, color 200ms ease-in-out;
+}
+
+.cancelBtn {
+  border: 1px solid $cancelColor;
+  border-radius: 1em;
+  background-color: inherit;
+  color: rgb(227, 104, 104);
+
+  &:hover {
+    background-color: $cancelColor;
+    color: white;
+  }
+}
+
+.editBtn {
+  background-color: $editColor;
+  border: 1px solid rgba(76, 120, 156, 0);
+  border-radius: 1em;
+
+  &:hover {
+    background-color: $editColor;
+  }
+}
