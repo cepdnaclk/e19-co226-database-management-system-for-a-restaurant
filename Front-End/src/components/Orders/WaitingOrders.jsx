@@ -6,7 +6,7 @@ import classNames from "classnames";
 
 export const Waitings = ({waitings}) => {
     const [waiting, setWaiting] = useState([]);
-    console.log(waiting);
+    // console.log(waiting);
     useEffect(() => {
       setWaiting(waitings);
     },[])

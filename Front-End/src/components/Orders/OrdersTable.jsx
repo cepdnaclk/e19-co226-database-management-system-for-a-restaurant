@@ -5,7 +5,7 @@ import classNames from "classnames";
 import { getTimeString, getDateInFormat } from "../../utils";
 
 const OrdersTable = ({ orders, isActionable, isAcceptable, isRemovable }) => {
-  console.log(orders);
+  // console.log(orders);
   return (
     <div className={classNames(styles.container)}>
       <table className={styles.Table}>
@@ -22,9 +22,9 @@ const OrdersTable = ({ orders, isActionable, isAcceptable, isRemovable }) => {
           </tr>
         </thead>
         <tbody>
-          {orders.map((order) => {
+          {orders.map((order,index) => {
             return (
-              <tr key={order.id}>
+              <tr key={index}>
                 <td className={styles.firstCol}>{order.title}</td>
                 <td>{getDateInFormat(new Date(order.date))}</td>
                 <td>{getTimeString(order.time)}</td>

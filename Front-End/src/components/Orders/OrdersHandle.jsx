@@ -9,8 +9,8 @@ export const OrdersHandle = ({allOrders}) => {
 
     useEffect(() =>{
         setOrders(allOrders);
-        console.log(allOrders);
-        console.log(orders);
+        // console.log(allOrders);
+        // console.log(orders);
     },[allOrders])
 
     useEffect(() => {
@@ -19,13 +19,13 @@ export const OrdersHandle = ({allOrders}) => {
             return res.deliveryStatus;
           })
         );
-        console.log(deliverdOrders);
+        // console.log(deliverdOrders);
         setProcessingOrders(
             orders.filter((res) => {
                 return !res.deliveryStatus;
               })
         );
-        console.log(processingOrders);
+        // console.log(processingOrders);
     }, [orders]);
 
     return (
