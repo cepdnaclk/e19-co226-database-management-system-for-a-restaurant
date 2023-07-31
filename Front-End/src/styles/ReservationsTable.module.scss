@@ -46,17 +46,17 @@
       }
 
       th {
-        text-align: left;
+        text-align: center;
         font-size: 0.95em;
       }
     }
 
     tr {
       th:first-child {
-        padding-left: 3em;
+        padding-left: 2em;
       }
       td:first-child {
-        padding-left: 3em;
+        padding-left: 2em;
       }
 
       th:last-child {
@@ -90,11 +90,6 @@
       justify-content: center;
       gap: 0.5em;
     }
-
-    .statusCell {
-      align-items: center;
-      justify-content: center;
-    }
   }
 
   .btn {
@@ -113,13 +108,13 @@
   }
 
   .cancelBtn {
-    border: 1px solid $cancelColor;
+    border: 1px solid rgb(227, 104, 104);
     border-radius: 1em;
     background-color: inherit;
     color: rgb(227, 104, 104);
 
     &:hover {
-      background-color: $cancelColor;
+      background-color: rgb(227, 104, 104);
       color: white;
     }
   }
@@ -130,29 +125,6 @@
 
     &:hover {
       background-color: darken($confirmedColor, $amount: 25);
-    }
-  }
-
-  .editBtn {
-    background-color: $editColor;
-    border: 1px solid rgb(76, 120, 156);
-    border-radius: 1em;
-  
-    &:hover {
-      background-color: darken($editColor, $amount: 25);
-      border-color: darken($editColor, $amount: 25);
-    }
-  }
-
-  .pendingBtn{
-    border: 1px solid $pendingColor;
-    border-radius: 1em;
-    background-color: inherit;
-    color: $pendingColor;
-
-    &:hover {
-      background-color: $pendingColor;
-      color: white;
     }
   }
 }
