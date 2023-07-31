@@ -1,13 +1,16 @@
 import { Nav } from "../components/Nav";
 import { MenuPanel } from "../components/menuPanel";
+import styles from "../styles/Home.module.scss"
 
 export const Home = () => {
   return (
-    <div>
-      <Nav />
+    <div className={styles.container}>
+      <Nav className={styles.nav}/>
       <MenuPanel />
-      <h2>Ambrosia Bistro</h2>
-      <h3>"Savor the Divine Essence of Cuisine"</h3>
+      <div className={styles.Hero}>
+        <h1>AMBROSIA BISTRO</h1>
+        <h2>"SAVOR THE DIVINE ESSENCE OF CUISINE"</h2>
+      </div>
     </div>
   );
 };
