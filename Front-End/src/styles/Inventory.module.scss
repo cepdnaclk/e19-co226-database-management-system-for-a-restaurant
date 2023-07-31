@@ -1,93 +1,115 @@
 @use "variables" as *;
-.container{
-    display: flex;
-    flex-direction: column;
-    width: 90%;
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  animation: fadeIn 500ms ease-in;
 }
 
 .Hero {
-    height: auto;
-    width: 100%;
-    font: 1em sans-serif;
-    background-color: $bgcolor;
-    text-align: center;
-    padding: 10em 2em 5em 2em;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    animation: fadeIn 500ms ease-in;
-    // background-image: linear-gradient(180deg, #fdfbfb 0%, $bgcolor 100%);
-  
-    h1 {
-      font-size: 2.4em;
-      margin-bottom: 0.2em;
-      color: rgb(39, 39, 39);
-    }
-  
-    h2 {
-      font-size: 1.6em;
-      margin-bottom: 0.2em;
-      color: rgb(39, 39, 39);
-    }
-  
-    p {
-      font-size: 1.1em;
-      color: hsl(0, 0%, 0%, 0.7);
-    }
-    span {
-      color: $accentColor;
-    }
+  height: auto;
+  width: 100%;
+  font: 1em sans-serif;
+  background-color: $bgcolor;
+  text-align: center;
+  padding: 10em 2em 5em 2em;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 500ms ease-in;
+  // background-image: linear-gradient(180deg, #fdfbfb 0%, $bgcolor 100%);
+
+  h1 {
+    font-size: 2.4em;
+    margin-bottom: 0.2em;
+    color: rgb(39, 39, 39);
   }
 
-  .tableHeadings {
-    margin-top: 2em;
-    font: 1em sans-serif;
-    font-weight: 600;
-    text-align: left;
-    margin-left: 1em;
-    animation: fadeIn 800ms ease-in;
-    &:hover{
-      scale:1.01;
-      margin-left: 1.5em;
-      cursor: pointer;
-    }
+  h2 {
+    font-size: 1.6em;
+    margin-bottom: 0.2em;
+    color: rgb(39, 39, 39);
   }
 
-  .searchbar{
-    padding: 0.75em 2em;
-    max-width: 24em;
-    border-radius: 30px;
-    align-items: center;
-    color: #1a1919dc;
+  p {
+    font-size: 1.1em;
+    color: hsl(0, 0%, 0%, 0.7);
+  }
+  span {
+    color: $accentColor;
+  }
+}
+
+.tableHeadings {
+  margin-top: 2em;
+  font: 1em sans-serif;
+  font-weight: 600;
+  text-align: left;
+  margin-left: 1em;
+  animation: fadeIn 800ms ease-in;
+  &:hover {
+    scale: 1.01;
+    margin-left: 1.5em;
+    cursor: pointer;
+  }
+}
+
+.searchbar {
+  padding: 0.75em 2em;
+  max-width: 24em;
+  border-radius: 30px;
+  align-items: center;
+  color: #1a1919dc;
+  border-color: rgba(255, 255, 255, 0);
+  margin-top: 1em;
+  margin-left: 7em;
+  margin-bottom: -1em;
+  background-color: white;
+
+  &::placeholder {
+    opacity: 0.7;
+    transition: all ease-in-out 0.2s;
+    outline: none;
+    background: transparent;
+    font-weight: 400;
+    color: #00000098;
+  }
+
+  &:focus {
     border-color: rgba(255, 255, 255, 0);
-    margin-top: 1em;
-    margin-left: 5em;
-    margin-bottom: -1em;
-    background-color: white;
-    
-    &::placeholder {
-        opacity:0.7;
-        transition: all ease-in-out 0.2s;
-        outline: none;
-        background: transparent;
-        font-weight: 400;
-        color: #00000098;
-    }
-
-    &:focus{
-        border-color: rgba(255, 255, 255, 0);
-        outline: none;
-    }
-
-    @media (width < 1080px){
-        margin-left: 4.5em;
-    }
-    @media (width < 880px){
-        margin-left: 4em;
-    }
-    @media (width < 760px){
-        margin-left: 3.5em;
-    }
+    outline: none;
   }
+
+  @media (width < 1680px) {
+    margin-left: 6.5em;
+  }
+  @media (width < 1560px) {
+    margin-left: 6em;
+  }
+  @media (width < 1380px) {
+    margin-left: 5.5em;
+  }
+  @media (width < 1240px) {
+    margin-left: 5em;
+  }
+  @media (width < 1080px) {
+    margin-left: 4.5em;
+  }
+  @media (width < 880px) {
+    margin-left: 4em;
+  }
+  @media (width < 760px) {
+    margin-left: 3.5em;
+  }
+}
+
+.button {
+  background-color: darken($color: $accentColor, $amount: 2);
+  border: 1px solid darken($color: $accentColor, $amount: 2);
+  border-radius: 1.15rem;
+  width: 11rem;
+  margin-bottom: -1em;
+  cursor: pointer;
+}
