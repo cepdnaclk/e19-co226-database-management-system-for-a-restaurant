@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   width: 90%;
-  animation: fadeIn 500ms ease-in;
+  animation: fadeIn 1000ms ease-in;
 }
 
 .Hero {
@@ -18,7 +18,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  animation: fadeIn 500ms ease-in;
+  animation: fadeIn 1000ms ease-in;
   // background-image: linear-gradient(180deg, #fdfbfb 0%, $bgcolor 100%);
 
   h1 {
@@ -48,7 +48,7 @@
   font-weight: 600;
   text-align: left;
   margin-left: 1em;
-  animation: fadeIn 800ms ease-in;
+  animation: fadeIn 1200ms ease-in;
   &:hover {
     scale: 1.01;
     margin-left: 1.5em;
