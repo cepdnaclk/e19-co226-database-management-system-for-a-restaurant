@@ -1,4 +1,4 @@
-export const reservations = [
+export const cReservations = [
   {
     id: 1,
     spaceId: 0,
@@ -65,7 +65,7 @@ export const reservations = [
   },
 ];
 
-export const waitings = [
+export const waitingList = [
   {
     id: 1,
     spaceId: 0,

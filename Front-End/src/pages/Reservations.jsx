@@ -4,15 +4,15 @@ import styles from "../styles/Reservations.module.scss";
 import { ReservationsHandle } from "../components/Reservations/ReservationsHandle";
 import { Waitings } from "../components/Reservations/WaitingReservations";
 import { useState, useEffect } from "react";
-
+import { cReservations, waitingList } from "../data/Reservations";
 import { fetchReservations,fetchWaitings } from "../services/Reservations.service";
 
 
 
 export const Reservations = () => {
   const [isWaiting, setIsWaiting] = useState(false);
-  const [waitings, setWaitings] = useState([]);
-  const [reservations, setResevations] = useState([]);
+  const [waitings, setWaitings] = useState(waitingList);
+  const [reservations, setResevations] = useState(cReservations);
   // console.log(reservations);
   // console.log(waitings);
 
