@@ -7,11 +7,12 @@ import { Waitings } from "../components/Orders/WaitingOrders";
 import {OrderForm } from "../components/Orders/OrderForm"
 import { fetchOrders,fetchWaitingOrders } from "../services/Orders.service";
 import { menuItemsData } from "../data/Menu";
+import { confirmedOrders, waitingOrders } from "../data/Orders";
 
 export const Orders = () => {
   const [isWaiting, setIsWaiting] = useState(false);
-  const [waitings, setWaitings] = useState([]);
-  const [orders, setOrders] = useState([]);
+  const [waitings, setWaitings] = useState(waitingOrders);
+  const [orders, setOrders] = useState(confirmedOrders);
   const [menuItems, setMenuItems] = useState([]);
   const [showForm, setShowForm] = useState(false);
   const backgroundClick = useRef(null);

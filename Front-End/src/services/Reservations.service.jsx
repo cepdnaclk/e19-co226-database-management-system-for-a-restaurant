@@ -1,5 +1,5 @@
 import axios from "axios";
-import { reservations, waitings } from "../data/Reservations";
+import { cReservations, waitingList } from "../data/Reservations";
 
 const API_URL = "http://localhost:8080/api/v1";
 
@@ -12,7 +12,7 @@ export const fetchReservations = async () => {
       return response.data;
     } catch (error) {
       console.error("Error fetching reservations:", error);
-      return reservations;
+      return cReservations;
     }
   };
 
@@ -25,6 +25,6 @@ export const fetchReservations = async () => {
       return response.data;
     } catch (error) {
       console.error("Error fetching Waitings:", error);
-      return waitings;
+      return waitingList;
     }
   };
