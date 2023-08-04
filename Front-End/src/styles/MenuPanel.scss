@@ -1,7 +1,7 @@
 @use "variables" as *;
 .menu-panel {
   position: fixed;
-  left: 10px;
+  left: 0.4vw;
   top: 0;
   height: 100vh;
   width: 60px;
@@ -42,7 +42,7 @@
   justify-content: space-between;
 }
 
-.menu-panel__content ul {
+.menu-panel__content_ul {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -59,11 +59,20 @@
   font-size: 24px;
   cursor: pointer;
   position: relative;
+  justify-self: center;
 }
 
 .menu-panel__logo {
   display: block;
   width: 450%;
+  margin: 0 auto 100px;
+  cursor: pointer;
+  animation: fadeIn 1200ms ease-in;
+}
+
+.menu-panel__logo_open {
+  display: block;
+  width: 100%;
   margin: 0 auto 100px;
   cursor: pointer;
   animation: fadeIn 1200ms ease-in;
@@ -105,4 +114,26 @@
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
+}
+
+.menu-panel__content_p {
+  font-size: 0.8em;
+}
+
+.menu-item__open-li{
+  display: flex!important ;
+  gap: 1em;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.open_menu_ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+  flex-grow: 1;
 }

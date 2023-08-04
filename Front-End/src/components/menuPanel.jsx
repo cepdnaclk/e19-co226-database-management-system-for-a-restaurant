@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "../styles/MenuPanel.scss";
-import { Routes, Route, Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 export const MenuPanel = () => {
@@ -19,33 +18,41 @@ export const MenuPanel = () => {
         <span></span>
       </div>
       <div className="menu-panel__content">
-        <img
+        {!isPanelOpen?<img
           src="assets/My_project.png"
           alt="Logo"
           className="menu-panel__logo"
           onClick={() => navigate("/Home")}
-        />
-        <ul>
-          <li data-name="Home" onClick={() => navigate("/Home")}>
-            <i className="fas fa-home"></i> {/* Home icon */}
+        />:<img
+        src="assets/My_project.png"
+        alt="Logo"
+        className="menu-panel__logo_open"
+        onClick={() => navigate("/Home")}
+      />}
+        <ul className={isPanelOpen? "open_menu_ul" : "menu-panel__content_ul"}>
+          <li data-name="Home" onClick={() => navigate("/Home")} className="menu-item__open-li">
+            <i className="fas fa-home"></i>{isPanelOpen && <p className="menu-panel__content_p">Home</p>} {/* Home icon */}
           </li>
-          <li data-name="Orders" onClick={() => navigate("/Orders")}>
-            <i className="fa fa-book" aria-hidden="true"></i>{" "}
+          <li data-name="Orders" onClick={() => navigate("/Orders")} className="menu-item__open-li">
+            <i className="fa fa-book" aria-hidden="true"></i>{isPanelOpen && <p className="menu-panel__content_p">Orders</p>}
           </li>
-          <li data-name="Reservation" onClick={() => navigate("/Reservations")}>
-            <i className="fa fa-bookmark" aria-hidden="true"></i>{" "}
+          <li data-name="Reservation" onClick={() => navigate("/Reservations")} className="menu-item__open-li">
+            <i className="fa fa-bookmark" aria-hidden="true"></i>{isPanelOpen && <p className="menu-panel__content_p">Reservations</p>}
           </li>
-          <li data-name="Inventory" onClick={() => navigate("/Inventory")}>
-            <i className="fa fa-server" aria-hidden="true"></i>{" "}
+          <li data-name="Inventory" onClick={() => navigate("/Inventory")} className="menu-item__open-li">
+            <i className="fa fa-server" aria-hidden="true"></i>{isPanelOpen && <p className="menu-panel__content_p">Inventries</p>}
           </li>
-          <li data-name="About" onClick={() => navigate("/About")}>
-            <i className="fas fa-info-circle"></i>
+          <li data-name="Menu" onClick={() => navigate("/Menu")} className="menu-item__open-li">
+            <i className="fas fa-cutlery"></i>{isPanelOpen && <p className="menu-panel__content_p">Menu</p>}
           </li>
-          <li data-name="Services" onClick={() => navigate("/Services")}>
-            <i className="fas fa-cogs"></i>
+          <li data-name="About" onClick={() => navigate("/About")} className="menu-item__open-li">
+            <i className="fas fa-info-circle"></i>{isPanelOpen && <p className="menu-panel__content_p">About</p>}
           </li>
-          <li data-name="Contact" onClick={() => navigate("/Contact")}>
-            <i className="fas fa-envelope"></i>
+          <li data-name="Services" onClick={() => navigate("/Services")} className="menu-item__open-li">
+            <i className="fas fa-cogs"></i>{isPanelOpen && <p className="menu-panel__content_p">Services</p>}
+          </li>
+          <li data-name="Contact" onClick={() => navigate("/Contact")} className="menu-item__open-li">
+            <i className="fas fa-envelope"></i>{isPanelOpen && <p className="menu-panel__content_p">Contact</p>}
           </li>
         </ul>
       </div>

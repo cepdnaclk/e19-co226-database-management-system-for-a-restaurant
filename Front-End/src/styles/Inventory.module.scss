@@ -6,6 +6,18 @@
   animation: fadeIn 1000ms ease-in;
 }
 
+.cardContainer{
+  position: fixed;
+    top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 100vh;
+  width: 100vw;
+  backdrop-filter: blur(3px);
+  background-color: #00000050;
+  z-index: 999;
+}
+
 .Hero {
   height: auto;
   width: 100%;
@@ -112,4 +124,22 @@
   width: 11rem;
   margin-bottom: -1em;
   cursor: pointer;
+  &:hover{
+    background-color: black;
+    border-color: black;
+    scale: 1.03;
+  }
+}
+
+.addElementBtn{
+  background-color: darken($color: $waitingColor, $amount: 1);
+  border: 1px solid darken($color: $waitingColor, $amount: 1);
+  border-radius: 1.15rem;
+  width: 11rem;
+  cursor: pointer;
+  margin-top: 1em;
+  &:hover{
+    background-color: darken($waitingColor, $amount: 25);
+    border-color: darken($waitingColor, $amount: 25);
+  }
 }

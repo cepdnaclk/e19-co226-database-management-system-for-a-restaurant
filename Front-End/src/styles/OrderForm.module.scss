@@ -6,7 +6,7 @@
   left: 43%;
   transform: translate(-50%, -50%);
 
-  z-index: 9999;
+  z-index: 9998;
   margin-left: 6rem;
   width: 720px;
   background-color: white;
@@ -37,6 +37,7 @@
 
 .card_content {
   display: flex;
+  z-index: 9999;
   flex-direction: column;
   padding: 16px;
   margin: 25px;
