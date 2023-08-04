@@ -112,4 +112,22 @@
   width: 11rem;
   margin-bottom: -1em;
   cursor: pointer;
+  &:hover{
+    background-color: black;
+    border-color: black;
+    scale: 1.03;
+  }
+}
+
+.addElementBtn{
+  background-color: darken($color: $waitingColor, $amount: 1);
+  border: 1px solid darken($color: $waitingColor, $amount: 1);
+  border-radius: 1.15rem;
+  width: 11rem;
+  cursor: pointer;
+  margin-top: 1em;
+  &:hover{
+    background-color: darken($waitingColor, $amount: 25);
+    border-color: darken($waitingColor, $amount: 25);
+  }
 }

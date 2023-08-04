@@ -7,8 +7,6 @@ import { useState, useEffect } from "react";
 import { cReservations, waitingList } from "../data/Reservations";
 import { fetchReservations,fetchWaitings } from "../services/Reservations.service";
 
-
-
 export const Reservations = () => {
   const [isWaiting, setIsWaiting] = useState(false);
   const [waitings, setWaitings] = useState(waitingList);
