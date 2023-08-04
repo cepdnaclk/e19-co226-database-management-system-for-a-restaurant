@@ -141,7 +141,7 @@ export const Inventory = () => {
           )}
 
           {showIngredientForm && (
-            <div ref={backgroundClickIngredient}>
+            <div className={styles.cardContainer} ref={backgroundClickIngredient}>
               <IngredientForm
                 onClose={() => {
                   setShowIngredientForm(false);
@@ -171,7 +171,7 @@ export const Inventory = () => {
           )}
 
           {showSupplierForm && (
-            <div ref={backgroundClickSupply}>
+            <div className={styles.cardContainer} ref={backgroundClickSupply}>
               <SupplierForm
                 onClose={() => {
                   setShowSupplierForm(false);
