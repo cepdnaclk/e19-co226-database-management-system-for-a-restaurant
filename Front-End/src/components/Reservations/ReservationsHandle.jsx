@@ -9,8 +9,6 @@ export const ReservationsHandle = ({allReservations}) => {
 
     useEffect(() =>{
         setReservations(allReservations);
-        // console.log(allReservations);
-        // console.log(reservations);
     },[allReservations])
    
     useEffect(() => {

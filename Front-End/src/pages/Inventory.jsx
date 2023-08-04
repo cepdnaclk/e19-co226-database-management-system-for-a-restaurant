@@ -3,9 +3,12 @@ import { MenuPanel } from "../components/menuPanel";
 import { IngredientTable } from "../components/Inventory and Suppliers/IngredientTable";
 import { SupplierTable } from "../components/Inventory and Suppliers/SupplierTable";
 import { SupplyForm } from "../components/Inventory and Suppliers/SupplyForm";
-import React, { useState, useEffect ,useRef} from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styles from "../styles/Inventory.module.scss";
-import { ingredients_sample, suppliers_sample } from "../data/InventoryAndSuppliers";
+import {
+  ingredients_sample,
+  suppliers_sample,
+} from "../data/InventoryAndSuppliers";
 
 import {
   fetchIngredients,
@@ -20,9 +23,11 @@ export const Inventory = () => {
   const [suppliers, setSuppliers] = useState(suppliers_sample);
   const [searchQuery, setSearchQuery] = useState("");
   const [showForm, setShowForm] = useState(false);
-  const[showIngredientForm,setShowIngredientForm] = useState(false);
-  const[showSupplierForm,setShowSupplierForm] = useState(false);
-  const backgroundClick = useRef(null);
+  const [showIngredientForm, setShowIngredientForm] = useState(false);
+  const [showSupplierForm, setShowSupplierForm] = useState(false);
+  const backgroundClickRecord = useRef(null);
+  const backgroundClickSupply = useRef(null);
+  const backgroundClickIngredient = useRef(null);
 
   useEffect(() => {
     handlefetchIngredients();
@@ -30,15 +35,39 @@ export const Inventory = () => {
   }, []);
 
   useEffect(() => {
-    document.addEventListener("click", handleBackgroundClick);
+    document.addEventListener("click", handleBackgroundClickRecord);
     return () => {
-      document.removeEventListener("click", handleBackgroundClick);
+      document.removeEventListener("click", handleBackgroundClickRecord);
     };
-  },[]);
+  }, []);
 
-  const handleBackgroundClick = (e) => {
-    if (e.target === backgroundClick.current) {
+  const handleBackgroundClickRecord = (e) => {
+    if (e.target === backgroundClickRecord.current) {
       setShowForm(false);
+    }
+  };
+  useEffect(() => {
+    document.addEventListener("click", handleBackgroundClickSupply);
+    return () => {
+      document.removeEventListener("click", handleBackgroundClickSupply);
+    };
+  }, []);
+
+  const handleBackgroundClickSupply = (e) => {
+    if (e.target === backgroundClickSupply.current) {
+      setShowSupplierForm(false);
+    }
+  };
+  useEffect(() => {
+    document.addEventListener("click", handleBackgroundClickIngredient);
+    return () => {
+      document.removeEventListener("click", handleBackgroundClickIngredient);
+    };
+  }, []);
+
+  const handleBackgroundClickIngredient = (e) => {
+    if (e.target === backgroundClickIngredient.current) {
+      setShowIngredientForm(false);
     }
   };
 
@@ -80,47 +109,48 @@ export const Inventory = () => {
         <h1>Inventory and Suppliers</h1>
       </div>
       <div className={styles.container}>
-        {!showForm && <button className={styles.button} onClick={() => setShowForm(true)}>
-          Add a Supply Record
-        </button>}
-        {showForm && <div ref={backgroundClick}>
-          <SupplyForm
-            suppliers={suppliers}
-            ingredients={ingredients}
-            onClose={() => {
-              
-              setShowForm(false);
-            }}
-            
-          />
-        </div>}
+        {!showForm && (
+          <button className={styles.button} onClick={() => setShowForm(true)}>
+            Add a Supply Record
+          </button>
+        )}
+        {showForm && (
+          <div ref={backgroundClickRecord}>
+            <SupplyForm
+              suppliers={suppliers}
+              ingredients={ingredients}
+              onClose={() => {
+                setShowForm(false);
+              }}
+            />
+          </div>
+        )}
       </div>
-      <div className={styles.container}>
-      {!showSupplierForm && <button className={styles.button} onClick={() => setShowSupplierForm(true)}>
-          Add Supplier
-        </button>}
 
-        {showSupplierForm && <div ref={backgroundClick}>
-        <SupplierForm/>
-
-        
-        </div>}
-
-      </div>
-      <div className={styles.container}>
-      {!showIngredientForm && <button className={styles.button} onClick={() => setShowIngredientForm(true)}>
-          Add Ingredient
-        </button>}
-
-        {showIngredientForm && <div ref={backgroundClick}>
-        <IngredientForm/>
-
-        
-        </div>}
-
-      </div>
       <div className={styles.container}>
         <h2 className={styles.tableHeadings}>Ingredient Table</h2>
+        
+        <div className={styles.container}>
+          {!showIngredientForm && (
+            <button
+              className={styles.addElementBtn}
+              onClick={() => setShowIngredientForm(true)}
+            >
+              Add Ingredient
+            </button>
+          )}
+
+          {showIngredientForm && (
+            <div ref={backgroundClickIngredient}>
+              <IngredientForm
+                onClose={() => {
+                  setShowIngredientForm(false);
+                }}
+              />
+            </div>
+          )}
+        </div>
+        
         <input
           type="text"
           value={searchQuery}
@@ -130,6 +160,26 @@ export const Inventory = () => {
         />
         <IngredientTable data={ingredients} />
         <h2 className={styles.tableHeadings}>Supplier Table</h2>
+        <div className={styles.container}>
+          {!showSupplierForm && (
+            <button
+              className={styles.addElementBtn}
+              onClick={() => setShowSupplierForm(true)}
+            >
+              Add Supplier
+            </button>
+          )}
+
+          {showSupplierForm && (
+            <div ref={backgroundClickSupply}>
+              <SupplierForm
+                onClose={() => {
+                  setShowSupplierForm(false);
+                }}
+              />
+            </div>
+          )}
+        </div>
         <input
           type="text"
           value={searchQuery}

@@ -13,7 +13,7 @@ const ReservationTable = ({ reservations, isActionable, isAcceptable }) => {
       <table className={styles.Table}>
         <thead>
           <tr>
-            <th>Reserved Space</th>
+            <th>Reserved Area</th>
             <th>Title</th>
             <th>Date</th>
             <th>Start Time</th>

@@ -5,6 +5,7 @@ import { Home } from "../src/pages/Home";
 import { Orders } from "../src/pages/Orders";
 import { Inventory } from "./pages/Inventory";
 import { Reservations } from "../src/pages/Reservations";
+import { Menu } from "./pages/Menu";
 
 function App() {
   (function () {
@@ -35,6 +36,7 @@ function App() {
         <Route path="/orders" element={<Orders />} />
         <Route path="/reservations" element={<Reservations />} />
         <Route path="/inventory" element={<Inventory />} />
+        <Route path="/menu" element={<Menu />} />
       </Routes>
     </div>
   );

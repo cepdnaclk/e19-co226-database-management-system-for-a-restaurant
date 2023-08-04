@@ -1,8 +1,10 @@
 @use "variables" as *;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+Display:wght@700&display=swap");
 .Hero {
   height: auto;
   width: 100%;
-  font: 1em sans-serif;
+  font-family: sans-serif;
   background-color: $bgcolor;
   text-align: center;
   padding: 10em 2em 5em 2em;
@@ -15,15 +17,17 @@
   // background-image: linear-gradient(180deg, #fdfbfb 0%, $bgcolor 100%);
 
   h1 {
-    font-size: 2.4em;
+    font-size: 2.5em;
     margin-bottom: 0.2em;
     color: rgb(39, 39, 39);
   }
 
   h2 {
-    font-size: 1.6em;
+    font-size: 1.5em;
+    margin-top: -0.1em;
     margin-bottom: 0.2em;
     color: rgb(39, 39, 39);
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   }
 
   p {
