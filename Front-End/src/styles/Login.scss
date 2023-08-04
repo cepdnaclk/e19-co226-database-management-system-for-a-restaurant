@@ -41,6 +41,12 @@
   border: 1px solid white;
   border-radius: 15px;
   margin: 0.5rem;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0px 6px 23px -6px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1500ms ease-in;
 }
 
 @media (width >= 500px) {
@@ -125,7 +131,7 @@
   height: 56px;
   padding: 0 16px;
   border-radius: 0.5rem;
-  background: #2d3f84d8;
+  background: #2d3e84;
   color: #f9f9f9;
   border: 0;
   font-family: inherit;
@@ -141,47 +147,44 @@
 .login-form > button:hover {
   background: #c7beb1;
   color: #000;
+  scale: 1.03;
 }
 
 
-/* .register-form {
-  width: 100%;
-  margin: 0;
-  display: grid;
-  gap: 16px;
+.login-page{
+  background-image:linear-gradient(
+    to bottom,
+    rgba(250, 247, 239, 0.562),
+    rgba(0, 0, 0, 0.103)
+  ),url("/assets/4357397.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+  margin-left: -65px;
 }
 
-.register-form > input,
-.register-form > button {
-  width: 100%;
-  height: 45px;
-}
-
-.register-form > input {
-  border: 2px solid #ebebeb;
-  font-family: inherit;
-  font-size: 16px;
-  padding: 0 16px;
-  border-radius: 10px;
-}
-
-.register-form > button {
+.logo {
+  position: absolute;
+  width: 20%;
+  margin: 0 auto 100px;
   cursor: pointer;
-  width: 100%;
-  height: 56px;
-  padding: 5px;
-  border-radius: 0.5rem;
-  background: #216ce7;
-  color: #f9f9f9;
-  border: 0;
-  font-family: inherit;
-  font-size: 1rem;
-  font-weight: 600;
-  text-align: center;
-  letter-spacing: 2px;
-  transition: all 0.375s;
+  animation: fadeIn 1200ms ease-in;
+  animation-name: slideFromTop;
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+  z-index: 999;
 }
 
-.register-form > button:hover {
-  background: #085a3a;
-} */
+@keyframes slideFromTop {
+  0% {
+    top: -40vh;
+    left: 10%;
+    opacity: 0;
+  }
+  100% {
+    top: 8%; /* Adjust the desired position */
+    left: 27%;
+    opacity: 1;
+  }
+}

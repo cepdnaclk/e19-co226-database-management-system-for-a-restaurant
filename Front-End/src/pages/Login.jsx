@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-//import axios from "axios";
 import AuthService from "../services/auth.service";
 import "../styles/Login.scss";
-import { MenuPanel } from "../components/menuPanel";
 
 export const Login = () => {
   const [email, setName] = useState("");
@@ -50,7 +48,12 @@ export const Login = () => {
   };
   return (
     <div className="login-page">
-      <MenuPanel />
+      {/* <MenuPanel /> */}
+      <img
+          src="assets/My_project.png"
+          alt="Logo"
+          className="logo"
+        />
       <div className="auth-form-cantainer">
         <h2>
           <b>Login</b>
