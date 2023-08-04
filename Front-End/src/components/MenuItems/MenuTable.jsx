@@ -25,7 +25,9 @@ const MenuTable = ({ MenuItems }) => {
                 <td className={styles.firstCol}>{MenuItem.title}</td>
                 <td>{MenuItem.description}</td>
                 <td>{MenuItem.category}</td>
-                <td>{MenuItem.ingredients[0]}</td>
+                <td>{(MenuItem.ingredients).map((item) => {
+                  return <li>{item}</li>
+                  })}</td>
                 <td>Rs. {MenuItem.price}</td>
 
                 <td className={styles.actionColCell}>
