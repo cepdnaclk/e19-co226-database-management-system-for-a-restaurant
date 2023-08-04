@@ -40,9 +40,36 @@ export const SearchInputChange = async (event) => {
 };
 
 export const handleForm = (data) => {
-  console.log("Response:", response.data);
+  
   try {
     const response = axios.post(API_URL + "/supply", data);
+    console.log("Response:", response.data);
+    return response.data
+    // Handle successful response here, if needed
+  } catch (error) {
+    console.error("Error:", error);
+    // alert("Error:", error);
+    // Handle error here, if needed
+  }
+};
+export const createSupplier = (data) => {
+  
+  try {
+    const response = axios.post(API_URL + "/suppliers", data);
+    console.log("Response:", response.data);
+    return response.data
+    // Handle successful response here, if needed
+  } catch (error) {
+    console.error("Error:", error);
+    // alert("Error:", error);
+    // Handle error here, if needed
+  }
+};
+
+export const createIngredient = (data) => {
+  
+  try {
+    const response = axios.post(API_URL + "/ingredients", data);
     console.log("Response:", response.data);
     return response.data
     // Handle successful response here, if needed

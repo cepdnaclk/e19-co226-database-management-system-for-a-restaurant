@@ -16,10 +16,12 @@ export const SupplierTable = ({ data }) => {
 
         <thead>
           <tr>
+            <th>Id</th>
             <th>Name</th>
             <th>Address</th>
             <th>Email</th>
-            <th>Contact Number</th>
+            <th>Contact Numbers</th>
+            <th>Items</th>
             <th></th>
 
           </tr>
@@ -27,10 +29,24 @@ export const SupplierTable = ({ data }) => {
         <tbody>
           {data.map((supplier) => (
             <tr key={supplier.id}>
+              <td>{supplier.id}</td>
               <td>{supplier.name}</td>
               <td>{supplier.address}</td>
               <td>{supplier.email}</td>              
-              <td>{supplier.number}</td>
+              <td>
+                <ul>
+                {supplier.phone.map((phone, index) => (
+                  <li key={index}>{phone}</li>
+                ))}
+                </ul>
+              </td>
+              <td>
+                <ul>
+                {supplier.item.map((item, index) => (
+                  <li key={index}>{item}</li>
+                ))}
+                </ul>
+              </td>
               <td className={styles.actionColCell}>
                 <button className={classNames(styles.btn, styles.editBtn)}>
                   <MdCreate />
