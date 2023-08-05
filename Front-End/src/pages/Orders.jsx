@@ -8,6 +8,7 @@ import {OrderForm } from "../components/Orders/OrderForm"
 import { fetchOrders,fetchWaitingOrders } from "../services/Orders.service";
 import { menuItemsData } from "../data/Menu";
 import { confirmedOrders, waitingOrders } from "../data/Orders";
+import { MenuItemForm } from "../components/MenuItems/MenuItemForm";
 
 export const Orders = () => {
   const [isWaiting, setIsWaiting] = useState(false);
@@ -95,6 +96,7 @@ export const Orders = () => {
           <OrdersHandle allOrders={orders} />
         )}
       </div>
+      <MenuItemForm/>
     </>
   );
 };
