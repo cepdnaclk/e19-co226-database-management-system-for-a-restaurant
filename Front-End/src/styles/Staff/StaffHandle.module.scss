@@ -1,0 +1,56 @@
+@use "../variables" as *;
+/* StaffPage.module.scss */
+
+.staff_page {
+  width: 90%;
+  height: 100%;
+  overflow: overlay;
+  overflow-x: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  padding-top: 10vh;
+  padding-bottom: 10vh;
+  scroll-behavior: smooth;
+  animation: fadeIn 1s ease-in;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+.heading {
+  margin-top: 2em;
+  font: 1.5em sans-serif;
+  font-weight: 600;
+  text-align: left;
+  margin-left: 1em;
+  animation: fadeIn 800ms ease-in;
+  &:hover {
+    scale: 1.01;
+    margin-left: 1.5em;
+    cursor: pointer;
+  }
+
+}
+
+.NoHeading {
+  margin-left: calc(6 * 1.2em);
+  margin-top: 0.6em;
+  color: hsl(0, 0%, 50%);
+  visibility: hidden;
+  opacity: 0;
+  font: 1em sans-serif;
+  transition: opacity 500ms ease-in;
+  animation: fadeIn 500ms ease-in;
+  height: 0;
+  &.show {
+    opacity: 1;
+    visibility: visible;
+    height: auto;
+  }
+}
+
+.bar {
+  border: 2px solid $waitingColor;
+}
