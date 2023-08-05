@@ -1,0 +1,95 @@
+@use "../variables" as *;
+/* StaffPage.module.scss */
+
+.staff-page {
+  margin-top: 10em;
+  width: 85%;
+  height: 100%;
+  overflow: overlay;
+  overflow-x: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  padding-top: 10vh;
+  padding-bottom: 10vh;
+  scroll-behavior: smooth;
+  animation: fadeIn 1s ease-in;
+  align-items: center;
+  justify-content: center;
+
+  .staff-card {
+    width: calc(20% - 20px);
+    margin-bottom: 40px;
+    perspective: 1000px;
+    cursor: pointer;
+    position: relative;
+    flex-grow: 1;
+    height: 20vh;
+    min-height: 300px;
+    min-width: 200px;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn;
+    animation-duration: 1.5s;
+
+    &.expanded {
+      .card-front {
+        transform: rotateY(180deg);
+      }
+      .card-back {
+        transform: rotateY(0deg);
+      }
+    }
+
+    .card-front,
+    .card-back {
+      width: 210px;
+      height: 300px;
+      border-radius: 20px;
+      border: 1px solid #e0e0e0;
+      box-shadow: 0px 6px 23px -6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.6s;
+      background-color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-self: center;
+      align-items: center;
+      backface-visibility: hidden;
+      position: absolute;
+      top: 0;
+      left: 5%;
+      transform: translate(-50%, -50%);
+    }
+
+    .card-front {
+      transform: rotateY(0deg);
+      img {
+        width: 90%;
+        object-fit: cover;
+        padding: 20px;
+      }
+      .staff-info {
+        text-align: center;
+        width: 100%;
+        padding:20px;
+        background-color: $accentColor;
+        color:#ffffff ;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      }
+    }
+
+    .card-back {
+      transform: rotateY(180deg);
+      padding: 20px;
+      background-color: white;
+      background-color: rgb(245, 231, 202);
+      backdrop-filter: saturate(180%) blur(10px);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      h3 {
+        margin-top: 0;
+      }
+    }
+  }
+}

@@ -45,7 +45,7 @@ export const MenuPanel = () => {
           <li data-name="Menu" onClick={() => navigate("/Menu")} className="menu-item__open-li">
             <i className="fas fa-cutlery"></i>{isPanelOpen && <p className="menu-panel__content_p">Menu</p>}
           </li>
-          <li data-name="About" onClick={() => navigate("/About")} className="menu-item__open-li">
+          <li data-name="About" onClick={() => navigate("/Staff")} className="menu-item__open-li">
             <i className="fas fa-info-circle"></i>{isPanelOpen && <p className="menu-panel__content_p">About</p>}
           </li>
           <li data-name="Services" onClick={() => navigate("/Services")} className="menu-item__open-li">

@@ -6,6 +6,7 @@ import { Orders } from "../src/pages/Orders";
 import { Inventory } from "./pages/Inventory";
 import { Reservations } from "../src/pages/Reservations";
 import { Menu } from "./pages/Menu";
+import { Staff } from "./pages/Staff";
 
 function App() {
   (function () {
@@ -37,6 +38,7 @@ function App() {
         <Route path="/reservations" element={<Reservations />} />
         <Route path="/inventory" element={<Inventory />} />
         <Route path="/menu" element={<Menu />} />
+        <Route path="/staff" element={<Staff />} />
       </Routes>
     </div>
   );
