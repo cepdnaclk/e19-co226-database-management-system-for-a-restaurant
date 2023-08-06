@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import styles from "../../styles/Menu/MenuForm.module.scss";
+import { fetchIngredients } from '../../services/Inventory.service';
 //TODO: Put the axios methods to service layer if possible
 export const MenuItemForm = () => {
   const [name, setName] = useState('');
@@ -12,15 +14,16 @@ export const MenuItemForm = () => {
 
   useEffect(() => {
     // Fetch ingredients from the API on component mount
-    fetchIngredients();
+    handlefetchIngredients();
   }, []);
 
-  const fetchIngredients = async () => {
+  const handlefetchIngredients = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/api/v1/ingredients');
-      setIngredients(response.data);
+      const response = await fetchIngredients();
+      setIngredients(response);
+      // console.log(response);
     } catch (error) {
-      console.error('Error fetching ingredients:', error);
+      console.error("Error fetching ingredients:", error);
     }
   };
 
@@ -68,56 +71,63 @@ export const MenuItemForm = () => {
   };
 
   return (
+    <div className={styles.card}>
     <form onSubmit={handleSubmit}>
-      <div>
-        <label>Name:</label>
-        <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
-      </div>
-      <div>
-        <label>Category:</label>
-        <input type="text" value={category} onChange={(e) => setCategory(e.target.value)} />
-      </div>
-      <div>
-        <label>Description:</label>
-        <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
-      </div>
-      <div>
-        <label>Ingredients:</label>
-        <div>
-          <select onChange={(e) => handleIngredientAdd(parseInt(e.target.value, 10))} defaultValue="">
-            <option disabled value="">
-              Select an ingredient
-            </option>
-            {ingredients.map((ingredient) => (
-              <option key={ingredient.id} value={ingredient.id}>
-                {ingredient.name}
+    <legend className={styles.legend}>
+            <strong>Add a Menu Item</strong>
+          </legend>
+      <div className={styles.card_content}>
+        <div className={styles.select}>
+          <label>Name &emsp;&emsp;:</label>
+          <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+        </div>
+        <div className={styles.select}>
+          <label>Category &ensp;:</label>
+          <input type="text" value={category} onChange={(e) => setCategory(e.target.value)} />
+        </div>
+        <div className={styles.select}>
+          <label>Description :</label>
+          <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
+        </div>
+        <div className={styles.select}>
+          <label>Ingredients :</label>
+          
+            <select onChange={(e) => handleIngredientAdd(parseInt(e.target.value, 10))} defaultValue="">
+              <option disabled value="">
+                Select an ingredient
               </option>
+              {ingredients.map((ingredient) => (
+                <option key={ingredient.id} value={ingredient.id}>
+                  {ingredient.name}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div >
+            {selectedIngredients.map((ingredient) => (
+              <div key={ingredient.id} className={styles.showItems}>
+                <p>{ingredient.name} -{' '}</p>
+                <input
+                  type="number"
+                  min="0"
+                  value={ingredientQuantities[ingredient.id] || ''}
+                  onChange={(e) => handleQuantityChange(e, ingredient.id)}
+                />
+                <button type="button" onClick={() => handleIngredientRemove(ingredient.id)}>
+                  X
+                </button>
+              </div>
             ))}
-          </select>
+          </div>
+        
+        <div className={styles.select}>
+          <label>Price &emsp;&emsp;:</label>
+          <input type="number" step="0.01" value={price} onChange={(e) => setPrice(e.target.value)} />
         </div>
-        <div>
-          {selectedIngredients.map((ingredient) => (
-            <div key={ingredient.id}>
-              {ingredient.name} -{' '}
-              <input
-                type="number"
-                min="0"
-                value={ingredientQuantities[ingredient.id] || ''}
-                onChange={(e) => handleQuantityChange(e, ingredient.id)}
-              />
-              <button type="button" onClick={() => handleIngredientRemove(ingredient.id)}>
-                X
-              </button>
-            </div>
-          ))}
-        </div>
+      <button className={styles.button} type="submit">Create Menu Item</button>
       </div>
-      <div>
-        <label>Price:</label>
-        <input type="number" step="0.01" value={price} onChange={(e) => setPrice(e.target.value)} />
-      </div>
-      <button type="submit">Create Menu Item</button>
     </form>
+    </div>
   );
 };
 

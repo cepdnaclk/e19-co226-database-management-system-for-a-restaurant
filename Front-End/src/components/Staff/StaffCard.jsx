@@ -40,13 +40,28 @@ export const StaffCard = ({ Data }) => {
             <h3>{Data.name}</h3>
             <div className={styles.card_info}>
               <ul>
+                <p>Assigned Work :</p>
                 <li>{Data.assignedWork}</li>
+                <p>Description :</p>
                 <li>{Data.description}</li>
               </ul>
             </div>
           </div>
         </div>
       ))}
+      <div
+          className={classNames(
+            styles.staff_card,
+          )}
+        >
+          <div className={styles.card_front}>
+            <img src="/assets/Staff/AddItem.png"/>
+            <div className={styles.staff_info}>
+              <h2>Add New Member</h2>
+              <p>Click Here</p>
+            </div>
+          </div>
+        </div>
     </div>
   );
 };

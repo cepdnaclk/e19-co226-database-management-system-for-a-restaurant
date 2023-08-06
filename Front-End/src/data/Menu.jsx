@@ -306,67 +306,6 @@ export const menuItemsData = [
       "Spices",
     ],
   },
-
-  // Desserts
-  {
-    id: 25,
-    title: "Watalappan",
-    description: "Traditional Sri Lankan caramelized custard pudding with jaggery and coconut milk.",
-    category: "Desserts",
-    price: "600.00",
-    ingredients: [
-      "Jaggery",
-      "Coconut Milk",
-      "Eggs",
-    ],
-  },
-  {
-    id: 26,
-    title: "Coconut Pancakes",
-    description: "Fluffy coconut pancakes topped with a drizzle of palm treacle.",
-    category: "Desserts",
-    price: "550.00",
-    ingredients: [
-      "Coconut",
-      "Palm Treacle",
-    ],
-  },
-  {
-    id: 27,
-    title: "Mango Sago",
-    description: "Refreshing dessert with ripe mangoes, sago pearls, and coconut milk.",
-    category: "Desserts",
-    price: "650.00",
-    ingredients: [
-      "Mangoes",
-      "Sago Pearls",
-      "Coconut Milk",
-    ],
-  },
-  {
-    id: 28,
-    title: "Curd and Honey",
-    description: "Creamy curd drizzled with natural honey and sprinkled with chopped nuts.",
-    category: "Desserts",
-    price: "500.00",
-    ingredients: [
-      "Curd",
-      "Honey",
-      "Chopped Nuts",
-    ],
-  },
-  {
-    id: 29,
-    title: "Date and Cashew Pudding",
-    description: "Rich pudding made with dates, cashews, and a hint of cardamom.",
-    category: "Desserts",
-    price: "700.00",
-    ingredients: [
-      "Dates",
-      "Cashews",
-      "Cardamom",
-    ],
-  },
   // Main Course (continued)
   {
     id: 30,
@@ -491,6 +430,68 @@ export const menuItemsData = [
       "Aromatic Spices",
     ],
   },
+
+  // Desserts
+  {
+    id: 25,
+    title: "Watalappan",
+    description: "Traditional Sri Lankan caramelized custard pudding with jaggery and coconut milk.",
+    category: "Desserts",
+    price: "600.00",
+    ingredients: [
+      "Jaggery",
+      "Coconut Milk",
+      "Eggs",
+    ],
+  },
+  {
+    id: 26,
+    title: "Coconut Pancakes",
+    description: "Fluffy coconut pancakes topped with a drizzle of palm treacle.",
+    category: "Desserts",
+    price: "550.00",
+    ingredients: [
+      "Coconut",
+      "Palm Treacle",
+    ],
+  },
+  {
+    id: 27,
+    title: "Mango Sago",
+    description: "Refreshing dessert with ripe mangoes, sago pearls, and coconut milk.",
+    category: "Desserts",
+    price: "650.00",
+    ingredients: [
+      "Mangoes",
+      "Sago Pearls",
+      "Coconut Milk",
+    ],
+  },
+  {
+    id: 28,
+    title: "Curd and Honey",
+    description: "Creamy curd drizzled with natural honey and sprinkled with chopped nuts.",
+    category: "Desserts",
+    price: "500.00",
+    ingredients: [
+      "Curd",
+      "Honey",
+      "Chopped Nuts",
+    ],
+  },
+  {
+    id: 29,
+    title: "Date and Cashew Pudding",
+    description: "Rich pudding made with dates, cashews, and a hint of cardamom.",
+    category: "Desserts",
+    price: "700.00",
+    ingredients: [
+      "Dates",
+      "Cashews",
+      "Cardamom",
+    ],
+  },
+  
    // Beverages
    {
     id: 40,

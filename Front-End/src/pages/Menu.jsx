@@ -1,13 +1,16 @@
 import { Nav } from "../components/Nav";
 import { MenuPanel } from "../components/menuPanel";
 import { MenuHandle } from "../components/MenuItems/MenuHandle";
-import React, { useState, useEffect } from "react";
-import styles from "../styles/Reservations.module.scss";
+import React, { useState, useEffect, useRef } from "react";
+import styles from "../styles/Inventory.module.scss";
 import { menuItemsData } from "../data/Menu";
 import { fetchMenu } from "../services/Menu.service";
+import { MenuItemForm } from "../components/MenuItems/MenuItemForm";
 
 export const Menu = () => {
   const [menuItems, setMenuItems] = useState(menuItemsData);
+  const [showForm, setShowForm] = useState(false);
+  const backgroundClick = useRef(null);
 
   useEffect(() => {
     handlefetchMenu();
@@ -23,6 +26,19 @@ export const Menu = () => {
     }
   };
 
+  useEffect(() => {
+    document.addEventListener("click", handleBackgroundClick);
+    return () => {
+      document.removeEventListener("click", handleBackgroundClick);
+    };
+  }, []);
+
+  const handleBackgroundClick = (e) => {
+    if (e.target === backgroundClick.current) {
+      setShowForm(false);
+    }
+  };
+
   return (
     <>
       <Nav />
@@ -32,6 +48,19 @@ export const Menu = () => {
         <h2>- Food & Beverages -</h2>
         <hr style={{ border: "1.5px solid rgb(233, 190, 110)", width: "93%" }} />
       </div>
+      <div className={styles.container}>
+        {!showForm && (
+          <button className={styles.button} onClick={() => setShowForm(true)}>
+            Add a Menu Item
+          </button>
+        )}
+        {showForm && (
+          <div ref={backgroundClick}>
+            <MenuItemForm/>
+          </div>
+        )}
+      </div>
+      
       <div className={styles.tableContainer}>
         <MenuHandle allMenuItems={menuItems} />
       </div>
