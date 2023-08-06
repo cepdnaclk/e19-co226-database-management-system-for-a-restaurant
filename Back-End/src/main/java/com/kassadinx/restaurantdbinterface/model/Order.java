@@ -40,7 +40,9 @@ public class Order {
     @JoinColumn(name = "staff_id")
     private Staff staff;
 
-    @ManyToMany
-    private List<MenuItem> menuItems;
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<OrderMenuItem> menuItems;
+
+
 
 }

@@ -1,5 +1,6 @@
 package com.kassadinx.restaurantdbinterface.controller;
 
+import com.kassadinx.restaurantdbinterface.dto.OrderRequest;
 import com.kassadinx.restaurantdbinterface.model.Order;
 import com.kassadinx.restaurantdbinterface.service.OrderService;
 import org.springframework.http.HttpStatus;
@@ -35,8 +36,8 @@ public class OrderController {
     }
 
     @PostMapping
-    public ResponseEntity<Order> addOrder(@RequestBody Order order) {
-        Order savedOrder = orderService.saveOrder(order);
+    public ResponseEntity<Order> addOrder(@RequestBody OrderRequest orderRequest) {
+        Order savedOrder = orderService.saveOrder(orderRequest);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedOrder);
     }
 
@@ -49,7 +50,7 @@ public class OrderController {
             existingOrder.setCompletionDate(updatedOrder.getCompletionDate());
             existingOrder.setOrderStatus(updatedOrder.getOrderStatus());
 
-            Order savedOrder = orderService.saveOrder(existingOrder);
+            Order savedOrder = orderService.update(existingOrder);
             return ResponseEntity.ok(savedOrder);
         } else {
             return ResponseEntity.notFound().build();
