@@ -24,8 +24,6 @@ public class MenuItem {
     private float price;
     private String category;
 
-    @ManyToMany
-    private List<Order> orders;
 
     @OneToMany(mappedBy = "menuItem", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<MenuItemIngredient> ingredients;
