@@ -15,7 +15,11 @@ export const StaffHandle = ({ StaffData }) => {
   }, [StaffData]);
 
   useEffect(() => {
-    setDirectors(staff.filter((member) => {return member.category === "Directors"}));
+    setDirectors(
+      staff.filter((member) => {
+        return member.category === "Directors";
+      })
+    );
     setManagers(staff.filter((member) => member.category === "Managers"));
     setChefs(staff.filter((member) => member.category === "Chefs"));
     setWaiters(staff.filter((member) => member.category === "Waiters"));
@@ -28,25 +32,32 @@ export const StaffHandle = ({ StaffData }) => {
         <h2 className={styles.heading}>Director Board</h2>
       )}
       <hr className={styles.bar}></hr>
-      <StaffCard  Data={directors} />
+      <div className={styles.card_container}>
+        <StaffCard Data={directors} />
+      </div>
 
       {managers.length !== 0 && <h2 className={styles.heading}>Managers</h2>}
       <hr className={styles.bar}></hr>
-      <StaffCard Data={managers} />
+      <div className={styles.card_container}><StaffCard Data={managers} /></div>
+      
 
       {chefs.length !== 0 && <h2 className={styles.heading}>Chefs</h2>}
       <hr className={styles.bar}></hr>
-      <StaffCard Data={chefs} />
+      <div className={styles.card_container}><StaffCard Data={chefs} /></div>
+      
 
       {waiters.length !== 0 && <h2 className={styles.heading}>Waiters</h2>}
       <hr className={styles.bar}></hr>
-      <StaffCard Data={waiters} />
+      <div className={styles.card_container}>
+        <StaffCard Data={waiters} />
+      </div>
 
       {cleaners.length !== 0 && (
         <h2 className={styles.heading}>Cleaning Staff</h2>
       )}
       <hr className={styles.bar}></hr>
-      <StaffCard Data={cleaners} />
+      <div className={styles.card_container}><StaffCard Data={cleaners} /></div>
+      
     </div>
   );
 };
