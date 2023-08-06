@@ -14,8 +14,6 @@ import lombok.NoArgsConstructor;
 
 public class MenuItemIngredient {
 
-
-
     @ManyToOne
     @Id
     private MenuItem menuItem;
