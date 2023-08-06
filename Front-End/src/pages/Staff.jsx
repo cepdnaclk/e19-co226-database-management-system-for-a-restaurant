@@ -30,6 +30,7 @@ export const Staff = () => {
       <MenuPanel />
       <div className={styles.Hero}>
         <h1>Staff</h1>
+        <h2>"Elevating Experiences, One Plate at a Time."</h2>
         {/* <hr style={{ border: "1.5px solid rgb(233, 190, 110)", width: "93%" }} /> */}
       </div>
       <div className={styles.tableContainer}>
