@@ -1,14 +1,30 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "../../styles/Staff/StaffCard.module.scss";
 import classNames from "classnames";
+import { AddStaff } from "./AddStaff";
 
 export const StaffCard = ({ Data }) => {
   const [expandedIndex, setExpandedIndex] = useState(null);
   const [staffData, setStaffData] = useState([]);
-
+  const [showForm, setShowForm] = useState(false);
+  const backgroundClick = useRef(null);
+ 
   useEffect(() => {
     setStaffData(Data);
   });
+
+  useEffect(() => {
+    document.addEventListener("click", handleBackgroundClick);
+    return () => {
+      document.removeEventListener("click", handleBackgroundClick);
+    };
+  },[]);
+
+  const handleBackgroundClick = (e) => {
+    if (e.target === backgroundClick.current) {
+      setShowForm(false);
+    }
+  };
 
   const toggleCard = (index) => {
     if (expandedIndex === index) {
@@ -53,15 +69,23 @@ export const StaffCard = ({ Data }) => {
           className={classNames(
             styles.staff_card,
           )}
+          
         >
-          <div className={styles.card_front}>
-            <img src="/assets/Staff/AddItem.png"/>
+          <div onClick={() =>{setShowForm(true)}} className={styles.card_front}>
+            <img  src="/assets/Staff/AddItem.png"/>
             <div className={styles.staff_info}>
               <h2>Add New Member</h2>
               <p>Click Here</p>
             </div>
           </div>
         </div>
+        {showForm && <div className={styles.cardContainer} ref={backgroundClick}>
+            <AddStaff
+            onClose={() => {
+              setShowForm(false);
+            }}
+            />
+          </div>}
     </div>
   );
 };
