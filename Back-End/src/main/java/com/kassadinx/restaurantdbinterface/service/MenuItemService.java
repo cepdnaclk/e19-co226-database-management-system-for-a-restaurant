@@ -5,6 +5,7 @@ import com.kassadinx.restaurantdbinterface.model.MenuItem;
 import com.kassadinx.restaurantdbinterface.model.MenuItemIngredient;
 import com.kassadinx.restaurantdbinterface.repository.IngredientRepository;
 import com.kassadinx.restaurantdbinterface.repository.MenuItemRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ public class MenuItemService {
         this.menuItemRepository = menuItemRepository;
         this.ingredientRepository = ingredientRepository;
     }
-
+    @Transactional
     public MenuItem createMenuItem(MenuItemRequest menuItemRequest){
         MenuItem newMenuItem = new MenuItem();
         newMenuItem.setCategory(menuItemRequest.getCategory());
@@ -29,20 +30,17 @@ public class MenuItemService {
         newMenuItem.setDescription(menuItemRequest.getDescription());
         MenuItem savedItem = menuItemRepository.save(newMenuItem);
 
-        List<MenuItemIngredient> ingredientList = new ArrayList<>();
-        savedItem.setIngredients(ingredientList);
+
         var providedList = menuItemRequest.getListOfIngredients();
         for(MenuItemRequest.MenuItemIngredientRequest ingredient:providedList){
-            System.out.println(ingredient.toString());
-            savedItem.getIngredients().add(new
-                    MenuItemIngredient(
-                            menuItemRepository.findById(savedItem.getId()).get(),
-                    ingredientRepository.findById(ingredient.getIngredientId()).get(),
-                    ingredient.getQuantity()));
+            System.out.println(ingredient.toString() + " " + savedItem.getId());
+            menuItemRepository.insertMenuItemIngredient(savedItem.getId(),
+                    ingredient.getIngredientId(),
+                    ingredient.getQuantity());
 
         }
 
-        return menuItemRepository.save(savedItem);
+        return savedItem;
     }
 }
 //TODO

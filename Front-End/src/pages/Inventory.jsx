@@ -3,7 +3,10 @@ import { MenuPanel } from "../components/menuPanel";
 import { IngredientTable } from "../components/Inventory and Suppliers/IngredientTable";
 import { SupplierTable } from "../components/Inventory and Suppliers/SupplierTable";
 import { SupplyForm } from "../components/Inventory and Suppliers/SupplyForm";
-import React, { useState, useEffect, useRef } from "react";
+
+import { MenuItemForm } from "../components/MenuItems/MenuItemForm";
+import React, { useState, useEffect ,useRef} from "react";
+
 import styles from "../styles/Inventory.module.scss";
 import {
   ingredients_sample,
@@ -108,6 +111,7 @@ export const Inventory = () => {
       <div className={styles.Hero}>
         <h1>Inventory and Suppliers</h1>
       </div>
+      <MenuItemForm/>
       <div className={styles.container}>
         {!showForm && (
           <button className={styles.button} onClick={() => setShowForm(true)}>
