@@ -1,18 +1,22 @@
 package com.kassadinx.restaurantdbinterface.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-//Menu Items use Different Ingredients
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table
 
-public class MenuItemIngredient {
+public class OrderMenuItem {
+
+
 
     @ManyToOne
     @Id
@@ -20,7 +24,7 @@ public class MenuItemIngredient {
 
     @ManyToOne
     @Id
-    private Ingredient ingredient;
+    private Order order;
 
     private int quantity;
 }
