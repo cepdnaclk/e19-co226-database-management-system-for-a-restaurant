@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { createSupplier } from "../../services/Inventory.service";
 import styles from "../../styles/SupplierForm.module.scss";
 
-export const SupplierForm = () => {
+export const SupplierForm = ({onClose}) => {
   const [formData, setFormData] = useState({
     name: "",
     address: "",
@@ -73,6 +73,7 @@ export const SupplierForm = () => {
     e.preventDefault();
     createSupplier(formData);
     console.log(formData);
+    onClose();
   };
 
   return (
@@ -89,6 +90,7 @@ export const SupplierForm = () => {
               name="name"
               id="name"
               value={formData.name}
+              required = "true"
               onChange={handleChange}
             />
           </div>
@@ -98,6 +100,7 @@ export const SupplierForm = () => {
               type="text"
               name="address"
               id="address"
+              required = "true"
               value={formData.address}
               onChange={handleChange}
             />
@@ -149,6 +152,7 @@ export const SupplierForm = () => {
                   type="item"
                   name={`item[${index}]`}
                   value={itemValue}
+                  required = "true"
                   onChange={(e) => handleItemChange(index, e.target.value)}
                 />
                 {index !== 0 && (

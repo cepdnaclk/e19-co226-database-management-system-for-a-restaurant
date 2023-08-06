@@ -11,7 +11,7 @@ export const fetchStaff = async () => {
       console.log(response.data);
       return response.data;
     } catch (error) {
-      console.error("Error fetching menu:", error);
+      console.error("Error fetching staff:", error);
       return staffData;
     }
   };

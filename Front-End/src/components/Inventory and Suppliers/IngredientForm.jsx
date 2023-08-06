@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { createIngredient } from "../../services/Inventory.service";
 import styles from "../../styles/IngredientForm.module.scss";
 
-export const IngredientForm = () => {
+export const IngredientForm = ({onClose}) => {
   const [formData, setFormData] = useState({
     name: "",
     quantity: "",
@@ -22,6 +22,7 @@ export const IngredientForm = () => {
     e.preventDefault();
     createIngredient(formData);
     console.log(formData);
+    onClose();
   };
 
   return (
@@ -38,6 +39,7 @@ export const IngredientForm = () => {
               name="name"
               id="name"
               value={formData.name}
+              required = "true"
               onChange={handleChange}
             />
           </div>
@@ -49,6 +51,7 @@ export const IngredientForm = () => {
               name="quantity"
               id="quantity"
               value={formData.quantity}
+              required = "true"
               onChange={handleChange}
             />
           </div>
@@ -60,6 +63,7 @@ export const IngredientForm = () => {
               name="quantityType"
               id="quantityType"
               value={formData.quantityType}
+              required = "true"
               onChange={handleChange}
             />
           </div>
@@ -70,6 +74,7 @@ export const IngredientForm = () => {
               name="description"
               id="description"
               value={formData.description}
+              required = "true"
               onChange={handleChange}
             />
           </div>

@@ -40,7 +40,9 @@ export const StaffCard = ({ Data }) => {
             <h3>{Data.name}</h3>
             <div className={styles.card_info}>
               <ul>
+                <p>Assigned Work :</p>
                 <li>{Data.assignedWork}</li>
+                <p>Description :</p>
                 <li>{Data.description}</li>
               </ul>
             </div>

@@ -6,7 +6,7 @@ const API_URL = "http://localhost:8080/api/v1";
 export const fetchMenu = async () => {
     try {
       const response = await axios.get(
-        API_URL + "/menu"
+        API_URL + "/menuitem"
       );
       console.log(response.data);
       return response.data;
