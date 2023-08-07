@@ -2,7 +2,7 @@ import { Nav } from "../components/Nav";
 import { MenuPanel } from "../components/menuPanel";
 import { MenuHandle } from "../components/MenuItems/MenuHandle";
 import React, { useState, useEffect, useRef } from "react";
-import styles from "../styles/Inventory.module.scss";
+import styles from "../styles/Inventory/Inventory.module.scss";
 import { menuItemsData } from "../data/Menu";
 import { fetchMenu } from "../services/Menu.service";
 import { MenuItemForm } from "../components/MenuItems/MenuItemForm";
@@ -61,7 +61,7 @@ export const Menu = () => {
         )}
       </div>
       
-      <div className={styles.tableContainer}>
+      <div className={styles.container}>
         <MenuHandle allMenuItems={menuItems} />
       </div>
     </>

@@ -1,6 +1,6 @@
 import MenuTable from "./MenuTable";
 import { useEffect, useState } from "react";
-import styles from "../../styles/ReservationsHandle.module.scss";
+import styles from "../../styles/Reservation/ReservationsHandle.module.scss";
 
 export const MenuHandle = ({ allMenuItems }) => {
   const [menuItems, setMenuItems] = useState([]);

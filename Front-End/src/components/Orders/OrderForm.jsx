@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { handleForm } from "../../services/Orders.service";
-import styles from "../../styles/OrderForm.module.scss";
+import styles from "../../styles/Orders/OrderForm.module.scss";
 import { calPrice } from "../../utils";
 
 
@@ -9,6 +9,8 @@ export const OrderForm = ({ menuItems, onClose }) => {
   const [quantity, setQuantity] = useState(0);
   const [address, setAddress] = useState("");
   const [number, setNumber] = useState("");
+  const [selectedItems, setSelectedItems] = useState([]);
+  const [itemQuantities, setItemQuantities] = useState({});
 
   const handleSubmit = (event) => {
     // event.preventDefault();
@@ -32,6 +34,19 @@ export const OrderForm = ({ menuItems, onClose }) => {
     }
   };
 
+  const handleItemAdd = (selectedItemtId) => {
+    const selectedItem = menuItems.find((item) => item.id === selectedItemtId);
+    setSelectedItems([...selectedItems, selectedItem]);
+  };
+
+  const handleQuantityChange = (event, itemId) => {
+    setItemQuantities({ ...itemQuantities, [itemId]: event.target.value });
+  };
+
+  const handleItemRemove = (selectedIngredientId) => {
+    setSelectedItems(selectedItems.filter((ingredient) => ingredient.id !== selectedIngredientId));
+  };
+
   return (
     <div className={styles.card}>
         {/* <button className={styles.close_button}>X</button> */}
@@ -45,10 +60,9 @@ export const OrderForm = ({ menuItems, onClose }) => {
               <p>Select Item :</p>
               <select
                 value={item}
-                onClick={(input) => setItem(input.target.value)}
-                onChange={(input) => setItem(input.target.value)}
-                id="ingredient"
-                name="ingredient"
+                onChange={(input) => handleItemAdd(parseInt(input.target.value, 10))}
+                id="item"
+                name="item"
               >
                 <option disabled selected hidden></option>
                 {menuItems.map((item) => (
@@ -58,15 +72,22 @@ export const OrderForm = ({ menuItems, onClose }) => {
                 ))}
               </select>
             </div>
-            <div className={styles.select}>
-              <p>Quantity &ensp;&ensp;:</p>
-              <input
-                type="number"
-                value={quantity}
-                onChange={(input) => setQuantity(input.target.value)}
-                required="requred"
-              />
-            </div>
+            <div >
+            {selectedItems.map((item) => (
+              <div key={item.id} className={styles.showItems}>
+                <p>{item.title} -{' '}</p>
+                <input
+                  type="number"
+                  min="0"
+                  value={itemQuantities[item.id] || ''}
+                  onChange={(e) => handleQuantityChange(e, item.id)}
+                />
+                <button type="button" onClick={() => handleItemRemove(item.id)}>
+                  X
+                </button>
+              </div>
+            ))}
+          </div>
             <div className={styles.select}>
               <p>Address &ensp;&ensp;:</p>
               <input
@@ -85,7 +106,7 @@ export const OrderForm = ({ menuItems, onClose }) => {
             </div>
             <div className={styles.select}>
               <p>Price &emsp;&emsp;&ensp;:&ensp;</p>
-              <p className={styles.price}>Rs. {calPrice(parseInt(quantity),parseInt(item))}.00</p>
+              <p className={styles.price}>Rs. {calPrice(selectedItems,itemQuantities)}.00</p>
             </div>
             <button type="submit" className={styles.button} onClick={handleSubmit()}>
               Submit Order

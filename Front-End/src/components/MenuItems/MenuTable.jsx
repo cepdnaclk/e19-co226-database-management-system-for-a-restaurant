@@ -1,4 +1,4 @@
-import styles from "../../styles/ReservationsTable.module.scss";
+import styles from "../../styles/Reservation/ReservationsTable.module.scss";
 import { MdCreate } from "react-icons/md";
 import React from "react";
 import classNames from "classnames";
@@ -6,7 +6,7 @@ import classNames from "classnames";
 const MenuTable = ({ MenuItems }) => {
   // console.log(MenuItems);
   return (
-    <div className={classNames(styles.container)}>
+    <div className={styles.container}>
       <table className={styles.Table}>
         <thead>
           <tr>

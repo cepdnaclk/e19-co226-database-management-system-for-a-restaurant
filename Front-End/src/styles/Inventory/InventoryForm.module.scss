@@ -1,12 +1,6 @@
-@use "./variables" as *;
+@use "../variables" as *;
 
 .card {
-  position: fixed;
-  top: 50%;
-  left: 43%;
-  transform: translate(-50%, -50%);
-
-  z-index: 9998;
   margin-left: 6rem;
   width: 720px;
   background-color: white;
@@ -37,7 +31,6 @@
 
 .card_content {
   display: flex;
-  z-index: 9999;
   flex-direction: column;
   padding: 16px;
   margin: 25px;
@@ -46,7 +39,7 @@
   justify-self: center;
   gap: 5px;
   select {
-    width: 82%;
+    width: 75%;
     height: 35px;
     margin: 0 5px;
     padding: 0 8px;
@@ -56,23 +49,11 @@
     color: #000;
   }
 
-  input[type="email"],
   input[type="text"],
   input[type="time"],
   input[type="number"],
   input[type="date"] {
-    width: 85%;
-    padding: 0.5rem;
-    margin: 0 5px;
-    background-color: rgb(255, 255, 255);
-    color: #000;
-    border: 1px solid #cccccc;
-    border-radius: 0.5rem;
-  }
-
-  input[type="item"],
-  input[type="phone"]{
-    width: 12em;
+    width: 83%;
     padding: 0.5rem;
     margin: 0 5px;
     background-color: rgb(255, 255, 255);
@@ -98,7 +79,7 @@
     border: 1px solid darken($color: $accentColor, $amount: 2);
     border-radius: 1rem;
     cursor: pointer;
-    animation: fadeIn 500ms ease-in;
+    animation: fadeIn 1000ms ease-in;
   }
 }
 
@@ -114,21 +95,19 @@
   font: 0.9em sans-serif;
 }
 
-.item_button {
-  background-color: darken($color: $editColor, $amount: 2);
-  width: 18%;
-  border: 1px solid darken($color: $editColor, $amount: 2);
-  border-radius: 1rem;
+.close_button {
+  color: darken($color: $accentColor, $amount: 2);
+  background-color: rgb(216, 162, 81);
   cursor: pointer;
-  margin-left: 5rem;
-  animation: fadeIn 500ms ease-in;
-}
-
-.remove_button{
-  background-color: darken($color: $cancelColor, $amount: 2);
-  width: 11em;
-  border: 1px solid darken($color: $cancelColor, $amount: 2);
-  border-radius: 1rem;
-  cursor: pointer;
-  animation: fadeIn 500ms ease-in;
+  border: none;
+  font-size: 18px;
+  font-weight: bolder;
+  border-radius: 50%;
+  justify-self: left;
+  justify-content: center;
+  align-content: center;
+  height: 50px;
+  margin-left: 19rem;
+  margin-top: -0.5em;
+  position: absolute;
 }

@@ -1,4 +1,4 @@
-@use "./variables" as *;
+@use "../variables" as *;
 
 .card {
   position: fixed;
@@ -60,7 +60,7 @@
   input[type="time"],
   input[type="number"],
   input[type="date"] {
-    width: 82%;
+    width: 83%;
     padding: 0.5rem;
     margin: 0 5px;
     background-color: rgb(255, 255, 255);
@@ -98,6 +98,7 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  align-items: center;
   gap: 1rem;
   font: 0.9em sans-serif;
 }
@@ -117,4 +118,45 @@
   margin-left: 19rem;
   margin-top: -0.5em;
   position: absolute;
+}
+
+.price{
+  color: brown;
+  font-weight: 600;
+  font-size: large;
+  text-shadow: 3px 3px 3px #ecb9b9;
+}
+
+.showItems{
+  display: flex;
+flex-direction: row;
+justify-content: flex-end;
+align-items: center;
+gap: 0.01rem;
+font: 0.8em sans-serif;
+color: #794204d8;
+input[type="number"] {
+  width: 2.5rem;
+  padding: 0.5rem;
+  margin: 0 5px;
+  background-color: rgb(255, 255, 255);
+  color: #794204d8;
+  border: 1px solid #794204d8;
+  border-radius: 0.5rem;
+  scale: 0.8;
+}
+button{
+  border: 1px solid $cancelColor;
+  border-radius: 1em;
+  background-color: inherit;
+  color: rgb(227, 104, 104);
+  margin-left: -0.5rem;
+  padding: 0.3rem 0.5rem;
+  scale: 0.8;
+
+  &:hover {
+    background-color: $cancelColor;
+    color: white;
+  }
+}
 }

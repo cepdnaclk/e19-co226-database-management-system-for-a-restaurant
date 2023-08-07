@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "../../styles/ReservationsTable.module.scss";
+import styles from "../../styles/Reservation/ReservationsTable.module.scss";
 import classNames from "classnames";
 import { MdClose, MdCreate } from "react-icons/md";
 

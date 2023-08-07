@@ -1,6 +1,6 @@
 import { Nav } from "../components/Nav";
 import {MenuPanel} from "../components/menuPanel";
-import styles from "../styles/Orders.module.scss";
+import styles from "../styles/Orders/Orders.module.scss";
 import { useState, useEffect, useRef } from "react";
 import { OrdersHandle } from "../components/Orders/OrdersHandle";
 import { Waitings } from "../components/Orders/WaitingOrders";

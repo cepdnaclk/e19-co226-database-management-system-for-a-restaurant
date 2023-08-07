@@ -1,6 +1,6 @@
 import OrdersTable from "./OrdersTable";
 import { useEffect, useState } from "react";
-import styles from "../../styles/ReservationsHandle.module.scss"
+import styles from "../../styles/Reservation/ReservationsHandle.module.scss"
 
 export const OrdersHandle = ({allOrders}) => {
     const [orders, setOrders] = useState([]);

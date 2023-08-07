@@ -1,4 +1,4 @@
-@use "./variables" as *;
+@use "../variables" as *;
 
 h2 {
   font-size: 1.2em;
@@ -40,4 +40,8 @@ h2 {
 
 .bar{
   border: 2px solid $waitingColor;
+}
+
+.container{
+  width: 100%;
 }
