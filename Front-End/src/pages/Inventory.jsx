@@ -7,7 +7,7 @@ import { SupplyForm } from "../components/Inventory and Suppliers/SupplyForm";
 
 import React, { useState, useEffect ,useRef} from "react";
 
-import styles from "../styles/Inventory.module.scss";
+import styles from "../styles/Inventory/Inventory.module.scss";
 import {
   ingredients_sample,
   suppliers_sample,

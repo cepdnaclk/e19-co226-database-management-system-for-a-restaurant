@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { createSupplier } from "../../services/Inventory.service";
-import styles from "../../styles/SupplierForm.module.scss";
+import styles from "../../styles/Inventory/SupplierForm.module.scss";
 
 export const SupplierForm = ({onClose}) => {
   const [formData, setFormData] = useState({

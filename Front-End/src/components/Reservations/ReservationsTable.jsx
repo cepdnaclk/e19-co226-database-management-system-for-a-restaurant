@@ -1,4 +1,4 @@
-import styles from "../../styles/ReservationsTable.module.scss";
+import styles from "../../styles/Reservation/ReservationsTable.module.scss";
 import { MdClose, MdCheck } from "react-icons/md";
 import React from "react";
 import { spaces } from "../../data/Reservations";

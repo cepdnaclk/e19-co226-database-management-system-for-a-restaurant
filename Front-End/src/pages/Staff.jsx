@@ -2,7 +2,7 @@ import { Nav } from "../components/Nav";
 import { MenuPanel } from "../components/menuPanel";
 import { StaffHandle } from "../components/Staff/StaffHandle";
 import React, { useState, useEffect } from "react";
-import styles from "../styles/Reservations.module.scss";
+import styles from "../styles/Reservation/Reservations.module.scss";
 import {staffData} from "../data/Staff";
 import { fetchStaff } from "../services/Staff.service";
 

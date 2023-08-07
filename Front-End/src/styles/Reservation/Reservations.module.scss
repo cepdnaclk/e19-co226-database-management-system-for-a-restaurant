@@ -1,27 +1,10 @@
-@use "variables" as *;
-
-.container {
-  display: flex;
-  flex-direction: column;
-  width: 87%;
-  animation: fadeIn 1000ms ease-in;
-}
-
-.cardContainer{
-  position: fixed;
-    top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  height: 100vh;
-  width: 100vw;
-  backdrop-filter: blur(3px);
-  background-color: #00000050;
-  z-index: 999;
-}
+@use "../variables" as *;
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+Display:wght@700&display=swap");
 .Hero {
   height: auto;
   width: 100%;
-  font: 1em sans-serif;
+  font-family: sans-serif;
   background-color: $bgcolor;
   text-align: center;
   padding: 10em 2em 5em 2em;
@@ -34,15 +17,18 @@
   // background-image: linear-gradient(180deg, #fdfbfb 0%, $bgcolor 100%);
 
   h1 {
-    font-size: 2.4em;
+    font-size: 2.5em;
     margin-bottom: 0.2em;
     color: rgb(39, 39, 39);
   }
 
   h2 {
-    font-size: 1.6em;
+    font-size: 1.5em;
+    margin-top: -0.1em;
     margin-bottom: 0.2em;
     color: rgb(39, 39, 39);
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   }
 
   p {
@@ -81,8 +67,8 @@
   .toggleItem:last-child {
     color: $disabledTextColor;
     font-weight: 400;
-    &:hover{
-      scale:1.03;
+    &:hover {
+      scale: 1.03;
     }
   }
 
@@ -90,8 +76,8 @@
     .toggleItem:first-child {
       color: $disabledTextColor;
       font-weight: 400;
-      &:hover{
-        scale:1.03;
+      &:hover {
+        scale: 1.03;
       }
     }
 
@@ -101,8 +87,8 @@
     }
 
     &::before {
-      width: 44%;
-      transform: translateY(-50%) translateX(61%);
+      width: 37%;
+      transform: translateY(-50%) translateX(83%);
       background-color: $waitingColor;
     }
   }
@@ -110,11 +96,11 @@
   &::before {
     content: " ";
     position: absolute;
-    width: 59%;
+    width: 64%;
     height: 90%;
     border-radius: 5em;
     top: 50%;
-    transform: translateY(-50%) translateX(-33.5%);
+    transform: translateY(-50%) translateX(-27%);
     background-color: $waitingColor;
     transition: transform 300ms cubic-bezier(0.18, 0.89, 0.35, 1.15),
       width 50ms ease-in-out, background-color 250ms ease-in-out;
@@ -126,18 +112,4 @@
   padding-bottom: 2em;
   background-color: $bgcolor;
   width: 100%;
-}
-
-.button {
-  background-color: darken($color: $accentColor, $amount: 2);
-  border: 1px solid darken($color: $accentColor, $amount: 2);
-  border-radius: 1.15rem;
-  width: 11rem;
-  cursor: pointer;
-
-  &:hover{
-    background-color: darken($color: $accentColor, $amount: 12);
-  border: 1px solid darken($color: $accentColor, $amount: 12);
-  scale: 1.03;
-  }
 }

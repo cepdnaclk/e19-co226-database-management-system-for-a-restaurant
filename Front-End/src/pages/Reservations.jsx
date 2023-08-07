@@ -1,6 +1,6 @@
 import { Nav } from "../components/Nav";
 import { MenuPanel } from "../components/menuPanel";
-import styles from "../styles/Reservations.module.scss";
+import styles from "../styles/Reservation/Reservations.module.scss";
 import { ReservationsHandle } from "../components/Reservations/ReservationsHandle";
 import { Waitings } from "../components/Reservations/WaitingReservations";
 import { useState, useEffect } from "react";

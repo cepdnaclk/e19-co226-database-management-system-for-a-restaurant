@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { handleForm } from "../../services/Inventory.service";
-import styles from "../../styles/InventoryForm.module.scss";
+import styles from "../../styles/Inventory/InventoryForm.module.scss";
 
 export const SupplyForm = ({ suppliers, ingredients, onClose }) => {
   const [ingredient, setIngredient] = useState("");

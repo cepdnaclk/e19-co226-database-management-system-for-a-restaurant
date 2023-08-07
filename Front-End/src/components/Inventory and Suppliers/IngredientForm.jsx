@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { createIngredient } from "../../services/Inventory.service";
-import styles from "../../styles/IngredientForm.module.scss";
+import styles from "../../styles/Inventory/IngredientForm.module.scss";
 
 export const IngredientForm = ({onClose}) => {
   const [formData, setFormData] = useState({

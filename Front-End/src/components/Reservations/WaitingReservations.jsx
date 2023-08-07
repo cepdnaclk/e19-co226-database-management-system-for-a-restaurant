@@ -1,6 +1,6 @@
 import ReservationTable from "./ReservationsTable";
 import { useEffect, useState } from "react";
-import styles from "../../styles/ReservationsHandle.module.scss"
+import styles from "../../styles/Reservation/ReservationsHandle.module.scss"
 import classNames from "classnames";
 
 export const Waitings = ({waitings}) => {

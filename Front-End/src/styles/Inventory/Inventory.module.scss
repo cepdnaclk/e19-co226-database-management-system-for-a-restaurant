@@ -1,4 +1,4 @@
-@use "variables" as *;
+@use "../variables" as *;
 .container {
   display: flex;
   flex-direction: column;
@@ -20,7 +20,7 @@
 
 .Hero {
   height: auto;
-  width: 100%;
+  width: 90%;
   font: 1em sans-serif;
   background-color: $bgcolor;
   text-align: center;

@@ -1,4 +1,4 @@
-@use "./variables" as *;
+@use "../variables" as *;
 
 .card {
   position: fixed;
@@ -60,7 +60,7 @@
   input[type="time"],
   input[type="number"],
   input[type="date"] {
-    width: 82%;
+    width: 83%;
     padding: 0.5rem;
     margin: 0 5px;
     background-color: rgb(255, 255, 255);
@@ -117,4 +117,11 @@
   margin-left: 19rem;
   margin-top: -0.5em;
   position: absolute;
+}
+
+.price{
+  color: brown;
+  font-weight: 600;
+  font-size: large;
+  text-shadow: 3px 3px 3px #ecb9b9;
 }

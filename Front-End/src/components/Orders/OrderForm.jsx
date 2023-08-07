@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { handleForm } from "../../services/Orders.service";
-import styles from "../../styles/OrderForm.module.scss";
+import styles from "../../styles/Orders/OrderForm.module.scss";
 import { calPrice } from "../../utils";
 
 

@@ -61,7 +61,7 @@ export const Menu = () => {
         )}
       </div>
       
-      <div className={styles.tableContainer}>
+      <div className={styles.container}>
         <MenuHandle allMenuItems={menuItems} />
       </div>
     </>
