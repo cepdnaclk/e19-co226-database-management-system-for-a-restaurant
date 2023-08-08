@@ -1,9 +1,31 @@
 import styles from "../../styles/Reservation/ReservationsTable.module.scss";
 import { MdCreate } from "react-icons/md";
-import React from "react";
 import classNames from "classnames";
+import React, { useState, useEffect, useRef } from "react";
+import { MenuEdit } from "../../components/MenuItems/MenuEdit";
 
 const MenuTable = ({ MenuItems }) => {
+  const [showEdit, setShowEdit] = useState(false);
+  const [selectedMenuItem, setSelectedMenuItem] = useState(null);
+  const backgroundClickEdit = useRef(null);
+
+  useEffect(() => {
+    document.addEventListener("click", handleBackgroundClickEdit);
+    return () => {
+      document.removeEventListener("click", handleBackgroundClickEdit);
+    };
+  }, []);
+
+  const handleBackgroundClickEdit = (e) => {
+    if (e.target === backgroundClickEdit.current) {
+      setShowEdit(false);
+    }
+  };
+
+  const handleMenuItem = (MenuItem) => {
+    setSelectedMenuItem(MenuItem)
+    setShowEdit(true);
+  }
   // console.log(MenuItems);
   return (
     <div className={styles.container}>
@@ -25,8 +47,8 @@ const MenuTable = ({ MenuItems }) => {
                 <td className={styles.firstCol}>{MenuItem.title}</td>
                 <td>{MenuItem.description}</td>
                 <td>{MenuItem.category}</td>
-                <td>{(MenuItem.ingredients).map((item) => {
-                  return <li>{item}</li>
+                <td>{(MenuItem.ingredients).map((item,index) => {
+                  return <li key={index}>{item}</li>
                   })}</td>
                 <td>Rs. {MenuItem.price}</td>
 
@@ -44,6 +66,11 @@ const MenuTable = ({ MenuItems }) => {
           })}
         </tbody>
       </table>
+      {showEdit && (
+          <div className={styles.cardContainer} ref={backgroundClickEdit}>
+            <MenuEdit MenuItem={selectedMenuItem}  onClose={() => setShowEdit(false)}/>
+          </div>
+        )}
     </div>
   );
 };

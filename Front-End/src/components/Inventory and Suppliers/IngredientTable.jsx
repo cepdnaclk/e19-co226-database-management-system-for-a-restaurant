@@ -15,7 +15,7 @@ export const IngredientTable = ({ data }) => {
             <th>Quantity</th>
             <th>Quantity Type</th>
             <th>Description</th>
-            <th></th>
+            {/* <th></th> */}
           </tr>
         </thead>
         <tbody>
@@ -26,7 +26,7 @@ export const IngredientTable = ({ data }) => {
               <td>{ingredient.quantity}</td>
               <td>{ingredient.quantity_type}</td>
               <td>{ingredient.description}</td>
-              <td className={styles.actionColCell}>
+              {/* <td className={styles.actionColCell}>
                 <button className={classNames(styles.btn, styles.editBtn)}>
                   <MdCreate />
                   Edit
@@ -35,7 +35,7 @@ export const IngredientTable = ({ data }) => {
                   <MdClose />
                   Delete
                 </button>
-              </td>
+              </td> */}
             </tr>
           ))}
         </tbody>

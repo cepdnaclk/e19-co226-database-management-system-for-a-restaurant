@@ -14,7 +14,7 @@ export const SupplierTable = ({ data }) => {
             <th>Email</th>
             <th>Contact Numbers</th>
             <th>Items</th>
-            <th></th>
+            {/* <th></th> */}
           </tr>
         </thead>
         <tbody>
@@ -37,7 +37,7 @@ export const SupplierTable = ({ data }) => {
                   ))}
                 </ul>
               </td>
-              <td className={styles.actionColCell}>
+              {/* <td className={styles.actionColCell}>
                 <button className={classNames(styles.btn, styles.editBtn)}>
                   <MdCreate />
                   Edit
@@ -46,7 +46,7 @@ export const SupplierTable = ({ data }) => {
                   <MdClose />
                   Delete
                 </button>
-              </td>
+              </td> */}
             </tr>
           ))}
         </tbody>

@@ -1,6 +1,11 @@
 @use "../variables" as *;
 
 .card {
+  position: fixed;
+  top: 50%;
+  left: 43%;
+  transform: translate(-50%, -50%);
+  z-index: 9998;
   margin-left: 6rem;
   width: 720px;
   background-color: white;
@@ -31,6 +36,7 @@
 
 .card_content {
   display: flex;
+  z-index: 9999;
   flex-direction: column;
   padding: 16px;
   margin: 25px;
@@ -72,7 +78,7 @@
     color: #000;
   }
 
-  textarea{
+  textarea {
     width: 82%;
     padding: 0.5rem;
     margin: 0 5px;
@@ -123,7 +129,7 @@
   position: absolute;
 }
 
-.selectItems{
+.selectItems {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -132,8 +138,8 @@
   font: 0.9em sans-serif;
 }
 
-.showItems{
-    display: flex;
+.showItems {
+  display: flex;
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
@@ -151,7 +157,7 @@
     border-radius: 0.5rem;
     scale: 0.8;
   }
-  button{
+  button {
     border: 1px solid $cancelColor;
     border-radius: 1em;
     background-color: inherit;

@@ -6,7 +6,7 @@
   left: 43%;
   transform: translate(-50%, -50%);
 
-  z-index: 9998;
+  z-index: 9996;
   margin-left: 6rem;
   width: 720px;
   background-color: white;
@@ -127,6 +127,15 @@
   text-shadow: 3px 3px 3px #ecb9b9;
 }
 
+.selectItems{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  font: 0.9em sans-serif;
+}
+
 .showItems{
   display: flex;
 flex-direction: row;
@@ -134,10 +143,12 @@ justify-content: flex-end;
 align-items: center;
 gap: 0.01rem;
 font: 0.8em sans-serif;
+font-weight: 600;
 color: #794204d8;
 input[type="number"] {
   width: 2.5rem;
   padding: 0.5rem;
+  font-weight: 600;
   margin: 0 5px;
   background-color: rgb(255, 255, 255);
   color: #794204d8;
