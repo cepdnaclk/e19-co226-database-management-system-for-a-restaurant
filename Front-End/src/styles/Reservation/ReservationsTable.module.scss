@@ -156,3 +156,15 @@
     }
   }
 }
+
+.cardContainer{
+  position: fixed;
+    top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 100vh;
+  width: 100vw;
+  backdrop-filter: blur(3px);
+  background-color: #00000050;
+  z-index: 999;
+}

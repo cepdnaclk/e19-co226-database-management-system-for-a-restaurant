@@ -6,11 +6,14 @@ import styles from "../styles/Inventory/Inventory.module.scss";
 import { menuItemsData } from "../data/Menu";
 import { fetchMenu } from "../services/Menu.service";
 import { MenuItemForm } from "../components/MenuItems/MenuItemForm";
+import { MenuEdit } from "../components/MenuItems/MenuEdit";
 
 export const Menu = () => {
   const [menuItems, setMenuItems] = useState(menuItemsData);
   const [showForm, setShowForm] = useState(false);
+  const [showEdit, setShowEdit] = useState(false);
   const backgroundClick = useRef(null);
+  const backgroundClickEdit = useRef(null);
 
   useEffect(() => {
     handlefetchMenu();
@@ -39,6 +42,12 @@ export const Menu = () => {
     }
   };
 
+  const handleBackgroundClickEdit = (e) => {
+    if (e.target === backgroundClickEdit.current) {
+      setShowEdit(false);
+    }
+  };
+
   return (
     <>
       <Nav />
@@ -56,7 +65,12 @@ export const Menu = () => {
         )}
         {showForm && (
           <div ref={backgroundClick}>
-            <MenuItemForm/>
+            <MenuItemForm onClose={() => setShowForm(false)}/>
+          </div>
+        )}
+        {showEdit && (
+          <div className={styles.cardContainer} ref={backgroundClickEdit}>
+            <MenuEdit onClose={() => setShowEdit(false)}/>
           </div>
         )}
       </div>

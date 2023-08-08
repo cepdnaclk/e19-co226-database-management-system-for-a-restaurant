@@ -3,13 +3,13 @@ import axios from 'axios';
 import styles from "../../styles/Menu/MenuForm.module.scss";
 import { fetchIngredients } from '../../services/Inventory.service';
 //TODO: Put the axios methods to service layer if possible
-export const MenuItemForm = () => {
+export const MenuItemForm = ({onClose}) => {
   const [name, setName] = useState('');
   const [category, setCategory] = useState('');
   const [description, setDescription] = useState('');
   const [ingredients, setIngredients] = useState([]);
   const [selectedIngredients, setSelectedIngredients] = useState([]);
-  const [ingredientQuantities, setIngredientQuantities] = useState({});
+  // const [ingredientQuantities, setIngredientQuantities] = useState({});
   const [price, setPrice] = useState('');
 
   useEffect(() => {
@@ -36,9 +36,9 @@ export const MenuItemForm = () => {
     }
   };
 
-  const handleQuantityChange = (event, ingredientId) => {
-    setIngredientQuantities({ ...ingredientQuantities, [ingredientId]: event.target.value });
-  };
+  // const handleQuantityChange = (event, ingredientId) => {
+  //   setIngredientQuantities({ ...ingredientQuantities, [ingredientId]: event.target.value });
+  // };
 
   const handleIngredientAdd = (selectedIngredientId) => {
     const selectedIngredient = ingredients.find((ingredient) => ingredient.id === selectedIngredientId);
@@ -57,10 +57,11 @@ export const MenuItemForm = () => {
       description,
       listOfIngredients: selectedIngredients.map((ingredient) => ({
         ingredientId: ingredient.id,
-        quantity: parseInt(ingredientQuantities[ingredient.id], 10),
+        // quantity: parseInt(ingredientQuantities[ingredient.id], 10),
       })),
       price: parseFloat(price),
     };
+    onClose();
 
     try {
       const response = await axios.post('http://localhost:8080/api/v1/menuitem', menuItemRequest);
@@ -103,16 +104,16 @@ export const MenuItemForm = () => {
               ))}
             </select>
           </div>
-          <div >
+          <div className={styles.selectItems} >
             {selectedIngredients.map((ingredient) => (
               <div key={ingredient.id} className={styles.showItems}>
                 <p>{ingredient.name} -{' '}</p>
-                <input
+                {/* <input
                   type="number"
                   min="0"
                   value={ingredientQuantities[ingredient.id] || ''}
                   onChange={(e) => handleQuantityChange(e, ingredient.id)}
-                />
+                /> */}
                 <button type="button" onClick={() => handleIngredientRemove(ingredient.id)}>
                   X
                 </button>

@@ -5,8 +5,6 @@ import { calPrice } from "../../utils";
 
 
 export const OrderForm = ({ menuItems, onClose }) => {
-  const [item, setItem] = useState(0);
-  const [quantity, setQuantity] = useState(0);
   const [address, setAddress] = useState("");
   const [number, setNumber] = useState("");
   const [selectedItems, setSelectedItems] = useState([]);
@@ -16,8 +14,10 @@ export const OrderForm = ({ menuItems, onClose }) => {
     // event.preventDefault();
 
     const data = {
-      item: item,
-      quantity: quantity, // Replace 'quantity' with the actual quantity value
+      listofItems: selectedItems.map((item) => ({
+        itemId: item.id,
+        quantity: parseInt(itemQuantities[item.id],10)
+      })),
       address: address,
       number: number,
       date: new Date(), // Replace 'date' with the actual date value
@@ -59,12 +59,14 @@ export const OrderForm = ({ menuItems, onClose }) => {
             <div className={styles.select}>
               <p>Select Item :</p>
               <select
-                value={item}
+                defaultValue=""
                 onChange={(input) => handleItemAdd(parseInt(input.target.value, 10))}
                 id="item"
                 name="item"
               >
-                <option disabled selected hidden></option>
+                <option disabled value="">
+                  Select an Item
+                </option>
                 {menuItems.map((item) => (
                   <option key={item.id} value={item.id}>
                     {item.category} || {item.title} || {item.price}
@@ -72,13 +74,14 @@ export const OrderForm = ({ menuItems, onClose }) => {
                 ))}
               </select>
             </div>
-            <div >
+            <div className={styles.selectItems}>
             {selectedItems.map((item) => (
               <div key={item.id} className={styles.showItems}>
                 <p>{item.title} -{' '}</p>
                 <input
                   type="number"
                   min="0"
+                  defaultValue={0}
                   value={itemQuantities[item.id] || ''}
                   onChange={(e) => handleQuantityChange(e, item.id)}
                 />
