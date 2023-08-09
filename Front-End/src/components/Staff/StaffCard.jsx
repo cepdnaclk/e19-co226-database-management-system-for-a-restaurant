@@ -74,7 +74,7 @@ export const StaffCard = ({ Data }) => {
           <div onClick={() =>{setShowForm(true)}} className={styles.card_front}>
             <img  src="/assets/Staff/AddItem.png"/>
             <div className={styles.staff_info}>
-              <h2>Add New Member</h2>
+              <h2>Add Member</h2>
               <p>Click Here</p>
             </div>
           </div>
