@@ -31,4 +31,8 @@ public class ReservationService {
     public void deleteReservation(Long id) {
         reservationRepository.deleteById(id);
     }
+
+    public List<Reservation> findReservationsByTableNumber(int tableNumber) {
+        return reservationRepository.findReservationsByTableNumber(tableNumber);
+    }
 }
