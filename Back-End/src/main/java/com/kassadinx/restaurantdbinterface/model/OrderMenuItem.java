@@ -1,9 +1,8 @@
 package com.kassadinx.restaurantdbinterface.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,11 +18,15 @@ public class OrderMenuItem {
 
 
     @ManyToOne
+    @JoinColumn
     @Id
+    @JsonManagedReference
     private MenuItem menuItem;
 
     @ManyToOne
+    @JoinColumn
     @Id
+    @JsonBackReference
     private Order order;
 
     private int quantity;

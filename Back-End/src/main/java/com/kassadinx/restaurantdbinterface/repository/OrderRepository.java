@@ -18,4 +18,13 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
             @Param("orderId") Long orderId,
             @Param("quantity") int quantity
     );
+
+    @Override
+    @Query("SELECT DISTINCT o FROM Order o " +
+            "JOIN FETCH o.customer c " +
+            "JOIN FETCH o.staff s " +
+            "LEFT JOIN FETCH o.menuItems mi " +
+            "LEFT JOIN FETCH mi.menuItem m " +
+            "LEFT JOIN FETCH m.ingredients i")
+    List<Order> findAll();
 }

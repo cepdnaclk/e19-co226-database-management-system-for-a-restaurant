@@ -9,6 +9,8 @@ import com.kassadinx.restaurantdbinterface.repository.StaffRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -56,10 +58,10 @@ public class OrderService {
         order.setCustomer(customer);
         order.setStaff(staff);
         order.setDiscount(orderRequest.getDiscount());
-        order.setPaymentStatus(orderRequest.getPaymentStatus());
-        order.setOrderStatus(orderRequest.getOrderStatus());
-        order.setPlacementDate(orderRequest.getPlacementDate());
-        order.setPlacementTime(orderRequest.getPlacementTime());
+        order.setPaymentStatus("Pending");
+        order.setOrderStatus("New");
+        order.setPlacementDate(LocalDate.now());
+        order.setPlacementTime(LocalTime.now());
 
         // Save the Order entity to the database
         orderRepository.save(order);
