@@ -1,5 +1,31 @@
 @use "../variables" as *;
 
+.acceptBtn {
+  background-color: #4caf50; /* Green */
+  color: white;
+}
+
+.pendingBtn {
+  background-color: #f0ad4e; /* Orange */
+  color: white;
+}
+
+.readyBtn {
+  background-color: #5bc0de; /* Blue */
+  color: white;
+}
+
+.diningBtn {
+  background-color: #0275d8; /* Dark Blue */
+  color: white;
+}
+
+
+
+
+
+
+
 .container {
   display: flex;
   align-items: center;
