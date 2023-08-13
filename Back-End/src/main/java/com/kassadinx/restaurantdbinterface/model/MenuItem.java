@@ -1,5 +1,7 @@
 package com.kassadinx.restaurantdbinterface.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,7 +28,12 @@ public class MenuItem {
 
 
     @OneToMany(mappedBy = "menuItem", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<MenuItemIngredient> ingredients;
+
+    @OneToMany(mappedBy = "menuItem")
+    @JsonBackReference
+    private List<OrderMenuItem> orderMenuItems;
 
 
 }

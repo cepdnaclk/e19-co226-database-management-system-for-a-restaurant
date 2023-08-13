@@ -1,5 +1,5 @@
 import axios from "axios";
-import { confirmedOrders, waitingOrders } from "../data/Orders";
+import { confirmedOrders, OrdersTrial, waitingOrders } from "../data/Orders";
 
 const API_URL = "http://localhost:8080/api/v1";
 
@@ -25,14 +25,14 @@ export const fetchOrders = async () => {
       return response.data;
     } catch (error) {
       console.error("Error fetching waiting orders:", error);
-      return waitingOrders;
+      return OrdersTrial;
     }
   };
 
   export const handleForm = (data) => {
 
     try {
-      const response = axios.post(API_URL + "/order", data);
+      const response = axios.post(API_URL + "/orders", data);
       console.log("Response:", response.data);
       return response.data
       // Handle successful response here, if needed

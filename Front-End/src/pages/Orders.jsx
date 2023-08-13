@@ -7,12 +7,15 @@ import { Waitings } from "../components/Orders/WaitingOrders";
 import {OrderForm } from "../components/Orders/OrderForm"
 import { fetchOrders,fetchWaitingOrders } from "../services/Orders.service";
 import { menuItemsData } from "../data/Menu";
-import { confirmedOrders, waitingOrders } from "../data/Orders";
+import { confirmedOrders, OrdersTrial, waitingOrders } from "../data/Orders";
 import { MenuItemForm } from "../components/MenuItems/MenuItemForm";
+import OrdersTable from "../components/Orders/OrdersTable";
+import { Customers } from "../data/Customers";
+import { staffData } from "../data/Staff";
 
 export const Orders = () => {
   const [isWaiting, setIsWaiting] = useState(false);
-  const [waitings, setWaitings] = useState(waitingOrders);
+  const [waitings, setWaitings] = useState(OrdersTrial);
   const [orders, setOrders] = useState(confirmedOrders);
   const [menuItems, setMenuItems] = useState([]);
   const [showForm, setShowForm] = useState(false);
@@ -70,8 +73,8 @@ export const Orders = () => {
           }`}
           onClick={() => setIsWaiting(!isWaiting)}
         >
-          <p className={styles.toggleItem}>Confirmed Orders</p>
-          <p className={styles.toggleItem}>Waiting List</p>
+          <p className={styles.toggleItem}>Ongoing Orders</p>
+          <p className={styles.toggleItem}>Completed Orders</p>
         </button>
       </div>
       <div className={styles.container}>
@@ -81,6 +84,8 @@ export const Orders = () => {
         {showForm && <div className={styles.cardContainer} ref={backgroundClick}>
           <OrderForm
             menuItems={menuItemsData}
+            customers = {Customers}
+            staff = {staffData}
             onClose={() => {
               setShowForm(false);
             }}
@@ -90,10 +95,20 @@ export const Orders = () => {
       </div>
       <div className={styles.tableContainer}>
         {/* Conditionally Render the Confirmed Reservations and Waiting List according to state */}
-        {isWaiting ? (
-          <Waitings waitings={waitings}/>
+        {!isWaiting ? (
+          <OrdersTable
+          orders={waitings}
+          isActionable={true}
+          isAcceptable={true}
+          isRemovable={true}
+        />
         ) : (
-          <OrdersHandle allOrders={orders} />
+          <OrdersTable
+          orders={waitings}
+          isActionable={false}
+          isAcceptable={true}
+          isRemovable={true}
+        />
         )}
       </div>
       {/* <MenuItemForm/> */}

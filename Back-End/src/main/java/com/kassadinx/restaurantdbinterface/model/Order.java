@@ -1,5 +1,7 @@
 package com.kassadinx.restaurantdbinterface.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -35,12 +37,16 @@ public class Order {
     private float amount;
     @ManyToOne
     @JoinColumn(name = "customer_id")
+    @JsonManagedReference
     private Customer customer;
+
     @ManyToOne
     @JoinColumn(name = "staff_id")
+    @JsonManagedReference
     private Staff staff;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<OrderMenuItem> menuItems;
 
 

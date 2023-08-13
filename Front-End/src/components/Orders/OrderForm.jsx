@@ -3,29 +3,32 @@ import { handleForm } from "../../services/Orders.service";
 import styles from "../../styles/Orders/OrderForm.module.scss";
 import { calPrice } from "../../utils";
 
-
-export const OrderForm = ({ menuItems, onClose }) => {
+export const OrderForm = ({ menuItems, customers, staff, onClose }) => {
+  const [customerId, setCustomerId] = useState(0);
+  const [staffId, setStaffId] = useState(0);
   const [address, setAddress] = useState("");
   const [number, setNumber] = useState("");
   const [selectedItems, setSelectedItems] = useState([]);
   const [itemQuantities, setItemQuantities] = useState({});
 
-  const handleSubmit = (event) => {
-    // event.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
     const data = {
-      listofItems: selectedItems.map((item) => ({
-        itemId: item.id,
-        quantity: parseInt(itemQuantities[item.id],10)
+      customerId: customerId,
+      staffId: staffId,
+      menuItems: selectedItems.map((item) => ({
+        menuItemId: item.id,
+        quantity: parseInt(itemQuantities[item.id], 10),
       })),
       address: address,
       number: number,
-      date: new Date(), // Replace 'date' with the actual date value
-      time: (new Date()).getHours+ ":" + (new Date()).getMinutes, // Replace 'time' with the actual time value
+      placementDate: null, // Format date as "YYYY-MM-DD"
+      placementTime: null, // Format time as "HH:mm"
     };
 
     try {
-      const response = handleForm(data);
+      const response = await handleForm(data); // Await the API call
       console.log("Response:", response);
       // Handle successful response here, if needed
     } catch (error) {
@@ -34,8 +37,8 @@ export const OrderForm = ({ menuItems, onClose }) => {
     }
   };
 
-  const handleItemAdd = (selectedItemtId) => {
-    const selectedItem = menuItems.find((item) => item.id === selectedItemtId);
+  const handleItemAdd = (selectedItemId) => {
+    const selectedItem = menuItems.find((item) => item.id === selectedItemId);
     setSelectedItems([...selectedItems, selectedItem]);
   };
 
@@ -43,19 +46,46 @@ export const OrderForm = ({ menuItems, onClose }) => {
     setItemQuantities({ ...itemQuantities, [itemId]: event.target.value });
   };
 
-  const handleItemRemove = (selectedIngredientId) => {
-    setSelectedItems(selectedItems.filter((ingredient) => ingredient.id !== selectedIngredientId));
+  const handleItemRemove = (selectedItemId) => {
+    setSelectedItems(selectedItems.filter((item) => item.id !== selectedItemId));
   };
 
   return (
     <div className={styles.card}>
-        {/* <button className={styles.close_button}>X</button> */}
-      <form onSubmit={onClose}>
+      <form onSubmit={handleSubmit}>
         <fieldset>
           <legend className={styles.legend}>
             <strong>Make a New Order</strong>
           </legend>
           <div className={styles.card_content}>
+            <div className={styles.select}>
+              <p>Select Customer:</p>
+              <select
+                value={customerId}
+                onChange={(event) => setCustomerId(event.target.value)}
+              >
+                <option value={0}>Select a Customer</option>
+                {customers.map((customer) => (
+                  <option key={customer.id} value={customer.id}>
+                    {customer.id} | {customer.firstName} | {customer.phone[0]}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className={styles.select}>
+              <p>Select Staff:</p>
+              <select
+                value={staffId}
+                onChange={(event) => setStaffId(event.target.value)}
+              >
+                <option value={0}>Select a Staff</option>
+                {staff.map((staffMember) => (
+                  <option key={staffMember.id} value={staffMember.id}>
+                    {staffMember.name}
+                  </option>
+                ))}
+              </select>
+            </div>
             <div className={styles.select}>
               <p>Select Item :</p>
               <select
@@ -75,22 +105,22 @@ export const OrderForm = ({ menuItems, onClose }) => {
               </select>
             </div>
             <div className={styles.selectItems}>
-            {selectedItems.map((item) => (
-              <div key={item.id} className={styles.showItems}>
-                <p>{item.title} -{' '}</p>
-                <input
-                  type="number"
-                  min="0"
-                  defaultValue={0}
-                  value={itemQuantities[item.id] || ''}
-                  onChange={(e) => handleQuantityChange(e, item.id)}
-                />
-                <button type="button" onClick={() => handleItemRemove(item.id)}>
-                  X
-                </button>
-              </div>
-            ))}
-          </div>
+              {selectedItems.map((item) => (
+                <div key={item.id} className={styles.showItems}>
+                  <p>{item.title} -{' '}</p>
+                  <input
+                    type="number"
+                    min="0"
+                    defaultValue={0}
+                    value={itemQuantities[item.id] || ''}
+                    onChange={(e) => handleQuantityChange(e, item.id)}
+                  />
+                  <button type="button" onClick={() => handleItemRemove(item.id)}>
+                    X
+                  </button>
+                </div>
+              ))}
+            </div>
             <div className={styles.select}>
               <p>Address &ensp;&ensp;:</p>
               <input
@@ -109,13 +139,18 @@ export const OrderForm = ({ menuItems, onClose }) => {
             </div>
             <div className={styles.select}>
               <p>Price &emsp;&emsp;&ensp;:&ensp;</p>
-              <p className={styles.price}>Rs. {calPrice(selectedItems,itemQuantities)}.00</p>
+              <p className={styles.price}>Rs. {calPrice(selectedItems, itemQuantities)}.00</p>
             </div>
-            <button type="submit" className={styles.button} onClick={handleSubmit()}>
+
+            <button type="submit" className={styles.button}>
               Submit Order
             </button>
+          
           </div>
+
+          
         </fieldset>
+
       </form>
     </div>
   );

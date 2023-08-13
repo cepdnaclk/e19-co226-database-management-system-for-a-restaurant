@@ -1,5 +1,6 @@
 export const staffData = [
   {
+    id: 1,
     name: "John Smith",
     category: "Directors",
     position: "Chairman",
@@ -10,6 +11,7 @@ export const staffData = [
     salary: 100000, // Update with the actual salary
   },
   {
+    id: 2,
     name: "Emile Johnson",
     category: "Directors",
     position: "Director of Marketing",
@@ -20,6 +22,7 @@ export const staffData = [
     salary: 80000, // Update with the actual salary
   },
   {
+    id: 3,
     name: "Michael Williams",
     category: "Directors",
     position: "Director of Financial",
@@ -30,6 +33,7 @@ export const staffData = [
     salary: 85000, // Update with the actual salary
   },
   {
+    id: 4,
     category: "Managers",
     name: "Samantha Brown",
     position: "Restaurant Manager",
@@ -40,6 +44,7 @@ export const staffData = [
     salary: 60000, // Update with the actual salary
   },
   {
+    id: 5,
     category: "Managers",
     name: "Andrew Wilson",
     position: "General Manager",
@@ -50,6 +55,7 @@ export const staffData = [
     salary: 75000, // Update with the actual salary
   },
   {
+    id: 6,
     category: "Managers",
     name: "Sophie Turner",
     position: "Assistant Manager",
@@ -60,6 +66,7 @@ export const staffData = [
     salary: 65000, // Update with the actual salary
   },
   {
+    id: 7,
     category: "Managers",
     name: "Ryan Mitchell",
     position: "Shift Manager",
@@ -70,6 +77,7 @@ export const staffData = [
     salary: 60000, // Update with the actual salary
   },
   {
+    id: 8,
     category: "Chefs",
     name: "Daniel Miller",
     position: "Head Chef",
@@ -79,6 +87,7 @@ export const staffData = [
     salary: 55000, // Update with the actual salary
   },
   {
+    id: 9,
     category: "Chefs",
     name: "Sophia Lee",
     position: "Pastry Chef",
@@ -89,6 +98,7 @@ export const staffData = [
     salary: 50000, // Update with the actual salary
   },
   {
+    id: 10,
     category: "Chefs",
     name: "David Clark",
     position: "Sous Chef",
@@ -98,6 +108,7 @@ export const staffData = [
     salary: 45000, // Update with the actual salary
   },
   {
+    id: 11,
     category: "Chefs",
     name: "Isabella Garcia",
     position: "Chef de Partie",
@@ -108,6 +119,7 @@ export const staffData = [
     salary: 42000, // Update with the actual salary
   },
   {
+    id: 12,
     category: "Chefs",
     name: "William Johnson",
     position: "Line Cook",
@@ -118,6 +130,7 @@ export const staffData = [
     salary: 38000, // Update with the actual salary
   },
   {
+    id: 13,
     category: "Waiters",
     name: "Liam Wilson",
     position: "Senior Waiter",
@@ -129,6 +142,7 @@ export const staffData = [
     salary: 30000, // Update with the actual salary
   },
   {
+    id: 14,
     category: "Waiters",
     name: "Olivia Martinez",
     position: "Waitress",
@@ -138,6 +152,7 @@ export const staffData = [
     salary: 28000, // Update with the actual salary
   },
   {
+    id: 15,
     category: "Waiters",
     name: "Ethan Turner",
     position: "Waiter",
@@ -147,6 +162,7 @@ export const staffData = [
     salary: 26000, // Update with the actual salary
   },
   {
+    id: 16,
     category: "Waiters",
     name: "Aria Davis",
     position: "Junior Waiter",
@@ -156,6 +172,7 @@ export const staffData = [
     salary: 24000, // Update with the actual salary
   },
   {
+    id: 17,
     category: "Waiters",
     name: "Lucas Brown",
     position: "Trainee Waiter",
@@ -166,6 +183,7 @@ export const staffData = [
     salary: 22000, // Update with the actual salary
   },
   {
+    id: 18,
     category: "Cleaning Staff",
     name: "Eva Wilson",
     position: "Head Janitor",
@@ -176,6 +194,7 @@ export const staffData = [
     salary: 20000, // Update with the actual salary
   },
   {
+    id: 19,
     category: "Cleaning Staff",
     name: "Noah Turner",
     position: "Janitor",
@@ -186,6 +205,7 @@ export const staffData = [
     salary: 18000, // Update with the actual salary
   },
   {
+    id: 20,
     category: "Cleaning Staff",
     name: "Mia Jackson",
     position: "Cleaner",
@@ -196,6 +216,7 @@ export const staffData = [
     salary: 16000, // Update with the actual salary
   },
   {
+    id: 21,
     category: "Cleaning Staff",
     name: "Henry White",
     position: "Trainee Cleaner",
@@ -206,6 +227,7 @@ export const staffData = [
     salary: 14000, // Update with the actual salary
   },
   {
+    id: 22,
     category: "Cleaning Staff",
     name: "Emma Turner",
     position: "Trainee Cleaner",
@@ -216,6 +238,7 @@ export const staffData = [
     salary: 12000, // Update with the actual salary
   },
 ];
+
 
 export const categories = [
   {
@@ -239,3 +262,4 @@ export const categories = [
     name: "Cleaning Staff",
   },
 ];
+
