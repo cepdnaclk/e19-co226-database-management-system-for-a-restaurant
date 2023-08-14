@@ -1,27 +1,5 @@
 @use "../variables" as *;
 
-.acceptBtn {
-  background-color: #4caf50; /* Green */
-  color: white;
-}
-
-.pendingBtn {
-  background-color: #f0ad4e; /* Orange */
-  color: white;
-}
-
-.readyBtn {
-  background-color: #5bc0de; /* Blue */
-  color: white;
-  
-}
-
-.diningBtn {
-  background-color: #0275d8; /* Dark Blue */
-  color: white;
-}
-
-
 .container {
   display: flex;
   align-items: center;
@@ -46,18 +24,17 @@
       text-align: left;
     }
 
-    
     th,
     td {
       padding: 1.5em 0.9em;
       text-align: left;
       vertical-align: middle;
     }
-    
+
     th {
       text-align: left;
     }
-    
+
     @media (width < 1400px) {
       th,
       td {
@@ -104,13 +81,19 @@
     .actionCol {
       text-align: center;
       transform: translateX(-10%);
+      align-items: center;
     }
 
     .actionColCell {
-      display: flex;
       align-items: center;
       justify-content: center;
-      gap: 0.5em;
+      align-self: center;
+    }
+
+    .cancelColCell {
+      align-items: center;
+      justify-content: center;
+      align-self: center;
     }
 
     .statusCell {
@@ -149,6 +132,19 @@
   .acceptBtn {
     background-color: $confirmedColor;
     border: 1px solid darken($confirmedColor, $amount: 15);
+    width: 6.3rem;
+    color: white;
+
+    &:hover {
+      background-color: darken($confirmedColor, $amount: 25);
+    }
+  }
+
+  .paidBtn {
+    background-color: inherit;
+    border: 1px solid darken($confirmedColor, $amount: 5);
+    color: $confirmedColor;
+    width: 6em;
 
     &:hover {
       background-color: darken($confirmedColor, $amount: 25);
@@ -159,14 +155,14 @@
     background-color: $editColor;
     border: 1px solid rgb(76, 120, 156);
     border-radius: 1em;
-  
+
     &:hover {
       background-color: darken($editColor, $amount: 25);
       border-color: darken($editColor, $amount: 25);
     }
   }
 
-  .pendingBtn{
+  .pendingBtn {
     border: 1px solid $pendingColor;
     border-radius: 1em;
     background-color: inherit;
@@ -177,11 +173,50 @@
       color: white;
     }
   }
+
+  .readyBtn {
+    background-color: #5bc0de; /* Blue */
+    color: white;
+    border: 1px solid rgb(88, 139, 180);
+    border-radius: 1em;
+    width: 6.3rem;
+
+    &:hover {
+      background-color: darken(#5bc0de, $amount: 25);
+      border-color: darken(rgb(88, 139, 180), $amount: 25);
+    }
+  }
+
+  .diningBtn {
+    background-color: #0275d8; /* Dark Blue */
+    color: white;
+    border: 1px solid rgb(58, 92, 119);
+    border-radius: 1em;
+    width: 6.3rem;
+
+    &:hover {
+      background-color: darken(#0275d8, $amount: 25);
+      border-color: darken(rgb(88, 139, 180), $amount: 25);
+    }
+  }
+
+  .pendingBTN {
+    background-color: #f0ad4e; /* Orange */
+    color: white;
+    border: 1px solid rgb(201, 156, 89);
+    border-radius: 1em;
+    width: 6.3rem;
+
+    &:hover {
+      background-color: darken(#f0ad4e, $amount: 15);
+      border-color: darken(rgb(201, 156, 89), $amount: 5);
+    }
+  }
 }
 
-.cardContainer{
+.cardContainer {
   position: fixed;
-    top: 50%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   height: 100vh;

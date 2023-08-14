@@ -1,4 +1,4 @@
-import styles from "../../styles/Reservation/ReservationsTable.module.scss";
+import styles from "../../styles/Orders/OrdersTable.module.scss";
 import { MdClose, MdCheck } from "react-icons/md";
 import React from "react";
 import classNames from "classnames";
@@ -10,17 +10,17 @@ const OrdersTable = ({ orders, isActionable, isAcceptable, isRemovable }) => {
   const getStatusColor = (status) => {
     switch (status) {
       case "New":
-        return "#FFECB3"; // Light Yellow
+        return "#FEF9E7"; // Light Yellow
       case "Processing":
-        return "#FFE0B2"; // Light Orange
+        return "#FBEEE6"; // Light Orange
       case "Ready":
-        return "#C8E6C9"; // Light Green
+        return "#D5F5E3"; // Light Green
       case "Dining":
-        return "#BBDEFB"; // Light Blue
+        return "#EBF5FB"; // Light Blue
       case "Completed":
-        return "#E1BEE7"; // Light Purple
+        return "#F5EEF8"; // Light Purple
       default:
-        return "#F5F5F5"; // Light Gray
+        return "#EAECEE"; // Light Gray
     }
   };
 
@@ -29,7 +29,7 @@ const OrdersTable = ({ orders, isActionable, isAcceptable, isRemovable }) => {
       case "New":
         return styles.acceptBtn; // Customize the style based on your design
       case "Processing":
-        return styles.pendingBtn; // Customize the style based on your design
+        return styles.pendingBTN; // Customize the style based on your design
       case "Ready":
         return styles.readyBtn; // Customize the style based on your design
       case "Dining":
@@ -71,6 +71,7 @@ const OrdersTable = ({ orders, isActionable, isAcceptable, isRemovable }) => {
             <th>Order Status</th>
             <th>Payment Status</th>
             {isActionable && <th></th>}
+            {isActionable && <th></th>}
           </tr>
         </thead>
         <tbody>
@@ -92,7 +93,7 @@ const OrdersTable = ({ orders, isActionable, isAcceptable, isRemovable }) => {
         <td>{order.orderStatus}</td>
 
         <td className={styles.statusCell}>
-          <button className={classNames(styles.btn, (order.status === "Paid") ? styles.acceptBtn : styles.pendingBtn)}>
+          <button className={classNames(styles.btn, (order.paymentStatus === "Paid") ? styles.paidBtn : styles.pendingBtn)}>
             {order.paymentStatus}
           </button>
         </td>
@@ -106,9 +107,9 @@ const OrdersTable = ({ orders, isActionable, isAcceptable, isRemovable }) => {
             {getOrderButtonText(order.orderStatus)}
           </button>
         
-}
+}</td>}
 
-          {isRemovable && (
+          {isActionable && <td className={styles.cancelColCell}>{isRemovable && (
             <button
               className={classNames(styles.btn, styles.cancelBtn)}
               onClick={() => handleDelete(order)}
@@ -116,8 +117,8 @@ const OrdersTable = ({ orders, isActionable, isAcceptable, isRemovable }) => {
               <MdClose />
               Cancel
             </button>
-          )}
-        </td>}
+          )}</td>
+        }
       </tr>
     );
   } else {
