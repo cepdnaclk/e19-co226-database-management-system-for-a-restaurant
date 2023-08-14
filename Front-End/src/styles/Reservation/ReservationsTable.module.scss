@@ -3,21 +3,37 @@
 .acceptBtn {
   background-color: #4caf50; /* Green */
   color: white;
+  &:hover {
+    background-color: $cancelColor;
+    color: white;
+  }
 }
 
-.pendingBtn {
-  background-color: #f0ad4e; /* Orange */
+.pendingStatusBtn {
+  background-color: #ba710c; /* Orange */
   color: white;
+  &:hover {
+    background-color: #1d1b05;
+    color: white;
+  }
 }
 
 .readyBtn {
-  background-color: #5bc0de; /* Blue */
+  background-color: #17afdd; /* Blue */
   color: white;
+  &:hover {
+    background-color: #062036;
+    color: white;
+  }
 }
 
 .diningBtn {
   background-color: #0275d8; /* Dark Blue */
   color: white;
+  &:hover {
+    background-color: #062036;
+    color: white;
+  }
 }
 
 
@@ -114,7 +130,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 0.5em;
+      gap: 0.9em;
     }
 
     .statusCell {

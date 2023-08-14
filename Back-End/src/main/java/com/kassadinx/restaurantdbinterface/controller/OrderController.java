@@ -57,6 +57,16 @@ public class OrderController {
         }
     }
 
+    @PutMapping("/upgrade/{id}/{newStatus}")
+    public ResponseEntity<Order> upgradeExistingOrder(@PathVariable long id,@PathVariable String newStatus){
+        return ResponseEntity.ok(orderService.upgradeOrder(id,newStatus));
+    }
+
+    @PutMapping("/pay/{id}")
+    public ResponseEntity<Order> payExistingOrder(@PathVariable long id){
+        return ResponseEntity.ok(orderService.makeOrderPaid(id));
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteOrder(@PathVariable Long id) {
         Order order = orderService.findOrderById(id);

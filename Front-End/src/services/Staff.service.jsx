@@ -12,16 +12,17 @@ export const fetchStaff = async () => {
       return response.data;
     } catch (error) {
       console.error("Error fetching staff:", error);
-      return staffData;
+      return [];
     }
   };
 
-export const handleForm = async (data) =>{
+export const handleForm = async (data,refresher) =>{
   try {
     const response = await axios.post(
       API_URL + "/staffAdd", data
     );
     console.log("Member Added",response.data);
+    refresher(true);
     return response.data;
   } catch (error) {
     console.error("Error Adding Member:", error);
