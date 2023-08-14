@@ -58,6 +58,7 @@ export const MenuEdit = ({ MenuItem, onClose }) => {
       )
     );
   };
+  //
 
   const handleSubmit = async (e) => {
     e.preventDefault();
