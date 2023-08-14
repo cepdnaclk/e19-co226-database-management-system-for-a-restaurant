@@ -612,3 +612,350 @@ export const menuItemsData = [
   },
 ];
 
+export const newMenu = [
+  {
+    "id": 1,
+    "name": "Caprese Salad",
+    "description": "A classic Italian salad made with fresh tomatoes, mozzarella cheese, and basil, drizzled with olive oil, seasoned with salt and black pepper.",
+    "price": 400,
+    "category": "Salad",
+    "ingredients": [
+      {
+        "ingredient": {
+          "id": 1,
+          "name": "Tomato",
+          "quantity": 10,
+          "quantity_type": "pieces",
+          "description": "Red juicy vegetable"
+        },
+        "quantity": 2
+      },
+      {
+        "ingredient": {
+          "id": 2,
+          "name": "Lettuce",
+          "quantity": 5,
+          "quantity_type": "pieces",
+          "description": "Green leafy vegetable"
+        },
+        "quantity": 1
+      },
+      {
+        "ingredient": {
+          "id": 3,
+          "name": "Cheese",
+          "quantity": 2,
+          "quantity_type": "cups",
+          "description": "Dairy product"
+        },
+        "quantity": 1
+      },
+      {
+        "ingredient": {
+          "id": 12,
+          "name": "Olive Oil",
+          "quantity": 500,
+          "quantity_type": "ml",
+          "description": "Healthy cooking oil"
+        },
+        "quantity": 40
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Stuffed Mushrooms",
+    "description": "Mushroom caps stuffed with a flavorful mixture of cream cheese, garlic, and seasoning, baked to perfection.",
+    "price": 1000,
+    "category": "Hors d'oeuvre",
+    "ingredients": [
+      {
+        "ingredient": {
+          "id": 3,
+          "name": "Cheese",
+          "quantity": 2,
+          "quantity_type": "cups",
+          "description": "Dairy product"
+        },
+        "quantity": 1
+      },
+      {
+        "ingredient": {
+          "id": 10,
+          "name": "Garlic",
+          "quantity": 3,
+          "quantity_type": "cloves",
+          "description": "Aromatic herb"
+        },
+        "quantity": 2
+      },
+      {
+        "ingredient": {
+          "id": 12,
+          "name": "Olive Oil",
+          "quantity": 500,
+          "quantity_type": "ml",
+          "description": "Healthy cooking oil"
+        },
+        "quantity": 40
+      },
+      {
+        "ingredient": {
+          "id": 18,
+          "name": "Mushrooms",
+          "quantity": 200,
+          "quantity_type": "grams",
+          "description": "Edible fungi"
+        },
+        "quantity": 12
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Tomato Basil Soup",
+    "description": "A comforting soup made with ripe tomatoes, sautéed onions, garlic, and fresh basil, seasoned to perfection.",
+    "price": 600,
+    "category": "Soup",
+    "ingredients": [
+      {
+        "ingredient": {
+          "id": 1,
+          "name": "Tomato",
+          "quantity": 10,
+          "quantity_type": "pieces",
+          "description": "Red juicy vegetable"
+        },
+        "quantity": 6
+      },
+      {
+        "ingredient": {
+          "id": 4,
+          "name": "Onion",
+          "quantity": 8,
+          "quantity_type": "pieces",
+          "description": "White bulb vegetable"
+        },
+        "quantity": 1
+      },
+      {
+        "ingredient": {
+          "id": 10,
+          "name": "Garlic",
+          "quantity": 3,
+          "quantity_type": "cloves",
+          "description": "Aromatic herb"
+        },
+        "quantity": 3
+      },
+      {
+        "ingredient": {
+          "id": 12,
+          "name": "Olive Oil",
+          "quantity": 500,
+          "quantity_type": "ml",
+          "description": "Healthy cooking oil"
+        },
+        "quantity": 40
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Chicken Satay",
+    "description": "Grilled chicken skewers marinated in a savory-sweet mixture of soy sauce, peanut butter, lime juice, honey, and ginger.",
+    "price": 800,
+    "category": "Appetizer",
+    "ingredients": [
+      {
+        "ingredient": {
+          "id": 1,
+          "name": "Tomato",
+          "quantity": 10,
+          "quantity_type": "pieces",
+          "description": "Red juicy vegetable"
+        },
+        "quantity": 6
+      },
+      {
+        "ingredient": {
+          "id": 4,
+          "name": "Onion",
+          "quantity": 8,
+          "quantity_type": "pieces",
+          "description": "White bulb vegetable"
+        },
+        "quantity": 1
+      },
+      {
+        "ingredient": {
+          "id": 6,
+          "name": "Chicken",
+          "quantity": 500,
+          "quantity_type": "grams",
+          "description": "Protein source"
+        },
+        "quantity": 500
+      },
+      {
+        "ingredient": {
+          "id": 12,
+          "name": "Olive Oil",
+          "quantity": 500,
+          "quantity_type": "ml",
+          "description": "Healthy cooking oil"
+        },
+        "quantity": 40
+      },
+      {
+        "ingredient": {
+          "id": 17,
+          "name": "Ginger",
+          "quantity": 1,
+          "quantity_type": "piece",
+          "description": "Aromatic root"
+        },
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": " Grilled Salmon with Lemon-Dill Sauce:",
+    "description": "Grilled salmon fillets topped with fresh lemon slices and a delightful lemon-dill sauce.",
+    "price": 1400,
+    "category": "Main Course",
+    "ingredients": [
+      {
+        "ingredient": {
+          "id": 1,
+          "name": "Tomato",
+          "quantity": 10,
+          "quantity_type": "pieces",
+          "description": "Red juicy vegetable"
+        },
+        "quantity": 6
+      },
+      {
+        "ingredient": {
+          "id": 4,
+          "name": "Onion",
+          "quantity": 8,
+          "quantity_type": "pieces",
+          "description": "White bulb vegetable"
+        },
+        "quantity": 1
+      },
+      {
+        "ingredient": {
+          "id": 6,
+          "name": "Chicken",
+          "quantity": 500,
+          "quantity_type": "grams",
+          "description": "Protein source"
+        },
+        "quantity": 500
+      },
+      {
+        "ingredient": {
+          "id": 8,
+          "name": "Rice",
+          "quantity": 1,
+          "quantity_type": "kg",
+          "description": "Staple food"
+        },
+        "quantity": 250
+      },
+      {
+        "ingredient": {
+          "id": 12,
+          "name": "Olive Oil",
+          "quantity": 500,
+          "quantity_type": "ml",
+          "description": "Healthy cooking oil"
+        },
+        "quantity": 40
+      },
+      {
+        "ingredient": {
+          "id": 17,
+          "name": "Ginger",
+          "quantity": 1,
+          "quantity_type": "piece",
+          "description": "Aromatic root"
+        },
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": " Chocolate Mousse",
+    "description": "Decadent chocolate mousse made with melted dark chocolate, whipped cream, and a touch of vanilla, served with fresh berries on top",
+    "price": 650,
+    "category": "Dessert",
+    "ingredients": [
+      {
+        "ingredient": {
+          "id": 1,
+          "name": "Tomato",
+          "quantity": 10,
+          "quantity_type": "pieces",
+          "description": "Red juicy vegetable"
+        },
+        "quantity": 6
+      },
+      {
+        "ingredient": {
+          "id": 4,
+          "name": "Onion",
+          "quantity": 8,
+          "quantity_type": "pieces",
+          "description": "White bulb vegetable"
+        },
+        "quantity": 1
+      },
+      {
+        "ingredient": {
+          "id": 6,
+          "name": "Chicken",
+          "quantity": 500,
+          "quantity_type": "grams",
+          "description": "Protein source"
+        },
+        "quantity": 500
+      },
+      {
+        "ingredient": {
+          "id": 8,
+          "name": "Rice",
+          "quantity": 1,
+          "quantity_type": "kg",
+          "description": "Staple food"
+        },
+        "quantity": 250
+      },
+      {
+        "ingredient": {
+          "id": 12,
+          "name": "Olive Oil",
+          "quantity": 500,
+          "quantity_type": "ml",
+          "description": "Healthy cooking oil"
+        },
+        "quantity": 40
+      },
+      {
+        "ingredient": {
+          "id": 17,
+          "name": "Ginger",
+          "quantity": 1,
+          "quantity_type": "piece",
+          "description": "Aromatic root"
+        },
+        "quantity": 1
+      }
+    ]
+  }
+]
+

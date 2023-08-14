@@ -9,7 +9,7 @@ export const MenuItemForm = ({onClose}) => {
   const [description, setDescription] = useState('');
   const [ingredients, setIngredients] = useState([]);
   const [selectedIngredients, setSelectedIngredients] = useState([]);
-  // const [ingredientQuantities, setIngredientQuantities] = useState({});
+  const [ingredientQuantities, setIngredientQuantities] = useState({});
   const [price, setPrice] = useState('');
 
   useEffect(() => {
@@ -26,7 +26,9 @@ export const MenuItemForm = ({onClose}) => {
       console.error("Error fetching ingredients:", error);
     }
   };
-
+  const handleCategoryChange = (e) => {
+    setCategory(e.target.value);
+  };
   const handleIngredientSelection = (event, ingredientId) => {
     if (event.target.checked) {
       const selectedIngredient = ingredients.find((ingredient) => ingredient.id === ingredientId);
@@ -36,9 +38,9 @@ export const MenuItemForm = ({onClose}) => {
     }
   };
 
-  // const handleQuantityChange = (event, ingredientId) => {
-  //   setIngredientQuantities({ ...ingredientQuantities, [ingredientId]: event.target.value });
-  // };
+  const handleQuantityChange = (event, ingredientId) => {
+    setIngredientQuantities({ ...ingredientQuantities, [ingredientId]: event.target.value });
+  };
 
   const handleIngredientAdd = (selectedIngredientId) => {
     const selectedIngredient = ingredients.find((ingredient) => ingredient.id === selectedIngredientId);
@@ -57,7 +59,7 @@ export const MenuItemForm = ({onClose}) => {
       description,
       listOfIngredients: selectedIngredients.map((ingredient) => ({
         ingredientId: ingredient.id,
-        // quantity: parseInt(ingredientQuantities[ingredient.id], 10),
+        quantity: parseInt(ingredientQuantities[ingredient.id], 10),
       })),
       price: parseFloat(price),
     };
@@ -84,7 +86,22 @@ export const MenuItemForm = ({onClose}) => {
         </div>
         <div className={styles.select}>
           <label>Category &ensp;:</label>
-          <input type="text" value={category} onChange={(e) => setCategory(e.target.value)} />
+
+          <select
+  id="category"
+  name="category"
+  value={category}
+  onChange={handleCategoryChange}
+>
+  <option value="Hors d'oeuvre">Hors d'oeuvre</option>
+  <option value="Soup">Soup</option>
+  <option value="Appetizer">Appetizer</option>
+  <option value="Salad">Salad</option>
+  <option value="Main Course">Main Course</option>
+  <option value="Dessert">Dessert</option>
+  <option value="Beverage">Beverage</option>
+</select>
+          {/* <input type="text" value={category} onChange={(e) => setCategory(e.target.value)} /> */}
         </div>
         <div className={styles.select}>
           <label>Description :</label>
@@ -108,12 +125,13 @@ export const MenuItemForm = ({onClose}) => {
             {selectedIngredients.map((ingredient) => (
               <div key={ingredient.id} className={styles.showItems}>
                 <p>{ingredient.name} -{' '}</p>
-                {/* <input
+                <input
                   type="number"
                   min="0"
                   value={ingredientQuantities[ingredient.id] || ''}
                   onChange={(e) => handleQuantityChange(e, ingredient.id)}
-                /> */}
+                />
+                {ingredient.quantity_type}
                 <button type="button" onClick={() => handleIngredientRemove(ingredient.id)}>
                   X
                 </button>

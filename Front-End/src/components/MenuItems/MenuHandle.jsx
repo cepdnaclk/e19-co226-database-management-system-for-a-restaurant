@@ -14,7 +14,7 @@ export const MenuHandle = ({ allMenuItems }) => {
 
   useEffect(() => {
     setMenuItems(allMenuItems);
-  }, []);
+  }, [allMenuItems]);
 
   useEffect(() => {
     setHors(

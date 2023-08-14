@@ -44,12 +44,19 @@ const MenuTable = ({ MenuItems }) => {
           {MenuItems.map((MenuItem) => {
             return (
               <tr key={MenuItem.id}>
-                <td className={styles.firstCol}>{MenuItem.title}</td>
+                <td className={styles.firstCol}>{MenuItem.name}</td>
                 <td>{MenuItem.description}</td>
                 <td>{MenuItem.category}</td>
-                <td>{(MenuItem.ingredients).map((item,index) => {
-                  return <li key={index}>{item}</li>
-                  })}</td>
+                <td>
+  <ul>
+    {MenuItem.ingredients.map((item, index) => (
+      <li key={index}>
+        {item.ingredient.name} - {item.quantity} {item.ingredient.quantity_type}
+      </li>
+    ))}
+  </ul>
+</td>
+
                 <td>Rs. {MenuItem.price}</td>
 
                 <td className={styles.actionColCell}>

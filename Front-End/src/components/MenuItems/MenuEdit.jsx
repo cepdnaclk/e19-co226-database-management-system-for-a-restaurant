@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styles from "../../styles/Menu/MenuEdit.module.scss";
 import { fetchIngredients } from "../../services/Inventory.service";
+
 //TODO: Put the axios methods to service layer if possible
 export const MenuEdit = ({ MenuItem, onClose }) => {
   const [name, setName] = useState(MenuItem.title);
