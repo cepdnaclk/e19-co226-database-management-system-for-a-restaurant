@@ -3,14 +3,18 @@ import { MenuPanel } from "../components/menuPanel";
 import styles from "../styles/Reservation/Reservations.module.scss";
 import { ReservationsHandle } from "../components/Reservations/ReservationsHandle";
 import { Waitings } from "../components/Reservations/WaitingReservations";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { cReservations, waitingList, spaces } from "../data/Reservations";
 import { fetchReservations,fetchWaitings } from "../services/Reservations.service";
+import { ReservationForm } from "../components/Reservations/ReservationForm";
+
 
 export const Reservations = () => {
   const [isWaiting, setIsWaiting] = useState(false);
   const [waitings, setWaitings] = useState(waitingList);
   const [reservations, setResevations] = useState(cReservations);
+  const [showForm, setShowForm] = useState(false);
+  const backgroundClick = useRef(null);
   // console.log(reservations);
   // console.log(waitings);
 
@@ -18,6 +22,19 @@ export const Reservations = () => {
     handlefetchReservations();
     handlefetchWaitings();
   }, []);
+
+  useEffect(() => {
+    document.addEventListener("click", handleBackgroundClick);
+    return () => {
+      document.removeEventListener("click", handleBackgroundClick);
+    };
+  },[]);
+  
+  const handleBackgroundClick = (e) => {
+    if (e.target === backgroundClick.current) {
+      setShowForm(false);
+    }
+  };
 
   const handlefetchReservations = async () => {
     try {
@@ -56,6 +73,25 @@ export const Reservations = () => {
           <p className={styles.toggleItem}>Waiting List</p>
         </button>
       </div>
+
+      <div className={styles.container}>
+        {!showForm && <button className={styles.button} onClick={() => setShowForm(true)}>
+          Make a New Reservation
+        </button>}
+        {showForm && <div className={styles.cardContainer} ref={backgroundClick}>
+          <ReservationForm
+            areas={spaces}
+            style = 'z-index: 9999;'
+            onClose={() => {
+              
+              setShowForm(false);
+            }}
+            
+            
+          />
+        </div>}
+      </div>
+
       <div className={styles.tableContainer}>
         {/* Conditionally Render the Confirmed Reservations and Waiting List according to state */}
         {isWaiting ? (

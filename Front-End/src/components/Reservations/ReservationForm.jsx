@@ -14,10 +14,7 @@ export const ReservationForm = ({ areas, onClose }) => {
     // event.preventDefault();
 
     const data = {
-      listofAreas: selectedAreas.map((area) => ({
-        areaId: area.id,
-        quantity: parseInt(areaQuantities[area.id],10)
-      })),
+      listofAreas: selectedAreas,
       address: address,
       number: number,
       date: new Date(), // Replace 'date' with the actual date value
@@ -50,11 +47,11 @@ export const ReservationForm = ({ areas, onClose }) => {
       <form onSubmit={onClose}>
         <fieldset>
           <legend className={styles.legend}>
-            <strong>Make a New Order</strong>
+            <strong>Make a New Reservation</strong>
           </legend>
           <div className={styles.card_content}>
             <div className={styles.select}>
-              <p>Select Area :</p>
+              {/* <p>Select Area :</p> */}
               <select
                 defaultValue=""
                 onChange={(input) => handleAreaAdd(parseInt(input.target.value, 10))}
@@ -66,15 +63,15 @@ export const ReservationForm = ({ areas, onClose }) => {
                 </option>
                 {areas.map((area) => (
                   <option key={area.id} value={area.id}>
-                    {area.category} || {area.title} || {area.price}
+                    {area.name}
                   </option>
                 ))}
               </select>
             </div>
-            <div className={styles.selectareas}>
+            <div className={styles.selectAreas}>
             {selectedAreas.map((area) => (
               <div key={area.id} className={styles.showItems}>
-                <p>{area.name} -{' '}</p>
+                <p>{area.name}</p>
                 <button type="button" onClick={() => handleAreaRemove(area.id)}>
                   X
                 </button>
@@ -82,27 +79,30 @@ export const ReservationForm = ({ areas, onClose }) => {
             ))}
           </div>
           <div className={styles.select}>
-              <p>Customer Name &ensp;&ensp;:</p>
+              {/* <p>Customer Name :</p> */}
               <input
                 type="text"
                 value={name}
                 onChange={(input) => setName(input.target.value)}
+                placeholder="Customer Name"
               />
             </div>
             <div className={styles.select}>
-              <p>Address &ensp;&ensp;:</p>
+              {/* <p>Address &ensp;&ensp;:</p> */}
               <input
                 type="text"
                 value={address}
                 onChange={(input) => setAddress(input.target.value)}
+                placeholder="Home Address"
               />
             </div>
             <div className={styles.select}>
-              <p>Telephone :</p>
+              {/* <p>Telephone :</p> */}
               <input
                 type="text"
                 value={number}
                 onChange={(input) => setNumber(input.target.value)}
+                placeholder="Telephone Number"
               />
             </div>
             <button type="submit" className={styles.button} onClick={handleSubmit()}>

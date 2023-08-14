@@ -8,11 +8,11 @@
 
   z-index: 9998;
   margin-left: 6rem;
-  width: 720px;
+  width: 360px;
   background-color: white;
   border-radius: 30px;
   box-shadow: 0px 6px 23px -6px rgba(0, 0, 0, 0.1);
-  max-height: 80vh; /* Adjust the value as needed */
+  max-height: 90vh; /* Adjust the value as needed */
   overflow-y: auto;
   justify-content: center;
   padding: 1rem;
@@ -39,10 +39,8 @@
   display: flex;
   z-index: 9999;
   flex-direction: column;
-  padding: 16px;
-  margin: 25px;
-  margin-top: 0px;
-  margin-bottom: 5px;
+  padding: 10px;
+  margin: 10px;
   justify-self: center;
   gap: 5px;
   select {
@@ -61,18 +59,19 @@
   input[type="time"],
   input[type="number"],
   input[type="date"] {
-    width: 85%;
+    width: 100%;
     padding: 0.5rem;
     margin: 0 5px;
     background-color: rgb(255, 255, 255);
     color: #000;
-    border: 1px solid #cccccc;
-    border-radius: 0.5rem;
+    border: 1px solid #ffffff;
+    border-bottom: 1px solid #ccc;
+    // border-radius: 0.5rem;
   }
 
   input[type="item"],
   input[type="phone"]{
-    width: 12em;
+    width: 240px;
     padding: 0.5rem;
     margin: 0 5px;
     background-color: rgb(255, 255, 255);
@@ -93,8 +92,9 @@
 
   .button {
     background-color: darken($color: $accentColor, $amount: 2);
+    margin: 0px;
     margin-top: 15px;
-    width: 26%;
+    width: 100%;
     border: 1px solid darken($color: $accentColor, $amount: 2);
     border-radius: 1rem;
     cursor: pointer;
@@ -104,31 +104,50 @@
 
 .legend {
   border-radius: 28px;
+  margin-top: 10px;
 }
 
 .select {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  gap: 1rem;
   font: 0.9em sans-serif;
 }
 
 .item_button {
-  background-color: darken($color: $editColor, $amount: 2);
-  width: 18%;
+  background-color: inherit;
+  padding: 0.4em 1em 0.4em 1em;
+  width: 40%;
+  color: $editColor;
   border: 1px solid darken($color: $editColor, $amount: 2);
   border-radius: 1rem;
   cursor: pointer;
-  margin-left: 5rem;
   animation: fadeIn 500ms ease-in;
+  &:hover {
+    background-color: $editColor;
+    color: white;
+  }
 }
 
 .remove_button{
-  background-color: darken($color: $cancelColor, $amount: 2);
-  width: 11em;
-  border: 1px solid darken($color: $cancelColor, $amount: 2);
-  border-radius: 1rem;
-  cursor: pointer;
-  animation: fadeIn 500ms ease-in;
+  border: 1px solid $cancelColor;
+    border-radius: 1.5em;
+    background-color: inherit;
+    color: rgb(227, 104, 104);
+    padding: 0.3rem 0.7rem;
+    scale: 0.8;
+    animation: fadeIn 500ms ease-in;
+    margin-left: -0.1rem;
+
+    &:hover {
+      background-color: $cancelColor;
+      color: white;
+    }
+}
+
+.itemSet{
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
 }
