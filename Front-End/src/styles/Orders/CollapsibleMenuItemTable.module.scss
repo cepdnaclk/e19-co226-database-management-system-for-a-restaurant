@@ -5,6 +5,7 @@
   border: 1px solid darken($color: $accentColor, $amount: 2);
   border-radius: 1.15rem;
   cursor: pointer;
+  color :azure;
 
   &:hover {
     background-color: darken($color: $accentColor, $amount: 12);

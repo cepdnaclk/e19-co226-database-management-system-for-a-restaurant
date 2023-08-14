@@ -114,4 +114,18 @@ public class OrderService {
     public Order update(Order existingOrder) {
         return orderRepository.save(existingOrder);
     }
+
+    public Order upgradeOrder(Long id,String newStatus){
+        Order order = orderRepository.findById(id).get();
+        order.setOrderStatus(newStatus);
+        return orderRepository.save(order);
+
+    }
+
+    public Order makeOrderPaid(Long id){
+        Order order = orderRepository.findById(id).get();
+        order.setPaymentStatus("Paid");
+        return orderRepository.save(order);
+
+    }
 }

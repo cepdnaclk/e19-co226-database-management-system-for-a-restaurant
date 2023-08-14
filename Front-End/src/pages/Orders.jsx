@@ -12,19 +12,32 @@ import { MenuItemForm } from "../components/MenuItems/MenuItemForm";
 import OrdersTable from "../components/Orders/OrdersTable";
 import { Customers } from "../data/Customers";
 import { staffData } from "../data/Staff";
+import { fetchCustomers } from "../services/Customers.service";
+import {fetchStaff} from "../services/Staff.service";
 
 export const Orders = () => {
   const [isWaiting, setIsWaiting] = useState(false);
   const [waitings, setWaitings] = useState(OrdersTrial);
-  const [orders, setOrders] = useState(confirmedOrders);
+  const [orders, setOrders] = useState(OrdersTrial);
+
   const [menuItems, setMenuItems] = useState([]);
   const [showForm, setShowForm] = useState(false);
   const backgroundClick = useRef(null);
+  const [shouldRefresh ,setShouldRefresh] = useState(true)
 
-  useEffect(() => {
+  const handleRefreshData = () => {
     handlefetchOrders();
     handlefetchWaitings();
-  }, []);
+    setShouldRefresh(false);
+  };
+
+  useEffect(() => {
+    if (shouldRefresh) {
+      handleRefreshData();
+    }
+
+
+  }, [shouldRefresh]);
 
   useEffect(() => {
     document.addEventListener("click", handleBackgroundClick);
@@ -84,11 +97,12 @@ export const Orders = () => {
         {showForm && <div className={styles.cardContainer} ref={backgroundClick}>
           <OrderForm
             menuItems={menuItemsData}
-            customers = {Customers}
-            staff = {staffData}
+            
             onClose={() => {
+              
               setShowForm(false);
             }}
+            refresher = {setShouldRefresh}
             
           />
         </div>}
@@ -97,17 +111,19 @@ export const Orders = () => {
         {/* Conditionally Render the Confirmed Reservations and Waiting List according to state */}
         {!isWaiting ? (
           <OrdersTable
-          orders={waitings}
+          orders={orders}
           isActionable={true}
           isAcceptable={true}
           isRemovable={true}
+          refresher = {setShouldRefresh}
         />
         ) : (
           <OrdersTable
-          orders={waitings}
+          orders={orders}
           isActionable={false}
           isAcceptable={true}
           isRemovable={true}
+          refresher = {setShouldRefresh}
         />
         )}
       </div>
