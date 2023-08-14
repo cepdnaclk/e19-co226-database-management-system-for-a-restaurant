@@ -1,14 +1,13 @@
 import { useState } from "react";
 import { handleForm } from "../../services/Reservations.service";
-import styles from "../../styles/Orders/OrderForm.module.scss";
-import { calPrice } from "../../utils";
+import styles from "../../styles/Reservation/ReservationForm.module.scss";
 
 
-export const OrderForm = ({ menuItems, onClose }) => {
+
+export const ReservationForm = ({ menuItems, onClose }) => {
   const [address, setAddress] = useState("");
   const [number, setNumber] = useState("");
-  const [selectedItems, setSelectedItems] = useState([]);
-  const [itemQuantities, setItemQuantities] = useState({});
+  const [selectedAreas, setSelectedAreas] = useState([]);
 
   const handleSubmit = (event) => {
     // event.preventDefault();
@@ -57,7 +56,7 @@ export const OrderForm = ({ menuItems, onClose }) => {
           </legend>
           <div className={styles.card_content}>
             <div className={styles.select}>
-              <p>Select Item :</p>
+              <p>Select Area :</p>
               <select
                 defaultValue=""
                 onChange={(input) => handleItemAdd(parseInt(input.target.value, 10))}
