@@ -1,0 +1,16 @@
+@use "../variables" as *;
+
+.button {
+  background-color: darken($color: $accentColor, $amount: 2);
+  border: 1px solid darken($color: $accentColor, $amount: 2);
+  border-radius: 1.15rem;
+  cursor: pointer;
+
+  &:hover {
+    background-color: darken($color: $accentColor, $amount: 12);
+    border: 1px solid darken($color: $accentColor, $amount: 12);
+    scale: 1.03;
+  }
+}
+
+
