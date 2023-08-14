@@ -4,8 +4,14 @@ import React from "react";
 import classNames from "classnames";
 import { getTimeString, getDateInFormat } from "../../utils";
 import CollapsibleMenuItemsTable from "./CollapsibleMenuItemsTable";
+import { deleteOrder, upgradeOrder,payOrder } from "../../services/Orders.service";
+import { useEffect } from "react";
 
-const OrdersTable = ({ orders, isActionable, isAcceptable, isRemovable }) => {
+const OrdersTable = ({ orders, isActionable, isAcceptable, isRemovable,refresher}) => {
+
+  useEffect(() => {
+   
+  }, [orders]); 
 
   const getStatusColor = (status) => {
     switch (status) {
@@ -29,7 +35,7 @@ const OrdersTable = ({ orders, isActionable, isAcceptable, isRemovable }) => {
       case "New":
         return styles.acceptBtn; // Customize the style based on your design
       case "Processing":
-        return styles.pendingBTN; // Customize the style based on your design
+        return styles.pendingStatusBtn; // Customize the style based on your design
       case "Ready":
         return styles.readyBtn; // Customize the style based on your design
       case "Dining":
@@ -55,6 +61,22 @@ const OrdersTable = ({ orders, isActionable, isAcceptable, isRemovable }) => {
         return "Action";
     }
   };
+
+  const getNextOrderStatus= (orderStatus) => {
+    switch (orderStatus) {
+      case "New":
+        return "Processing";
+      case "Processing":
+        return "Ready";
+      case "Ready":
+        return "Dining";
+      case "Dining":
+        return "Completed";
+      // Add more cases as needed
+      default:
+        return "Pending";
+    }
+  };
   // console.log(orders);
   return (
     <div className={classNames(styles.container)}>
@@ -76,8 +98,8 @@ const OrdersTable = ({ orders, isActionable, isAcceptable, isRemovable }) => {
         </thead>
         <tbody>
         {orders.map((order, index) => {
-  if ((order.orderStatus !== "Completed" & isActionable) || 
-  (order.orderStatus === "Completed" & !isActionable)) {
+  if (((order.orderStatus !== "Completed" || order.paymentStatus !=="Paid") & isActionable) || 
+  (order.orderStatus === "Completed" & order.paymentStatus==="Paid" & !isActionable)) {
     return (
       <tr key={index} style={{ backgroundColor: getStatusColor(order.orderStatus) }}>
         <td className={styles.firstCol}>
@@ -93,7 +115,7 @@ const OrdersTable = ({ orders, isActionable, isAcceptable, isRemovable }) => {
         <td>{order.orderStatus}</td>
 
         <td className={styles.statusCell}>
-          <button className={classNames(styles.btn, (order.paymentStatus === "Paid") ? styles.paidBtn : styles.pendingBtn)}>
+          <button className={classNames(styles.btn, (order.status === "Paid") ? styles.acceptBtn : styles.pendingBtn)}>
             {order.paymentStatus}
           </button>
         </td>
@@ -102,7 +124,11 @@ const OrdersTable = ({ orders, isActionable, isAcceptable, isRemovable }) => {
           {isAcceptable && 
           <button
             className={classNames(styles.btn, getOrderButtonStyle(order.orderStatus))}
-            onClick={() => handleOrderAction(order)}
+            onClick={() => {
+              const newStatus = getNextOrderStatus(order.orderStatus);
+              upgradeOrder(order, newStatus,refresher);
+              
+            }}
           >
             {getOrderButtonText(order.orderStatus)}
           </button>
@@ -112,7 +138,7 @@ const OrdersTable = ({ orders, isActionable, isAcceptable, isRemovable }) => {
           {isActionable && <td className={styles.cancelColCell}>{isRemovable && (
             <button
               className={classNames(styles.btn, styles.cancelBtn)}
-              onClick={() => handleDelete(order)}
+              onClick={() => deleteOrder(order,refresher)}
             >
               <MdClose />
               Cancel
