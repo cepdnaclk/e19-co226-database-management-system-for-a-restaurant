@@ -1,15 +1,51 @@
-import { useState } from "react";
+import { useState,useEffect} from "react";
 import { handleForm } from "../../services/Orders.service";
 import styles from "../../styles/Orders/OrderForm.module.scss";
 import { calPrice } from "../../utils";
+import { fetchStaff } from "../../services/Staff.service";
+import { fetchCustomers } from "../../services/Customers.service";
+import { fetchMenu } from "../../services/Menu.service";
 
-export const OrderForm = ({ menuItems, customers, staff, onClose }) => {
+export const OrderForm = ({ onClose,refresher}) => {
   const [customerId, setCustomerId] = useState(0);
   const [staffId, setStaffId] = useState(0);
   const [address, setAddress] = useState("");
   const [number, setNumber] = useState("");
   const [selectedItems, setSelectedItems] = useState([]);
   const [itemQuantities, setItemQuantities] = useState({});
+
+  const [ customers,setCustomers] = useState([]);
+  const [ staff,setStaff] = useState([]);
+
+  const[menuItems,setMenuItems] = useState([]);
+
+  useEffect(()=>{
+    
+
+    const fetchData = async () => {
+      const fetchedCustomers = await fetchCustomers();
+      const fetchedStaff =  await fetchStaff();
+      const fetchedMenu = await fetchMenu();
+      setCustomers(fetchedCustomers);
+      setStaff(fetchedStaff);
+      setMenuItems(fetchedMenu);
+    };
+  
+    fetchData();
+  },[])
+
+  console.log(customers);
+  console.log(staff);
+
+
+  
+  if (!Array.isArray(customers)) {
+    console.error("Customers prop is not an array:", customers);
+    return null; // or handle the error appropriately
+  }
+
+  
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -28,8 +64,9 @@ export const OrderForm = ({ menuItems, customers, staff, onClose }) => {
     };
 
     try {
-      const response = await handleForm(data); // Await the API call
+      const response = await handleForm(data,refresher); // Await the API call
       console.log("Response:", response);
+      onClose();
       // Handle successful response here, if needed
     } catch (error) {
       console.error("Error:", error);
@@ -65,11 +102,16 @@ export const OrderForm = ({ menuItems, customers, staff, onClose }) => {
                 onChange={(event) => setCustomerId(event.target.value)}
               >
                 <option value={0}>Select a Customer</option>
-                {customers.map((customer) => (
+                {customers.map((customer) => 
+                  
+                  (
                   <option key={customer.id} value={customer.id}>
                     {customer.id} | {customer.firstName} | {customer.phone[0]}
                   </option>
-                ))}
+
+
+                )
+                )}
               </select>
             </div>
             <div className={styles.select}>
@@ -81,7 +123,7 @@ export const OrderForm = ({ menuItems, customers, staff, onClose }) => {
                 <option value={0}>Select a Staff</option>
                 {staff.map((staffMember) => (
                   <option key={staffMember.id} value={staffMember.id}>
-                    {staffMember.name}
+                    {staffMember.id} | {staffMember.firstName}  {staffMember.lastName} | Position: {staffMember.position}
                   </option>
                 ))}
               </select>
@@ -99,7 +141,7 @@ export const OrderForm = ({ menuItems, customers, staff, onClose }) => {
                 </option>
                 {menuItems.map((item) => (
                   <option key={item.id} value={item.id}>
-                    {item.category} || {item.title} || {item.price}
+                    {item.category} || {item.name} || {item.price}
                   </option>
                 ))}
               </select>

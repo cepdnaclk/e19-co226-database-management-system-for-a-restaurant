@@ -101,8 +101,10 @@
     }
 
     &::before {
+
       width: 54%;
       transform: translateY(-50%) translateX(41%);
+
       background-color: $waitingColor;
     }
   }
@@ -110,11 +112,13 @@
   &::before {
     content: " ";
     position: absolute;
+
     width: 49%;
     height: 92%;
     border-radius: 5em;
     top: 50%;
     transform: translateY(-50%) translateX(-50.5%);
+
     background-color: $waitingColor;
     transition: transform 300ms cubic-bezier(0.18, 0.89, 0.35, 1.15),
       width 50ms ease-in-out, background-color 250ms ease-in-out;

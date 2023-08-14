@@ -4,8 +4,14 @@ import React from "react";
 import classNames from "classnames";
 import { getTimeString, getDateInFormat } from "../../utils";
 import CollapsibleMenuItemsTable from "./CollapsibleMenuItemsTable";
+import { deleteOrder, upgradeOrder,payOrder } from "../../services/Orders.service";
+import { useEffect } from "react";
 
-const OrdersTable = ({ orders, isActionable, isAcceptable, isRemovable }) => {
+const OrdersTable = ({ orders, isActionable, isAcceptable, isRemovable,refresher}) => {
+
+  useEffect(() => {
+   
+  }, [orders]); 
 
   const getStatusColor = (status) => {
     switch (status) {
@@ -29,7 +35,7 @@ const OrdersTable = ({ orders, isActionable, isAcceptable, isRemovable }) => {
       case "New":
         return styles.acceptBtn; // Customize the style based on your design
       case "Processing":
-        return styles.pendingBtn; // Customize the style based on your design
+        return styles.pendingStatusBtn; // Customize the style based on your design
       case "Ready":
         return styles.readyBtn; // Customize the style based on your design
       case "Dining":
@@ -53,6 +59,22 @@ const OrdersTable = ({ orders, isActionable, isAcceptable, isRemovable }) => {
       // Add more cases as needed
       default:
         return "Action";
+    }
+  };
+
+  const getNextOrderStatus= (orderStatus) => {
+    switch (orderStatus) {
+      case "New":
+        return "Processing";
+      case "Processing":
+        return "Ready";
+      case "Ready":
+        return "Dining";
+      case "Dining":
+        return "Completed";
+      // Add more cases as needed
+      default:
+        return "Pending";
     }
   };
   // console.log(orders);
@@ -92,7 +114,9 @@ const OrdersTable = ({ orders, isActionable, isAcceptable, isRemovable }) => {
         <td>{order.orderStatus}</td>
 
         <td className={styles.statusCell}>
-          <button className={classNames(styles.btn, (order.status === "Paid") ? styles.acceptBtn : styles.pendingBtn)}>
+          <button 
+          className={classNames(styles.btn, (order.paymentStatus === "Paid") ? styles.acceptBtn : styles.pendingBtn)}
+          onClick={() => payOrder(order,refresher)}>
             {order.paymentStatus}
           </button>
         </td>
@@ -101,7 +125,11 @@ const OrdersTable = ({ orders, isActionable, isAcceptable, isRemovable }) => {
           {isAcceptable && 
           <button
             className={classNames(styles.btn, getOrderButtonStyle(order.orderStatus))}
-            onClick={() => handleOrderAction(order)}
+            onClick={() => {
+              const newStatus = getNextOrderStatus(order.orderStatus);
+              upgradeOrder(order, newStatus,refresher);
+              
+            }}
           >
             {getOrderButtonText(order.orderStatus)}
           </button>
@@ -111,7 +139,7 @@ const OrdersTable = ({ orders, isActionable, isAcceptable, isRemovable }) => {
           {isRemovable && (
             <button
               className={classNames(styles.btn, styles.cancelBtn)}
-              onClick={() => handleDelete(order)}
+              onClick={() => deleteOrder(order,refresher)}
             >
               <MdClose />
               Cancel

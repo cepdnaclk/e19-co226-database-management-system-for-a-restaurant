@@ -42,4 +42,8 @@ public class MenuItemService {
 
         return savedItem;
     }
+
+    public List<MenuItem> getAllMenuItems(){
+        return menuItemRepository.findAll();
+    }
 }
