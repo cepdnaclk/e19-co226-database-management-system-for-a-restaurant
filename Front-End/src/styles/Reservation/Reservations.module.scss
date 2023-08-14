@@ -113,3 +113,37 @@
   background-color: $bgcolor;
   width: 100%;
 }
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 87%;
+  animation: fadeIn 1000ms ease-in;
+}
+
+.button {
+  background-color: darken($color: $accentColor, $amount: 2);
+  border: 1px solid darken($color: $accentColor, $amount: 2);
+  border-radius: 1.15rem;
+  width: 12rem;
+  cursor: pointer;
+  color: azure;
+
+  &:hover{
+    background-color: darken($color: $accentColor, $amount: 12);
+  border: 1px solid darken($color: $accentColor, $amount: 12);
+  scale: 1.03;
+  }
+}
+
+.cardContainer{
+  position: fixed;
+    top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 100vh;
+  width: 100vw;
+  backdrop-filter: blur(3px);
+  background-color: #00000050;
+  z-index: 99;
+}
