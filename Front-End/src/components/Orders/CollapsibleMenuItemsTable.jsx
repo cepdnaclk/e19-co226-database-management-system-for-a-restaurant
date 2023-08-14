@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import styles from "../../styles/Orders/CollapsibleMenuItemTable.module.scss";
 
 const CollapsibleMenuItemsTable = ({ menuItems }) => {
   const [collapsed, setCollapsed] = useState(true);
@@ -9,7 +10,7 @@ const CollapsibleMenuItemsTable = ({ menuItems }) => {
 
   return (
     <div>
-      <button onClick={toggleCollapse}>
+      <button onClick={toggleCollapse} className={styles.button}>
         {collapsed ? "Expand" : "Collapse"}
       </button>
       <table style={{ display: collapsed ? "none" : "table" }}>
