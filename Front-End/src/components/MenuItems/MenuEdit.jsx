@@ -5,13 +5,14 @@ import { fetchIngredients } from "../../services/Inventory.service";
 
 //TODO: Put the axios methods to service layer if possible
 export const MenuEdit = ({ MenuItem, onClose }) => {
-  const [name, setName] = useState(MenuItem.title);
+  const [name, setName] = useState(MenuItem.name);
   const [category, setCategory] = useState(MenuItem.category);
   const [description, setDescription] = useState(MenuItem.description);
   const [ingredients, setIngredients] = useState([]);
   const [selectedIngredients, setSelectedIngredients] = useState(MenuItem.ingredients);
-  // const [ingredientQuantities, setIngredientQuantities] = useState({});
+  const [ingredientQuantities, setIngredientQuantities] = useState({});
   const [price, setPrice] = useState("");
+  console.log(selectedIngredients);
 
   useEffect(() => {
     // Fetch ingredients from the API on component mount
@@ -30,35 +31,44 @@ export const MenuEdit = ({ MenuItem, onClose }) => {
 
 
 
-  // const handleQuantityChange = (event, ingredientId) => {
-  //   setIngredientQuantities({ ...ingredientQuantities, [ingredientId]: event.target.value });
-  // };
+  const handleQuantityChange = (event, ingredientId) => {
+    setIngredientQuantities({ ...ingredientQuantities, [ingredientId]: event.target.value });
+  };
   
 
   const handleIngredientAdd = (selectedIngredientId) => {
-    const selectedIngredient = ingredients.find(
-      (ingredient) => ingredient.id === selectedIngredientId
+    const selectedIngredientData = ingredients.find(
+      (ingredientData) => ingredientData.id === selectedIngredientId
     );
-    setSelectedIngredients([...selectedIngredients, selectedIngredient]);
+    
+    if (selectedIngredientData) {
+      const selectedIngredient = {
+        ingredient: selectedIngredientData,
+        quantity: 0,  // Initialize with a default quantity
+      };
+      
+      setSelectedIngredients([...selectedIngredients, selectedIngredient]);
+    }
   };
 
   const handleIngredientRemove = (selectedIngredientId) => {
     setSelectedIngredients(
       selectedIngredients.filter(
-        (ingredient) => ingredient.id !== selectedIngredientId
+        (ingredient) => ingredient.ingredient.id !== selectedIngredientId
       )
     );
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // Create your menuItemRequest object with the form data
     const menuItemRequest = {
       name,
       category,
       description,
       listOfIngredients: selectedIngredients.map((ingredient) => ({
-        ingredientId: ingredient.id,
-        // quantity: parseInt(ingredientQuantities[ingredient.id], 10),
+        ingredientId: ingredient.ingredient.id,
+        quantity: ingredient.quantity,
       })),
       price: parseFloat(price),
     };
@@ -127,16 +137,16 @@ export const MenuEdit = ({ MenuItem, onClose }) => {
           <div className={styles.selectItems}>
             {selectedIngredients.map((ingredient) => (
               <div key={ingredient.id} className={styles.showItems}>
-                <p>{ingredient.name || ingredient} - </p>
-                {/* <input
+                <p>{ingredient.ingredient.name || ingredient} - </p>
+                <input
                   type="number"
                   min="0"
-                  value={ingredientQuantities[ingredient.id] || ''}
-                  onChange={(e) => handleQuantityChange(e, ingredient.id)}
-                /> */}
+                  value={ingredientQuantities[ingredient.ingredient.id] || ''}
+                  onChange={(e) => handleQuantityChange(e, ingredient.ingredient.id)}
+                />
                 <button
                   type="button"
-                  onClick={() => handleIngredientRemove(ingredient.id)}
+                  onClick={() => handleIngredientRemove(ingredient.ingredient.id)}
                 >
                   X
                 </button>

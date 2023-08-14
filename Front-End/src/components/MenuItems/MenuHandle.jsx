@@ -44,12 +44,12 @@ export const MenuHandle = ({ allMenuItems }) => {
     );
     setDesserts(
       menuItems.filter((item) => {
-        return item.category === "Desserts" ? true : false;
+        return item.category === "Dessert" ? true : false;
       })
     );
     setBeverages(
       menuItems.filter((item) => {
-        return item.category === "Beverages" ? true : false;
+        return item.category === "Beverage" ? true : false;
       })
     );
   }, [menuItems]);
