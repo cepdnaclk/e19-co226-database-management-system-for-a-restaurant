@@ -97,8 +97,8 @@ const OrdersTable = ({ orders, isActionable, isAcceptable, isRemovable,refresher
         </thead>
         <tbody>
         {orders.map((order, index) => {
-  if ((order.orderStatus !== "Completed" & isActionable) || 
-  (order.orderStatus === "Completed" & !isActionable)) {
+  if (((order.orderStatus !== "Completed" || order.paymentStatus !=="Paid") & isActionable) || 
+  (order.orderStatus === "Completed" & order.paymentStatus==="Paid" & !isActionable)) {
     return (
       <tr key={index} style={{ backgroundColor: getStatusColor(order.orderStatus) }}>
         <td className={styles.firstCol}>
