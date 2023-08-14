@@ -76,6 +76,7 @@ export const OrderForm = ({ onClose,refresher}) => {
 
   const handleItemAdd = (selectedItemId) => {
     const selectedItem = menuItems.find((item) => item.id === selectedItemId);
+    itemQuantities[item.id] = 1;
     setSelectedItems([...selectedItems, selectedItem]);
   };
 
@@ -149,12 +150,12 @@ export const OrderForm = ({ onClose,refresher}) => {
             <div className={styles.selectItems}>
               {selectedItems.map((item) => (
                 <div key={item.id} className={styles.showItems}>
-                  <p>{item.title} -{' '}</p>
+                  <p>{item.name} -{' '}</p>
                   <input
                     type="number"
-                    min="0"
-                    defaultValue={0}
-                    value={itemQuantities[item.id] || ''}
+                    min="1"
+                    defaultValue={1}
+                    value={itemQuantities[item.id] || parseInt(1)}
                     onChange={(e) => handleQuantityChange(e, item.id)}
                   />
                   <button type="button" onClick={() => handleItemRemove(item.id)}>
@@ -163,7 +164,7 @@ export const OrderForm = ({ onClose,refresher}) => {
                 </div>
               ))}
             </div>
-            <div className={styles.select}>
+            {/* <div className={styles.select}>
               <p>Address &ensp;&ensp;:</p>
               <input
                 type="text"
@@ -178,7 +179,7 @@ export const OrderForm = ({ onClose,refresher}) => {
                 value={number}
                 onChange={(input) => setNumber(input.target.value)}
               />
-            </div>
+            </div> */}
             <div className={styles.select}>
               <p>Price &emsp;&emsp;&ensp;:&ensp;</p>
               <p className={styles.price}>Rs. {calPrice(selectedItems, itemQuantities)}.00</p>

@@ -138,6 +138,7 @@
   border-radius: 1.15rem;
   width: 11rem;
   cursor: pointer;
+  color: azure;
 
   &:hover{
     background-color: darken($color: $accentColor, $amount: 12);
