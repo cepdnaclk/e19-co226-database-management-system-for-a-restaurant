@@ -4,8 +4,9 @@ import styles from "../../styles/Reservation/ReservationForm.module.scss";
 
 
 
-export const ReservationForm = ({ menuItems, onClose }) => {
+export const ReservationForm = ({ areas, onClose }) => {
   const [address, setAddress] = useState("");
+  const [name, setName] = useState("");
   const [number, setNumber] = useState("");
   const [selectedAreas, setSelectedAreas] = useState([]);
 
@@ -13,9 +14,9 @@ export const ReservationForm = ({ menuItems, onClose }) => {
     // event.preventDefault();
 
     const data = {
-      listofItems: selectedItems.map((item) => ({
-        itemId: item.id,
-        quantity: parseInt(itemQuantities[item.id],10)
+      listofAreas: selectedAreas.map((area) => ({
+        areaId: area.id,
+        quantity: parseInt(areaQuantities[area.id],10)
       })),
       address: address,
       number: number,
@@ -33,17 +34,14 @@ export const ReservationForm = ({ menuItems, onClose }) => {
     }
   };
 
-  const handleItemAdd = (selectedItemtId) => {
-    const selectedItem = menuItems.find((item) => item.id === selectedItemtId);
-    setSelectedItems([...selectedItems, selectedItem]);
+  const handleAreaAdd = (selectedAreatId) => {
+    const selectedArea = areas.find((area) => area.id === selectedAreatId);
+    setSelectedAreas([...selectedAreas, selectedArea]);
   };
 
-  const handleQuantityChange = (event, itemId) => {
-    setItemQuantities({ ...itemQuantities, [itemId]: event.target.value });
-  };
 
-  const handleItemRemove = (selectedIngredientId) => {
-    setSelectedItems(selectedItems.filter((ingredient) => ingredient.id !== selectedIngredientId));
+  const handleAreaRemove = (selectedAreaId) => {
+    setSelectedAreas(selectedAreas.filter((area) => area.id !== selectedAreaId));
   };
 
   return (
@@ -59,37 +57,38 @@ export const ReservationForm = ({ menuItems, onClose }) => {
               <p>Select Area :</p>
               <select
                 defaultValue=""
-                onChange={(input) => handleItemAdd(parseInt(input.target.value, 10))}
-                id="item"
-                name="item"
+                onChange={(input) => handleAreaAdd(parseInt(input.target.value, 10))}
+                id="area"
+                name="area"
               >
                 <option disabled value="">
-                  Select an Item
+                  Select Area
                 </option>
-                {menuItems.map((item) => (
-                  <option key={item.id} value={item.id}>
-                    {item.category} || {item.title} || {item.price}
+                {areas.map((area) => (
+                  <option key={area.id} value={area.id}>
+                    {area.category} || {area.title} || {area.price}
                   </option>
                 ))}
               </select>
             </div>
-            <div className={styles.selectItems}>
-            {selectedItems.map((item) => (
-              <div key={item.id} className={styles.showItems}>
-                <p>{item.title} -{' '}</p>
-                <input
-                  type="number"
-                  min="0"
-                  defaultValue={0}
-                  value={itemQuantities[item.id] || ''}
-                  onChange={(e) => handleQuantityChange(e, item.id)}
-                />
-                <button type="button" onClick={() => handleItemRemove(item.id)}>
+            <div className={styles.selectareas}>
+            {selectedAreas.map((area) => (
+              <div key={area.id} className={styles.showItems}>
+                <p>{area.name} -{' '}</p>
+                <button type="button" onClick={() => handleAreaRemove(area.id)}>
                   X
                 </button>
               </div>
             ))}
           </div>
+          <div className={styles.select}>
+              <p>Customer Name &ensp;&ensp;:</p>
+              <input
+                type="text"
+                value={name}
+                onChange={(input) => setName(input.target.value)}
+              />
+            </div>
             <div className={styles.select}>
               <p>Address &ensp;&ensp;:</p>
               <input
@@ -106,12 +105,8 @@ export const ReservationForm = ({ menuItems, onClose }) => {
                 onChange={(input) => setNumber(input.target.value)}
               />
             </div>
-            <div className={styles.select}>
-              <p>Price &emsp;&emsp;&ensp;:&ensp;</p>
-              <p className={styles.price}>Rs. {calPrice(selectedItems,itemQuantities)}.00</p>
-            </div>
             <button type="submit" className={styles.button} onClick={handleSubmit()}>
-              Submit Order
+              Make Reservation
             </button>
           </div>
         </fieldset>

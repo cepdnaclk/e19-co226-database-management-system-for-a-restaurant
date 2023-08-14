@@ -4,7 +4,7 @@ import styles from "../styles/Reservation/Reservations.module.scss";
 import { ReservationsHandle } from "../components/Reservations/ReservationsHandle";
 import { Waitings } from "../components/Reservations/WaitingReservations";
 import { useState, useEffect } from "react";
-import { cReservations, waitingList } from "../data/Reservations";
+import { cReservations, waitingList, spaces } from "../data/Reservations";
 import { fetchReservations,fetchWaitings } from "../services/Reservations.service";
 
 export const Reservations = () => {
