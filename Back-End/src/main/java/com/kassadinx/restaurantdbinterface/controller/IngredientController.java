@@ -1,5 +1,6 @@
 package com.kassadinx.restaurantdbinterface.controller;
 
+import com.kassadinx.restaurantdbinterface.dto.IngredientCreateRequest;
 import com.kassadinx.restaurantdbinterface.model.Ingredient;
 import com.kassadinx.restaurantdbinterface.service.IngredientService;
 import org.springframework.http.HttpStatus;
@@ -33,8 +34,8 @@ public class IngredientController {
     }
 
     @PostMapping
-    public ResponseEntity<Ingredient> addIngredient(@RequestBody Ingredient ingredient) {
-        Ingredient savedIngredient = ingredientService.save(ingredient);
+    public ResponseEntity<Ingredient> addIngredient(@RequestBody IngredientCreateRequest ingredient) {
+        Ingredient savedIngredient = ingredientService.createIngredient(ingredient);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedIngredient);
     }
 
