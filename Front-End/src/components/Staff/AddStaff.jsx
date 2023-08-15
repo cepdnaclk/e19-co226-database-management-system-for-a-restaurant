@@ -1,34 +1,63 @@
-import { useState } from "react";
-import { handleForm } from "../../services/Inventory.service";
+import React, { useState } from "react";
+import { handleForm } from "../../services/Staff.service";
 import styles from "../../styles/Staff/AddStaffForm.module.scss";
 import { categories } from "../../data/Staff";
 
-export const AddStaff = ({onClose}) => {
-  const [name, setName] = useState("");
-  const [category, setCategory] = useState("");
-  const [position, setPosition] = useState("");
-  const [assignedWork, setAssignedWork] = useState("");
-  const [description, setDescription] = useState("");
-  const [image, setImage] = useState("");
-  const [salary, setSalary] = useState("");
+export const AddStaff = ({ onClose}) => {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    category: "",
+    position: "",
+    assignedWork: "",
+    description: "",
+    imageUrl: "",
+    salary: "",
+    email: "",
+    address: "",
+    phone: [""],
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handlePhoneChange = (index, value) => {
+    const updatedPhone = [...formData.phone];
+    updatedPhone[index] = value;
+    setFormData({
+      ...formData,
+      phone: updatedPhone,
+    });
+  };
+
+  const handleAddPhone = () => {
+    setFormData({
+      ...formData,
+      phone: [...formData.phone, ""],
+    });
+  };
+
+  const handleRemovePhone = (index) => {
+    const updatedPhone = [...formData.phone];
+    updatedPhone.splice(index, 1);
+    setFormData({
+      ...formData,
+      phone: updatedPhone,
+    });
+  };
 
   const handleSubmit = () => {
     // event.preventDefault();
     // console.log(ingredient);
     // console.log(category);
 
-    const data = {
-      name: name, 
-      category: category, 
-      position: position, 
-      assignedWork: assignedWork, 
-      description: description, 
-      image: image, 
-      salary: salary, 
-    };
-
     try {
-      const response = handleForm(data);
+      const response = handleForm(formData);
       console.log("Response:", response);
       // Handle successful response here, if needed
     } catch (error) {
@@ -39,76 +68,117 @@ export const AddStaff = ({onClose}) => {
 
   return (
     <div className={styles.card}>
-        {/* <button className={styles.close_button}>X</button> */}
-      <form onSubmit={onClose}>
+      <form onSubmit={handleSubmit}>
         <fieldset>
           <legend className={styles.legend}>
-            <strong>Add a New Staff Memeber</strong>
+            <strong>Add a New Staff Member</strong>
           </legend>
           <div className={styles.card_content}>
             <div className={styles.select}>
-              <p>Name &emsp;&emsp;&emsp;&emsp;&nbsp;:</p>
+              <p>First Name &emsp;&emsp;&nbsp;:</p>
               <input
                 type="text"
-                value={name}
-                onChange={(input) => setName(input.target.value)}
-                required="requred"
+                name="firstName"
+                value={formData.firstName}
+                onChange={handleChange}
+                placeholder="First Name"
+                required="required"
               />
             </div>
             <div className={styles.select}>
+              <p>Last Name &emsp;&emsp;&nbsp;:</p>
+              <input
+                type="text"
+                name="lastName"
+                value={formData.lastName}
+                onChange={handleChange}
+                placeholder="Last Name"
+                required="required"
+              />
+            </div>
+
+            <div className={styles.select}>
+              <p>Email &emsp;&emsp;&emsp;&emsp;&nbsp;&ensp;:</p>
+              <input
+                type="text"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="Email"
+                required="required"
+              />
+            </div>
+            <div className={styles.select}>
+              <p>Address &emsp;&emsp;&emsp;&ensp;:</p>
+              <input
+                type="text"
+                name="address"
+                value={formData.address}
+                onChange={handleChange}
+                placeholder="Address"
+                required="required"
+              />
+            </div>
+
+            <div className={styles.select}>
               <p>Select Category :</p>
               <select
-                value={category}
-                onClick={(input) => setCategory(input.target.value)}
-                onChange={(input) => setCategory(input.target.value)}
+                value={formData.category}
+                onClick={handleChange}
+                onChange={handleChange}
                 id="category"
                 name="category"
                 required="requred"
               >
                 <option disabled value="">
-                Select a Category
-              </option>
+                  Select a Category
+                </option>
                 {categories.map((category) => (
-                  <option key={category.id} value={category.id}>
+                  <option key={category.id} value={category.name}>
                     {category.name}
                   </option>
                 ))}
               </select>
             </div>
             <div className={styles.select}>
-              <p>Position &ensp;&emsp;&emsp;&emsp;:</p>
+              <p>Position &emsp;&emsp;&emsp;&ensp;:</p>
               <input
-                type="number"
-                value={position}
-                onChange={(input) => setPosition(input.target.value)}
-                required="requred"
+                type="text"
+                name="position"
+                value={formData.position}
+                onChange={handleChange}
+                required="required"
+                placeholder="Position"
               />
             </div>
             <div className={styles.select}>
               <p>Assigned Work &nbsp;:</p>
               <textarea
-                type="text"
-                value={assignedWork}
-                onChange={(input) => setAssignedWork(input.target.value)}
-                required="requred"
+                name="assignedWork"
+                value={formData.assignedWork}
+                onChange={handleChange}
+                required="required"
+                placeholder="Assigned Work"
               />
             </div>
             <div className={styles.select}>
               <p>Description &emsp;&emsp;:</p>
               <textarea
-                type="text"
-                value={description}
-                onChange={(input) => setDescription(input.target.value)}
-                required="requred"
+                name="description"
+                value={formData.description}
+                onChange={handleChange}
+                required="required"
+                placeholder="Description"
               />
             </div>
             <div className={styles.select}>
               <p>Image &emsp;&emsp;&emsp;&emsp;&nbsp;:</p>
               <input
-                type="link"
-                value={image}
-                onChange={(input) => setImage(input.target.value)}
-                required="requred"
+                type="text"
+                name="imageUrl"
+                value={formData.imageUrl}
+                onChange={handleChange}
+                required="required"
                 placeholder="Paste a link to your image"
               />
             </div>
@@ -116,12 +186,49 @@ export const AddStaff = ({onClose}) => {
               <p>Salary &emsp;&emsp;&emsp;&emsp;&nbsp;:</p>
               <input
                 type="number"
-                value={salary}
-                onChange={(input) => setSalary(input.target.value)}
-                required="requred"
+                name="salary"
+                value={formData.salary}
+                onChange={handleChange}
+                required="required"
+                placeholder="Enter Salary"
               />
             </div>
-            <button type="submit" className={styles.button} onClick={handleSubmit()}>
+
+            <div className={styles.itemSet}>
+              {/* <p>Phone &emsp;&emsp;&emsp;&emsp;:</p> */}
+              {formData.phone.map((phoneValue, index) => (
+                <div key={index} className={styles.select}>
+                  <input
+                    type="phone"
+                    name={`phone[${index}]`}
+                    value={phoneValue}
+                    onChange={(e) => handlePhoneChange(index, e.target.value)}
+                    placeholder={`Phone Number ${index + 1}`}
+                  />
+                  {index !== 0 && (
+                    <button
+                      type="button"
+                      className={styles.remove_button}
+                      onClick={() => handleRemovePhone(index)}
+                    >
+                      X
+                    </button>
+                  )}
+                </div>
+              ))}
+            </div>
+            <button
+              type="button"
+              className={styles.item_button}
+              onClick={() => handleAddPhone()}
+            >
+              Add Phone
+            </button>
+
+            <button
+              type="submit"
+              className={styles.button}
+            >
               Add Member
             </button>
           </div>

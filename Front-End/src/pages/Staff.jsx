@@ -8,11 +8,15 @@ import { fetchStaff } from "../services/Staff.service";
 
 export const Staff = () => {
   const [staff, setStaff] = useState(staffData);
+  const [shouldRefresh,setShouldRefresh] = useState(true);
   console.log(staff);
 
   useEffect(() => {
-    handlefetchStaff();
-  }, []);
+    if(shouldRefresh){
+      handlefetchStaff();
+      setShouldRefresh(false);    }
+    
+  }, [shouldRefresh]);
 
   const handlefetchStaff = async () => {
     try {
