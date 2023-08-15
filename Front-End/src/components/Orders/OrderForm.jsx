@@ -5,6 +5,7 @@ import { calPrice } from "../../utils";
 import { fetchStaff } from "../../services/Staff.service";
 import { fetchCustomers } from "../../services/Customers.service";
 import { fetchMenu } from "../../services/Menu.service";
+import { CustomerForm } from "../customer/CustomerForm";
 
 export const OrderForm = ({ onClose, refresher }) => {
   const [customerId, setCustomerId] = useState(0);
@@ -13,7 +14,7 @@ export const OrderForm = ({ onClose, refresher }) => {
   const [number, setNumber] = useState("");
   const [selectedItems, setSelectedItems] = useState([]);
   const [itemQuantities, setItemQuantities] = useState({});
-
+  const [showCustomerForm, setShowCustomerForm] = useState(false);
   const [customers, setCustomers] = useState([]);
   const [staff, setStaff] = useState([]);
 
@@ -53,7 +54,7 @@ export const OrderForm = ({ onClose, refresher }) => {
       address: address,
       number: number,
       placementDate: new Date(), // Format date as "YYYY-MM-DD"
-      placementTime: (new Date()).getHours+ ":" + (new Date()).getMinutes, // Format time as "HH:mm"
+      placementTime: new Date().getHours + ":" + new Date().getMinutes, // Format time as "HH:mm"
     };
 
     try {
@@ -99,12 +100,24 @@ export const OrderForm = ({ onClose, refresher }) => {
                 required="requred"
               >
                 <option value={0}>Select a Customer</option>
+                <option value="addCustomer">Add a Customer</option>
                 {customers.map((customer) => (
                   <option key={customer.id} value={customer.id}>
                     {customer.id} | {customer.firstName} | {customer.phone[0]}
                   </option>
                 ))}
               </select>
+            </div>
+            <div className={styles.select}>
+              {customerId === "addCustomer" && (
+                <button
+                  onClick={() => {
+                    setShowCustomerForm(true);
+                  }}
+                >
+                  Add a Customer
+                </button>
+              )}
             </div>
             <div className={styles.select}>
               {/* <p>Select Staff:</p> */}
@@ -192,6 +205,13 @@ export const OrderForm = ({ onClose, refresher }) => {
           </div>
         </fieldset>
       </form>
+      {showCustomerForm && (
+        <CustomerForm
+          onClose={() => {
+            showCustomerForm(false);
+          }}
+        />
+      )}
     </div>
   );
 };
