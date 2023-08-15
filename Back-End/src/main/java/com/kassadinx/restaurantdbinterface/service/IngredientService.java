@@ -1,6 +1,8 @@
 package com.kassadinx.restaurantdbinterface.service;
+import com.kassadinx.restaurantdbinterface.dto.IngredientCreateRequest;
 import com.kassadinx.restaurantdbinterface.model.Ingredient;
 import com.kassadinx.restaurantdbinterface.repository.IngredientRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -33,4 +35,17 @@ public class IngredientService {
     public List<Ingredient> findIngredientsByNameContaining(String name) {
         return ingredientRepository.findIngredientsByNameContaining(name);
     }
+
+
+    public Ingredient createIngredient(IngredientCreateRequest request) {
+        Ingredient ingredient = new Ingredient();
+        ingredient.setName(request.getName());
+        ingredient.setQuantity(request.getQuantity());
+        ingredient.setQuantityType(request.getQuantityType());
+        ingredient.setDescription(request.getDescription());
+
+        Ingredient savedIngredient = ingredientRepository.save(ingredient);
+        return savedIngredient;
+    }
+
 }
