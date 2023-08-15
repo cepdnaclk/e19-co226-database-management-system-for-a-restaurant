@@ -19,6 +19,9 @@ export const createOrder = (orderRequest,refresher) => {
       // Send the order request to the server and receive the response
       const response = await handleForm(orderRequest,refresher); // Replace with your API call
       console.log(response);
+      if(response.menuItems===null){
+        response.menuItems=[];
+      }
       
       // Dispatch the action with the response or any relevant data you want to update in the Redux store
       dispatch({

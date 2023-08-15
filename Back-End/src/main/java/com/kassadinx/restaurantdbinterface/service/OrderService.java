@@ -104,7 +104,7 @@ public class OrderService {
         // Save the updated order entity to the database
         Order newOrder =  orderRepository.save(circularUpdatedOrder);
 
-        return orderRepository.findById(newOrder.getId()).get();
+        return orderRepository.findByIdWithAssociations(newOrder.getId()).get();
 
 
     }
