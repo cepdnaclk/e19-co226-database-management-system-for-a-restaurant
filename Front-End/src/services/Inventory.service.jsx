@@ -1,6 +1,6 @@
 import axios from "axios";
 import { authHeader } from "./auth_header";
-import { ingredients_sample, suppliers_sample } from "../data/InventoryAndSuppliers";
+import { ingredients_sample, suppliers_sample, null_inventory } from "../data/InventoryAndSuppliers";
 
 const API_URL = "http://localhost:8080/api/v1";
 
@@ -28,7 +28,7 @@ export const fetchSuppliers = async () => {
   }
 };
 
-export const SearchInputChange = async (event) => {
+export const SearchInputChangeIngredients = async (event) => {
   try {
     const response = await axios.get(
       `http://localhost:8080/api/v1/ingredients/search?name=${event.target.value}`
@@ -36,6 +36,18 @@ export const SearchInputChange = async (event) => {
     return response.data;
   } catch (error) {
     console.error("Error fetching filtered ingredients:", error);
+    // return null_inventory;
+  }
+};
+
+export const SearchInputChangeSupply = async (event) => {
+  try {
+    const response = await axios.get(
+      `http://localhost:8080/api/v1/suppliers/search?name=${event.target.value}`
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching filtered suppliers:", error);
   }
 };
 

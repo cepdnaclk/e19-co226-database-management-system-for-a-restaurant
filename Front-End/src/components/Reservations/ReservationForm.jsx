@@ -57,6 +57,7 @@ export const ReservationForm = ({ areas, onClose }) => {
                 onChange={(input) => handleAreaAdd(parseInt(input.target.value, 10))}
                 id="area"
                 name="area"
+                required="requred"
               >
                 <option disabled value="">
                   Select Area
@@ -85,6 +86,7 @@ export const ReservationForm = ({ areas, onClose }) => {
                 value={name}
                 onChange={(input) => setName(input.target.value)}
                 placeholder="Customer Name"
+                required="requred"
               />
             </div>
             <div className={styles.select}>
@@ -94,6 +96,7 @@ export const ReservationForm = ({ areas, onClose }) => {
                 value={address}
                 onChange={(input) => setAddress(input.target.value)}
                 placeholder="Home Address"
+                required="requred"
               />
             </div>
             <div className={styles.select}>
@@ -103,6 +106,7 @@ export const ReservationForm = ({ areas, onClose }) => {
                 value={number}
                 onChange={(input) => setNumber(input.target.value)}
                 placeholder="Telephone Number"
+                required="requred"
               />
             </div>
             <button type="submit" className={styles.button} onClick={handleSubmit()}>
