@@ -29,15 +29,15 @@ export const Menu = () => {
     }
   }, [shouldRefresh, dispatch]);
 
-  const handlefetchMenu = async () => {
-    try {
-      const response = await fetchMenu();
-      setMenuItems(response);
-      console.log(response);
-    } catch (error) {
-      console.error("Error fetching reservatins:", error);
-    }
-  };
+  // const handlefetchMenu = async () => {
+  //   try {
+  //     const response = await fetchMenu();
+  //     setMenuItems(response);
+  //     console.log(response);
+  //   } catch (error) {
+  //     console.error("Error fetching reservatins:", error);
+  //   }
+  // };
 
   useEffect(() => {
     document.addEventListener("click", handleBackgroundClick);
