@@ -84,7 +84,7 @@ export const SupplierForm = ({onClose}) => {
         </legend>
         <div className={styles.card_content}>
           <div className={styles.select}>
-            <label htmlFor="name">Name &ensp;&ensp;:</label>
+            {/* <label htmlFor="name">Name &ensp;&ensp;:</label> */}
             <input
               type="text"
               name="name"
@@ -92,10 +92,11 @@ export const SupplierForm = ({onClose}) => {
               value={formData.name}
               required = "true"
               onChange={handleChange}
+              placeholder="Supplier Name"
             />
           </div>
           <div className={styles.select}>
-            <label htmlFor="address">Address :</label>
+            {/* <label htmlFor="address">Address :</label> */}
             <input
               type="text"
               name="address"
@@ -103,27 +104,30 @@ export const SupplierForm = ({onClose}) => {
               required = "true"
               value={formData.address}
               onChange={handleChange}
+              placeholder="Address"
             />
           </div>
           <div className={styles.select}>
-            <label htmlFor="email">Email &ensp;&ensp;&nbsp;:</label>
+            {/* <label htmlFor="email">Email &ensp;&ensp;&nbsp;:</label> */}
             <input
               type="email"
               name="email"
               id="email"
               value={formData.email}
               onChange={handleChange}
+              placeholder="Email"
             />
           </div>
-          <div className={styles.select}>
-            <label htmlFor="phone">Phone &ensp;&ensp;: </label>
+          <div className={styles.itemSet}>
+            {/* <label htmlFor="phone">Phone &ensp;&ensp;: </label> */}
             {formData.phone.map((phoneValue, index) => (
-              <div key={index}>
+              <div key={index} className={styles.select}>
                 <input
                   type="phone"
                   name={`phone[${index}]`}
                   value={phoneValue}
                   onChange={(e) => handlePhoneChange(index, e.target.value)}
+                  placeholder={`Phone Number ${index+1}`}
                 />
                 {index !== 0 && (
                   <button
@@ -131,7 +135,7 @@ export const SupplierForm = ({onClose}) => {
                     className={styles.remove_button}
                     onClick={() => handleRemovePhone(index)}
                   >
-                    Remove Phone
+                    X
                   </button>
                 )}
               </div>
@@ -144,20 +148,21 @@ export const SupplierForm = ({onClose}) => {
           >
             Add Phone
           </button>
-          <div className={styles.select}>
-            <label htmlFor="item">Item &ensp;&ensp;&ensp; : </label>
+          <div className={styles.itemSet}>
+            {/* <label htmlFor="item">Item &ensp;&ensp;&ensp; : </label> */}
             {formData.item.map((itemValue, index) => (
-              <div key={index}>
+              <div key={index} className={styles.select}> 
                 <input
                   type="item"
                   name={`item[${index}]`}
                   value={itemValue}
                   required = "true"
                   onChange={(e) => handleItemChange(index, e.target.value)}
+                  placeholder={`Item ${index+1}`}
                 />
                 {index !== 0 && (
                   <button className={styles.remove_button} type="button" onClick={() => handleRemoveItem(index)}>
-                    Remove Item
+                    X
                   </button>
                 )}
               </div>

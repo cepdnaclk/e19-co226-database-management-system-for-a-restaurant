@@ -97,7 +97,7 @@ export const OrderForm = ({ onClose,refresher}) => {
           </legend>
           <div className={styles.card_content}>
             <div className={styles.select}>
-              <p>Select Customer:</p>
+              {/* <p>Select Customer:</p> */}
               <select
                 value={customerId}
                 onChange={(event) => setCustomerId(event.target.value)}
@@ -116,12 +116,12 @@ export const OrderForm = ({ onClose,refresher}) => {
               </select>
             </div>
             <div className={styles.select}>
-              <p>Select Staff:</p>
+              {/* <p>Select Staff:</p> */}
               <select
                 value={staffId}
                 onChange={(event) => setStaffId(event.target.value)}
               >
-                <option value={0}>Select a Staff</option>
+                <option value={0}>Select a Staff Member</option>
                 {staff.map((staffMember) => (
                   <option key={staffMember.id} value={staffMember.id}>
                     {staffMember.id} | {staffMember.firstName}  {staffMember.lastName} | Position: {staffMember.position}
@@ -130,7 +130,7 @@ export const OrderForm = ({ onClose,refresher}) => {
               </select>
             </div>
             <div className={styles.select}>
-              <p>Select Item :</p>
+              {/* <p>Select Item :</p> */}
               <select
                 defaultValue=""
                 onChange={(input) => handleItemAdd(parseInt(input.target.value, 10))}
@@ -181,7 +181,7 @@ export const OrderForm = ({ onClose,refresher}) => {
               />
             </div> */}
             <div className={styles.select}>
-              <p>Price &emsp;&emsp;&ensp;:&ensp;</p>
+              {/* <p>Price &emsp;&emsp;&ensp;:&ensp;</p> */}
               <p className={styles.price}>Rs. {calPrice(selectedItems, itemQuantities)}.00</p>
             </div>
 

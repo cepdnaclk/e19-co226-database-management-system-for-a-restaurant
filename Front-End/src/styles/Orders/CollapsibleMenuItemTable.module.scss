@@ -1,23 +1,91 @@
 @use "../variables" as *;
 
 .button {
-  background-color: darken($color: $accentColor, $amount: 2);
-  border: 1px solid darken($color: $accentColor, $amount: 2);
-  border-radius: 1.15rem;
+  border: 1px solid $pendingColor;
+  border-radius: 1em;
+  background-color: white;
+  color: $pendingColor;
+  height: 1.8rem;
+  padding: 0.4em 1em 0.4em 1em;
   cursor: pointer;
-  color :azure;
+  color :$accentColor;
+  font-weight: 600;
 
   &:hover {
-    background-color: darken($color: $accentColor, $amount: 12);
-    border: 1px solid darken($color: $accentColor, $amount: 12);
+    background-color: $pendingColor;
+    color: white;
     scale: 1.03;
   }
 }
 
-.table{
-  
-  color:black;
- 
-}
 
+.Table {
+  margin-top: 1em;
+  border-radius: 1.5em;
+  border-collapse: collapse;
+  overflow: hidden;
+  width: 90%;
+  box-shadow: 0px 6px 23px -6px rgba(0, 0, 0, 0.1);
+  font-size: 0.9em;
+  thead tr {
+    color: hsl(0, 0%, 95%);
+    background-color: darken($color: $accentColor, $amount: 2);
+    text-align: left;
+  }
 
+  th,
+  td {
+    padding: 1.5em 0.9em;
+    text-align: left;
+    vertical-align: middle;
+  }
+
+  th {
+    text-align: left;
+    color: hsl(0, 0%, 95%);
+    background-color: darken($color: $accentColor, $amount: 2);
+    text-align: left;
+  }
+
+  @media (width < 1400px) {
+    th,
+    td {
+      padding: 1.2em 0.9em;
+      text-align: left;
+      vertical-align: middle;
+      font-size: 0.9em;
+    }
+
+    th {
+      text-align: left;
+      font-size: 0.95em;
+    }
+  }
+
+  tr {
+    th:first-child {
+      padding-left: 3em;
+    }
+    td:first-child {
+      padding-left: 3em;
+    }
+
+    th:last-child {
+      padding-right: 2em;
+    }
+    td:last-child {
+      padding-right: 2em;
+    }
+  }
+
+  tbody {
+    tr:nth-child(even) {
+      background-color: #ffffff;
+    }
+    tr {
+      background-color: white;
+    }
+    tr:hover {
+      background-color: #e7e9eb;
+    }
+  }}

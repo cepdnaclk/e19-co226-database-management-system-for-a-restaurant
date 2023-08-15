@@ -33,7 +33,7 @@ export const IngredientForm = ({onClose}) => {
         </legend>
         <div className={styles.card_content}>
           <div className={styles.select}>
-            <label htmlFor="name">Name &emsp;&emsp;&nbsp;:</label>
+            {/* <label htmlFor="name">Name &emsp;&emsp;&nbsp;:</label> */}
             <input
               type="text"
               name="name"
@@ -41,11 +41,12 @@ export const IngredientForm = ({onClose}) => {
               value={formData.name}
               required = "true"
               onChange={handleChange}
+              placeholder="Name of the Ingredient"
             />
           </div>
 
           <div className={styles.select}>
-            <label htmlFor="quantity">Quantity &ensp;&ensp;&nbsp;:</label>
+            {/* <label htmlFor="quantity">Quantity &ensp;&ensp;&nbsp;:</label> */}
             <input
               type="text"
               name="quantity"
@@ -53,11 +54,12 @@ export const IngredientForm = ({onClose}) => {
               value={formData.quantity}
               required = "true"
               onChange={handleChange}
+              placeholder="Quantity"
             />
           </div>
 
           <div className={styles.select}>
-            <label htmlFor="quantityType">Type &ensp;&ensp;&ensp;&ensp;&ensp;&nbsp;:</label>
+            {/* <label htmlFor="quantityType">Type &ensp;&ensp;&ensp;&ensp;&ensp;&nbsp;:</label> */}
             <input
               type="text"
               name="quantityType"
@@ -65,10 +67,11 @@ export const IngredientForm = ({onClose}) => {
               value={formData.quantityType}
               required = "true"
               onChange={handleChange}
+              placeholder="Ingredient Type"
             />
           </div>
           <div className={styles.select}>
-            <label htmlFor="description">Description :</label>
+            {/* <label htmlFor="description">Description :</label> */}
             <input
               type="text"
               name="description"
@@ -76,6 +79,7 @@ export const IngredientForm = ({onClose}) => {
               value={formData.description}
               required = "true"
               onChange={handleChange}
+              placeholder="Discription "
             />
           </div>
         
