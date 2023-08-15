@@ -55,6 +55,7 @@
   input[type="date"] {
     width: 83%;
     padding: 0.5rem;
+    color-scheme: dark;
     margin: 0 5px;
     background-color: rgb(255, 255, 255);
     color: #000;
@@ -63,19 +64,22 @@
   }
 
   [type="date"]::-webkit-calendar-picker-indicator {
-    background-color: #acacac;
+    // background-color: #acacac;
     color: #000;
+    filter: invert(1);
   }
 
   [type="time"]::-webkit-calendar-picker-indicator {
-    background-color: #acacac;
+    // background-color: #acacac;
     color: #000;
+    filter: invert(1);
   }
 
   .button {
     background-color: darken($color: $accentColor, $amount: 2);
     margin-top: 15px;
     width: 26%;
+    color: white;
     border: 1px solid darken($color: $accentColor, $amount: 2);
     border-radius: 1rem;
     cursor: pointer;

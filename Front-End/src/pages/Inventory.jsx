@@ -16,7 +16,8 @@ import {
 import {
   fetchIngredients,
   fetchSuppliers,
-  SearchInputChange,
+  SearchInputChangeIngredients,
+  SearchInputChangeSupply,
 } from "../services/Inventory.service";
 import { SupplierForm } from "../components/Inventory and Suppliers/SupplierForm";
 import { IngredientForm } from "../components/Inventory and Suppliers/IngredientForm";
@@ -24,7 +25,8 @@ import { IngredientForm } from "../components/Inventory and Suppliers/Ingredient
 export const Inventory = () => {
   const [ingredients, setIngredients] = useState(ingredients_sample);
   const [suppliers, setSuppliers] = useState(suppliers_sample);
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQueryIngredients, setSearchQueryIngredients] = useState("");
+  const [searchQuerySuppliers, setSearchQuerySuppliers] = useState("");
   const [showForm, setShowForm] = useState(false);
   const [showIngredientForm, setShowIngredientForm] = useState(false);
   const [showSupplierForm, setShowSupplierForm] = useState(false);
@@ -93,10 +95,20 @@ export const Inventory = () => {
     }
   };
 
-  const handleSearchInputChange = async (event) => {
-    setSearchQuery(event.target.value);
+  const handleSearchInputChangeIngredients = async (event) => {
+    setSearchQueryIngredients(event.target.value);
     try {
-      const response = await SearchInputChange(event);
+      const response = await SearchInputChangeIngredients(event);
+      setIngredients(response);
+    } catch (error) {
+      console.error("Error fetching filtered ingredients:", error);
+    }
+  };
+
+  const handleSearchInputChangeSupply = async (event) => {
+    setSearchQuerySuppliers(event.target.value);
+    try {
+      const response = await SearchInputChangeSupply(event);
       setIngredients(response);
     } catch (error) {
       console.error("Error fetching filtered ingredients:", error);
@@ -157,12 +169,12 @@ export const Inventory = () => {
         
         <input
           type="text"
-          value={searchQuery}
-          onChange={handleSearchInputChange}
+          value={searchQueryIngredients}
+          onChange={handleSearchInputChangeIngredients}
           placeholder="Search ingredients..."
           className={styles.searchbar}
         />
-        <IngredientTable data={ingredients} />
+        {ingredients? <IngredientTable data={ingredients} />: <div className={styles.disabledText}><p>There is no such a Ingredient, Please Check again....</p></div>}
         <h2 className={styles.tableHeadings}>Supplier Table</h2>
         <div className={styles.container}>
           {!showSupplierForm && (
@@ -186,8 +198,8 @@ export const Inventory = () => {
         </div>
         <input
           type="text"
-          value={searchQuery}
-          onChange={handleSearchInputChange}
+          value={searchQuerySuppliers}
+          onChange={handleSearchInputChangeSupply}
           placeholder="Search Suppliers..."
           className={styles.searchbar}
         />
