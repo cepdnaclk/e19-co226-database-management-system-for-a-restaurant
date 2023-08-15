@@ -1,5 +1,5 @@
 import axios from "axios";
-import { menuItemsData } from "../data/Menu";
+import { menuItemsData, newMenu } from "../data/Menu";
 
 const API_URL = "http://localhost:8080/api/v1";
 
@@ -12,6 +12,6 @@ export const fetchMenu = async () => {
       return response.data;
     } catch (error) {
       console.error("Error fetching menu:", error);
-      return menuItemsData;
+      return newMenu;
     }
   };

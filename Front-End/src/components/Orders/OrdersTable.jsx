@@ -4,8 +4,9 @@ import React from "react";
 import classNames from "classnames";
 import { getTimeString, getDateInFormat } from "../../utils";
 import CollapsibleMenuItemsTable from "./CollapsibleMenuItemsTable";
+import {payOrder, upgradeOrder,deleteOrder} from "../../services/Orders.service";
 
-const OrdersTable = ({ orders, isActionable, isAcceptable, isRemovable }) => {
+const OrdersTable = ({ orders, isActionable, isAcceptable, isRemovable,refresher }) => {
 
   const getStatusColor = (status) => {
     switch (status) {
@@ -96,8 +97,8 @@ const OrdersTable = ({ orders, isActionable, isAcceptable, isRemovable }) => {
         </thead>
         <tbody>
         {orders.map((order, index) => {
-  if ((order.orderStatus !== "Completed" & isActionable) || 
-  (order.orderStatus === "Completed" & !isActionable)) {
+  if (((order.orderStatus !== "Completed" || order.paymentStatus !=="Paid") & isActionable) || 
+  (order.orderStatus === "Completed" & order.paymentStatus === "Paid" & !isActionable)) {
     return (
       <tr key={index} style={{ backgroundColor: getStatusColor(order.orderStatus) }}>
         <td className={styles.firstCol}>
@@ -113,7 +114,16 @@ const OrdersTable = ({ orders, isActionable, isAcceptable, isRemovable }) => {
         <td>{order.orderStatus}</td>
 
         <td className={styles.statusCell}>
-          <button className={classNames(styles.btn, (order.paymentStatus === "Paid") ? styles.paidBtn : styles.pendingBtn)}>
+          <button className={classNames(styles.btn, (order.paymentStatus === "Paid") ? styles.paidBtn : styles.pendingBtn)
+        
+        }
+        onClick = {()=>{
+          payOrder(order,refresher)
+        }}
+        disabled = {order.paymentStatus==="Paid"}
+        >
+            
+            
             {order.paymentStatus}
           </button>
         </td>
@@ -139,7 +149,7 @@ const OrdersTable = ({ orders, isActionable, isAcceptable, isRemovable }) => {
           {isActionable && <td className={styles.cancelColCell}>{isRemovable && (
             <button
               className={classNames(styles.btn, styles.cancelBtn)}
-              onClick={() => handleDelete(order)}
+              onClick={() => deleteOrder(order,refresher)}
             >
               <MdClose />
               Cancel

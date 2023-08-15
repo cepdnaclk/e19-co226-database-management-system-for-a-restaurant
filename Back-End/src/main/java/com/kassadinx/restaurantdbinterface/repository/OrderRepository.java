@@ -25,6 +25,7 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
             "JOIN FETCH o.staff s " +
             "LEFT JOIN FETCH o.menuItems mi " +
             "LEFT JOIN FETCH mi.menuItem m " +
-            "LEFT JOIN FETCH m.ingredients i")
+            "LEFT JOIN FETCH m.ingredients i " +
+            "ORDER BY o.placementDate DESC, o.placementTime DESC")
     List<Order> findAll();
 }
