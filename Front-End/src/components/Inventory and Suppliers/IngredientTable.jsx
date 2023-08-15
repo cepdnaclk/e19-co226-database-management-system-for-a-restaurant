@@ -24,7 +24,7 @@ export const IngredientTable = ({ data }) => {
               {/* <td>{ingredient.id}</td> */}
               <td>{ingredient.name}</td>
               <td>{ingredient.quantity}</td>
-              <td>{ingredient.quantity_type}</td>
+              <td>{ingredient.quantityType}</td>
               <td>{ingredient.description}</td>
               {/* <td className={styles.actionColCell}>
                 <button className={classNames(styles.btn, styles.editBtn)}>
