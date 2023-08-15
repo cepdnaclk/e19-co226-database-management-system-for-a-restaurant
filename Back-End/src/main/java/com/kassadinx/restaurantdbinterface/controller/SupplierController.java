@@ -36,6 +36,13 @@ public class SupplierController {
         return new ResponseEntity<>(savedSupplier, HttpStatus.CREATED);
     }
 
+    @PostMapping("/bulk")
+    public ResponseEntity<Void> createSupplierBulk(@RequestBody List<Supplier> suppliers) {
+        for(Supplier supplier: suppliers)
+            supplierService.saveSupplier(supplier);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteSupplier(@PathVariable long id) {
         supplierService.deleteSupplier(id);
