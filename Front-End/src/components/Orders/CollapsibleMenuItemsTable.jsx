@@ -14,15 +14,21 @@ const CollapsibleMenuItemsTable = ({ menuItems }) => {
       <button onClick={toggleCollapse} className={styles.button}>
         {collapsed ? "Expand" : "Collapse"}
       </button>
+
       <table className={styles.Table} style={{ display: collapsed ? "none" : "table" }}>
         <thead>
           <tr>
-            <th>Menu Item</th>
-            <th>Unit Price</th>
-            <th>Quantity</th>
-            <th>Sub Total</th>
+            <th className={styles.table}>Menu Item</th>
+            <th className={styles.table}>Unit Price</th>
+            <th className={styles.table}>Quantity</th>
+            <th className={styles.table}>Sub Total</th>
           </tr>
         </thead>
+
+
+
+        
+        
         <tbody>
           {menuItems.map((menuitem) => (
             <tr key={menuitem.menuItem.id}>

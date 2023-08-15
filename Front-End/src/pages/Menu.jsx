@@ -3,19 +3,21 @@ import { MenuPanel } from "../components/menuPanel";
 import { MenuHandle } from "../components/MenuItems/MenuHandle";
 import React, { useState, useEffect, useRef } from "react";
 import styles from "../styles/Inventory/Inventory.module.scss";
-import { menuItemsData } from "../data/Menu";
+import { menuItemsData,newMenu } from "../data/Menu";
 import { fetchMenu } from "../services/Menu.service";
 import { MenuItemForm } from "../components/MenuItems/MenuItemForm";
 import { MenuEdit } from "../components/MenuItems/MenuEdit";
 
 export const Menu = () => {
-  const [menuItems, setMenuItems] = useState(menuItemsData);
+  const [menuItems, setMenuItems] = useState(newMenu);
   const [showForm, setShowForm] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
   const backgroundClick = useRef(null);
   const backgroundClickEdit = useRef(null);
+  const [shouldRefresh,setShouldRefresh] = useState(true)
 
   useEffect(() => {
+    if(shouldRefresh)
     handlefetchMenu();
   }, []);
 
@@ -23,7 +25,7 @@ export const Menu = () => {
     try {
       const response = await fetchMenu();
       setMenuItems(response);
-      // console.log(response);
+      console.log(response);
     } catch (error) {
       console.error("Error fetching reservatins:", error);
     }

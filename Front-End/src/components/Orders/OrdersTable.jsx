@@ -10,7 +10,7 @@ const OrdersTable = ({ orders, isActionable, isAcceptable, isRemovable }) => {
   const getStatusColor = (status) => {
     switch (status) {
       case "New":
-        return "#FEF9E7"; // Light Yellow
+        return "#DFECB3"; // Light Yellow
       case "Processing":
         return "#FBEEE6"; // Light Orange
       case "Ready":
@@ -50,11 +50,31 @@ const OrdersTable = ({ orders, isActionable, isAcceptable, isRemovable }) => {
         return "Serve";
       case "Dining":
         return "Complete";
+      case "Completed":
+          return "Completed"
       // Add more cases as needed
       default:
         return "Action";
     }
   };
+
+
+  const getNextOrderStatus= (orderStatus) => {
+    switch (orderStatus) {
+      case "New":
+        return "Processing";
+      case "Processing":
+        return "Ready";
+      case "Ready":
+        return "Dining";
+      case "Dining":
+        return "Completed";
+      
+      default:
+        return "Pending";
+    }
+  };
+
   // console.log(orders);
   return (
     <div className={classNames(styles.container)}>
@@ -102,7 +122,14 @@ const OrdersTable = ({ orders, isActionable, isAcceptable, isRemovable }) => {
           {isAcceptable && 
           <button
             className={classNames(styles.btn, getOrderButtonStyle(order.orderStatus))}
-            onClick={() => handleOrderAction(order)}
+
+            onClick={() => {
+              const newStatus = getNextOrderStatus(order.orderStatus);
+              upgradeOrder(order, newStatus,refresher);
+              
+            }}
+            disabled = {order.orderStatus==="Completed"}
+
           >
             {getOrderButtonText(order.orderStatus)}
           </button>
