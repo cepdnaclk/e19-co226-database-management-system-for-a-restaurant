@@ -109,7 +109,7 @@ const OrdersTable = ({ orders, isActionable, isAcceptable, isRemovable,refresher
 
         <td>{order.placementDate}</td>
         <td>{order.placementTime}</td>
-        <td>{order.amount}</td>
+        <td>Rs. {order.amount}.00</td>
         <td>{order.customer.phone[0]}</td>
         <td>{order.orderStatus}</td>
 

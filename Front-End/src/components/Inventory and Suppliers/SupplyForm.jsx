@@ -50,6 +50,7 @@ export const SupplyForm = ({ suppliers, ingredients, onClose }) => {
                 onChange={(input) => setIngredient(input.target.value)}
                 id="ingredient"
                 name="ingredient"
+                required = "true"
               >
                 <option disabled selected hidden></option>
                 {ingredients.map((ingredient) => (
@@ -67,6 +68,7 @@ export const SupplyForm = ({ suppliers, ingredients, onClose }) => {
                 onChange={(input) => setSupplier(input.target.value)}
                 id="supplier"
                 name="supplier"
+                required="requred"
               >
                 <option disabled selected hidden></option>
                 {suppliers.map((supplier) => (

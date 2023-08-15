@@ -1,4 +1,4 @@
-import { useState,useEffect} from "react";
+import { useState, useEffect } from "react";
 import { handleForm } from "../../services/Orders.service";
 import styles from "../../styles/Orders/OrderForm.module.scss";
 import { calPrice } from "../../utils";
@@ -6,7 +6,7 @@ import { fetchStaff } from "../../services/Staff.service";
 import { fetchCustomers } from "../../services/Customers.service";
 import { fetchMenu } from "../../services/Menu.service";
 
-export const OrderForm = ({ onClose,refresher}) => {
+export const OrderForm = ({ onClose, refresher }) => {
   const [customerId, setCustomerId] = useState(0);
   const [staffId, setStaffId] = useState(0);
   const [address, setAddress] = useState("");
@@ -14,38 +14,31 @@ export const OrderForm = ({ onClose,refresher}) => {
   const [selectedItems, setSelectedItems] = useState([]);
   const [itemQuantities, setItemQuantities] = useState({});
 
-  const [ customers,setCustomers] = useState([]);
-  const [ staff,setStaff] = useState([]);
+  const [customers, setCustomers] = useState([]);
+  const [staff, setStaff] = useState([]);
 
-  const[menuItems,setMenuItems] = useState([]);
+  const [menuItems, setMenuItems] = useState([]);
 
-  useEffect(()=>{
-    
-
+  useEffect(() => {
     const fetchData = async () => {
       const fetchedCustomers = await fetchCustomers();
-      const fetchedStaff =  await fetchStaff();
+      const fetchedStaff = await fetchStaff();
       const fetchedMenu = await fetchMenu();
       setCustomers(fetchedCustomers);
       setStaff(fetchedStaff);
       setMenuItems(fetchedMenu);
     };
-  
+
     fetchData();
-  },[])
+  }, []);
 
   console.log(customers);
   console.log(staff);
 
-
-  
   if (!Array.isArray(customers)) {
     console.error("Customers prop is not an array:", customers);
     return null; // or handle the error appropriately
   }
-
-  
-
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -59,12 +52,12 @@ export const OrderForm = ({ onClose,refresher}) => {
       })),
       address: address,
       number: number,
-      placementDate: null, // Format date as "YYYY-MM-DD"
-      placementTime: null, // Format time as "HH:mm"
+      placementDate: new Date(), // Format date as "YYYY-MM-DD"
+      placementTime: (new Date()).getHours+ ":" + (new Date()).getMinutes, // Format time as "HH:mm"
     };
 
     try {
-      const response = await handleForm(data,refresher); // Await the API call
+      const response = await handleForm(data, refresher); // Await the API call
       console.log("Response:", response);
       onClose();
       // Handle successful response here, if needed
@@ -85,7 +78,9 @@ export const OrderForm = ({ onClose,refresher}) => {
   };
 
   const handleItemRemove = (selectedItemId) => {
-    setSelectedItems(selectedItems.filter((item) => item.id !== selectedItemId));
+    setSelectedItems(
+      selectedItems.filter((item) => item.id !== selectedItemId)
+    );
   };
 
   return (
@@ -101,18 +96,14 @@ export const OrderForm = ({ onClose,refresher}) => {
               <select
                 value={customerId}
                 onChange={(event) => setCustomerId(event.target.value)}
+                required="requred"
               >
                 <option value={0}>Select a Customer</option>
-                {customers.map((customer) => 
-                  
-                  (
+                {customers.map((customer) => (
                   <option key={customer.id} value={customer.id}>
                     {customer.id} | {customer.firstName} | {customer.phone[0]}
                   </option>
-
-
-                )
-                )}
+                ))}
               </select>
             </div>
             <div className={styles.select}>
@@ -120,11 +111,13 @@ export const OrderForm = ({ onClose,refresher}) => {
               <select
                 value={staffId}
                 onChange={(event) => setStaffId(event.target.value)}
+                required="requred"
               >
                 <option value={0}>Select a Staff Member</option>
                 {staff.map((staffMember) => (
                   <option key={staffMember.id} value={staffMember.id}>
-                    {staffMember.id} | {staffMember.firstName}  {staffMember.lastName} | Position: {staffMember.position}
+                    {staffMember.id} | {staffMember.firstName}{" "}
+                    {staffMember.lastName} | Position: {staffMember.position}
                   </option>
                 ))}
               </select>
@@ -133,9 +126,12 @@ export const OrderForm = ({ onClose,refresher}) => {
               {/* <p>Select Item :</p> */}
               <select
                 defaultValue=""
-                onChange={(input) => handleItemAdd(parseInt(input.target.value, 10))}
+                onChange={(input) =>
+                  handleItemAdd(parseInt(input.target.value, 10))
+                }
                 id="item"
                 name="item"
+                required="requred"
               >
                 <option disabled value="">
                   Select an Item
@@ -150,7 +146,7 @@ export const OrderForm = ({ onClose,refresher}) => {
             <div className={styles.selectItems}>
               {selectedItems.map((item) => (
                 <div key={item.id} className={styles.showItems}>
-                  <p>{item.name} -{' '}</p>
+                  <p>{item.name} - </p>
                   <input
                     type="number"
                     min="1"
@@ -158,7 +154,10 @@ export const OrderForm = ({ onClose,refresher}) => {
                     value={itemQuantities[item.id] || parseInt(1)}
                     onChange={(e) => handleQuantityChange(e, item.id)}
                   />
-                  <button type="button" onClick={() => handleItemRemove(item.id)}>
+                  <button
+                    type="button"
+                    onClick={() => handleItemRemove(item.id)}
+                  >
                     X
                   </button>
                 </div>
@@ -182,18 +181,16 @@ export const OrderForm = ({ onClose,refresher}) => {
             </div> */}
             <div className={styles.select}>
               {/* <p>Price &emsp;&emsp;&ensp;:&ensp;</p> */}
-              <p className={styles.price}>Rs. {calPrice(selectedItems, itemQuantities)}.00</p>
+              <p className={styles.price}>
+                Rs. {calPrice(selectedItems, itemQuantities)}.00
+              </p>
             </div>
 
             <button type="submit" className={styles.button}>
               Submit Order
             </button>
-          
           </div>
-
-          
         </fieldset>
-
       </form>
     </div>
   );

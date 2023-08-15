@@ -64,6 +64,14 @@ export const ingredients_sample = [
       }
 ]
 
+export const null_inventory = [{
+  id: null,
+  name: null,
+  quantity: null,
+  quantity_type: null,
+  description: null,
+}]
+
 export const suppliers_sample = [
   {
     id: 1,

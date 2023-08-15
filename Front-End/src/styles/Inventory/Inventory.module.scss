@@ -123,6 +123,7 @@
   border-radius: 1.15rem;
   width: 11rem;
   margin-bottom: -1em;
+  color: white;
   cursor: pointer;
   &:hover{
     background-color: black;
@@ -141,5 +142,17 @@
   &:hover{
     background-color: darken($waitingColor, $amount: 25);
     border-color: darken($waitingColor, $amount: 25);
+  }
+}
+
+.disabledText{
+  align-items: left;
+  justify-content: left;
+  margin: 1rem;
+  p {
+    margin: 2rem;
+    font: 1em sans-serif;
+    font-size: 1.1em;
+    color: darken($disabledTextColor, $amount: 5);
   }
 }
