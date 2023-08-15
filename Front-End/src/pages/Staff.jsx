@@ -6,17 +6,25 @@ import styles from "../styles/Reservation/Reservations.module.scss";
 import {staffData} from "../data/Staff";
 import { fetchStaff } from "../services/Staff.service";
 
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchStaffMembers } from '../actions/staffActions'; // Import fetchStaffMembers action
+
+
 export const Staff = () => {
-  const [staff, setStaff] = useState(staffData);
+  const staff = useSelector(state => state.staff);
   const [shouldRefresh,setShouldRefresh] = useState(true);
+
+  const dispatch = useDispatch();
   console.log(staff);
 
   useEffect(() => {
     if(shouldRefresh){
-      handlefetchStaff();
-      setShouldRefresh(false);    }
-    
-  }, [shouldRefresh]);
+      dispatch(fetchStaffMembers());
+      setShouldRefresh(false); 
+    }
+     
+  }, [dispatch,shouldRefresh]);
+
 
   const handlefetchStaff = async () => {
     try {

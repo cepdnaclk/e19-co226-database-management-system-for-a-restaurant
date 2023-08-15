@@ -39,6 +39,13 @@ public class IngredientController {
         return ResponseEntity.status(HttpStatus.CREATED).body(savedIngredient);
     }
 
+    @PostMapping("/bulk")
+    public ResponseEntity<Void> addIngredientsBulk(@RequestBody List<IngredientCreateRequest> ingredients) {
+        for(IngredientCreateRequest ingredient:ingredients)
+            ingredientService.createIngredient(ingredient);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<Ingredient> updateIngredient(@PathVariable Long id, @RequestBody Ingredient updatedIngredient) {
         Ingredient existingIngredient = ingredientService.findById(id);

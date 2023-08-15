@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface OrderRepository extends JpaRepository<Order, Long> {
 
@@ -28,4 +29,14 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
             "LEFT JOIN FETCH m.ingredients i " +
             "ORDER BY o.placementDate DESC, o.placementTime DESC")
     List<Order> findAll();
+
+    @Query("SELECT DISTINCT o FROM Order o " +
+            "JOIN FETCH o.customer c " +
+            "JOIN FETCH o.staff s " +
+            "LEFT JOIN FETCH o.menuItems mi " +
+            "LEFT JOIN FETCH mi.menuItem m " +
+            "LEFT JOIN FETCH m.ingredients i " +
+            "WHERE o.id = :orderId")
+    Optional<Order> findByIdWithAssociations(@Param("orderId") Long orderId);
+
 }

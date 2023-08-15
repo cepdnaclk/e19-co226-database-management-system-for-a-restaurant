@@ -2,7 +2,7 @@ package com.kassadinx.restaurantdbinterface.controller;
 import com.kassadinx.restaurantdbinterface.dto.MenuItemRequest;
 import com.kassadinx.restaurantdbinterface.model.MenuItem;
 import com.kassadinx.restaurantdbinterface.service.MenuItemService;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,6 +27,16 @@ public class MenuItemController {
         MenuItem menuItem = menuItemService.createMenuItem(menuItemRequest);
         return new ResponseEntity<>(menuItem, HttpStatus.CREATED);
     }
+
+    @PostMapping("/bulk")
+    public ResponseEntity<Void> createMenuItems(@RequestBody List<MenuItemRequest> menuItemRequests) {
+        for (MenuItemRequest menuItemRequest : menuItemRequests) {
+            menuItemService.createMenuItem(menuItemRequest);
+        }
+
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
 
     @GetMapping
     public ResponseEntity<List<MenuItem>> getAllMenuItems(){

@@ -51,7 +51,7 @@ const MenuTable = ({ MenuItems }) => {
   <ul>
     {MenuItem.ingredients.map((item, index) => (
       <li key={index}>
-        {item.ingredient.name} - {item.quantity} {item.ingredient.quantity_type}
+        {item.ingredient.name} - {item.quantity} {item.ingredient.quantityType}
       </li>
     ))}
   </ul>

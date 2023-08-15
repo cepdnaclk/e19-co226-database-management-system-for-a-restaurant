@@ -36,7 +36,7 @@ export const SupplyForm = ({ suppliers, ingredients, onClose }) => {
   return (
     <div className={styles.card}>
         {/* <button className={styles.close_button}>X</button> */}
-      <form onSubmit={onClose}>
+      <form onSubmit={handleSubmit}>
         <fieldset>
           <legend className={styles.legend}>
             <strong>Add a Supply Record</strong>
@@ -105,7 +105,7 @@ export const SupplyForm = ({ suppliers, ingredients, onClose }) => {
                 required="requred"
               />
             </div>
-            <button type="submit" className={styles.button} onClick={handleSubmit()}>
+            <button type="submit" className={styles.button} >
               Add Supply Record
             </button>
           </div>
