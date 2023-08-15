@@ -125,6 +125,7 @@ public class OrderService {
     public Order makeOrderPaid(Long id){
         Order order = orderRepository.findById(id).get();
         order.setPaymentStatus("Paid");
+        order.setCompletionDate(LocalDate.now());
         return orderRepository.save(order);
 
     }
