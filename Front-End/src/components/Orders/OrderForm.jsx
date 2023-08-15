@@ -52,8 +52,8 @@ export const OrderForm = ({ onClose, refresher }) => {
       })),
       address: address,
       number: number,
-      placementDate: null, // Format date as "YYYY-MM-DD"
-      placementTime: null, // Format time as "HH:mm"
+      placementDate: new Date(), // Format date as "YYYY-MM-DD"
+      placementTime: (new Date()).getHours+ ":" + (new Date()).getMinutes, // Format time as "HH:mm"
     };
 
     try {

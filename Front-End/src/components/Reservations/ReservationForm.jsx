@@ -1,20 +1,42 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { handleForm } from "../../services/Reservations.service";
 import styles from "../../styles/Reservation/ReservationForm.module.scss";
+import { fetchStaff } from "../../services/Staff.service";
+import { fetchCustomers } from "../../services/Customers.service";
 
 
-
-export const ReservationForm = ({ areas, onClose }) => {
+export const ReservationForm = ({ areas, onClose, refresher }) => {
   const [address, setAddress] = useState("");
+  const [customerId, setCustomerId] = useState(0);
+  const [staffId, setStaffId] = useState(0);
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
   const [selectedAreas, setSelectedAreas] = useState([]);
+  const [date, setDate] = useState("2023-08-08");
+  const [startTime, setStartTime] = useState("08:00");
+  const [endTime, setEndTime] = useState("10:00");
+  const [customers, setCustomers] = useState([]);
+  const [staff, setStaff] = useState([]);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const fetchedCustomers = await fetchCustomers();
+      const fetchedStaff = await fetchStaff();
+      setCustomers(fetchedCustomers);
+      setStaff(fetchedStaff);
+    };
+
+    fetchData();
+  }, []);
+  
+  
   const handleSubmit = (event) => {
     // event.preventDefault();
 
     const data = {
       listofAreas: selectedAreas,
+      customerId: customerId,
+      staffId: staffId,
       address: address,
       number: number,
       date: new Date(), // Replace 'date' with the actual date value
@@ -80,35 +102,63 @@ export const ReservationForm = ({ areas, onClose }) => {
             ))}
           </div>
           <div className={styles.select}>
-              {/* <p>Customer Name :</p> */}
-              <input
-                type="text"
-                value={name}
-                onChange={(input) => setName(input.target.value)}
-                placeholder="Customer Name"
+              {/* <p>Select Customer:</p> */}
+              <select
+                value={customerId}
+                onChange={(event) => setCustomerId(event.target.value)}
                 required="requred"
-              />
+              >
+                <option value={0}>Select a Customer</option>
+                {customers.map((customer) => (
+                  <option key={customer.id} value={customer.id}>
+                    {customer.firstName} | {customer.phone[0]}
+                  </option>
+                ))}
+              </select>
             </div>
+
             <div className={styles.select}>
-              {/* <p>Address &ensp;&ensp;:</p> */}
-              <input
-                type="text"
-                value={address}
-                onChange={(input) => setAddress(input.target.value)}
-                placeholder="Home Address"
+              {/* <p>Select Staff:</p> */}
+              <select
+                value={staffId}
+                onChange={(event) => setStaffId(event.target.value)}
                 required="requred"
-              />
+              >
+                <option value={0}>Select a Staff Member</option>
+                {staff.map((staffMember) => (
+                  <option key={staffMember.id} value={staffMember.id}>
+                    {staffMember.firstName}{" "}
+                    {staffMember.lastName} | Position: {staffMember.position}
+                  </option>
+                ))}
+              </select>
             </div>
+
             <div className={styles.select}>
-              {/* <p>Telephone :</p> */}
-              <input
-                type="text"
-                value={number}
-                onChange={(input) => setNumber(input.target.value)}
-                placeholder="Telephone Number"
-                required="requred"
+              <input 
+                type="date"
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+                placeholder="Reserving Date"
               />
             </div>
+
+            <div className={styles.select}>
+              <input 
+                type="time"
+                value={startTime}
+                onChange={(e) => setDate(e.target.value)}
+                placeholder="Strating Time"
+              />
+              <p> to </p>
+              <input 
+                type="time"
+                value={endTime}
+                onChange={(e) => setDate(e.target.value)}
+                EndingTime
+              />
+            </div>
+
             <button type="submit" className={styles.button} onClick={handleSubmit()}>
               Make Reservation
             </button>
