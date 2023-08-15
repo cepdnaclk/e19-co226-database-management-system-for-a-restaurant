@@ -46,9 +46,9 @@ export const StaffCard = ({ Data }) => {
           onClick={() => toggleCard(index)}
         >
           <div className={styles.card_front}>
-            <img src={Data.image} alt={Data.name} />
+            <img src={Data.imageUrl} alt={Data.firstName} />
             <div className={styles.staff_info}>
-              <h2>{Data.name}</h2>
+              <h2>{Data.firstName} {Data.lastName}</h2>
               <p>{Data.position}</p>
             </div>
           </div>

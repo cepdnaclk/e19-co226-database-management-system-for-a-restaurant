@@ -28,6 +28,14 @@ public class Staff {
     private float salary;
     private String position;
 
+    private String category;
+
+    private String imageUrl;
+
+    private String assignedWork;
+
+    private String description;
+
     private LocalDate startDate;
     @Column(unique = true)
     private String email;
