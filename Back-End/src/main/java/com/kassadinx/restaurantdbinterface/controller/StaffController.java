@@ -1,11 +1,13 @@
 package com.kassadinx.restaurantdbinterface.controller;
 
+import com.kassadinx.restaurantdbinterface.dto.StaffCreateRequest;
 import com.kassadinx.restaurantdbinterface.model.Staff;
 import com.kassadinx.restaurantdbinterface.service.StaffService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -34,9 +36,49 @@ public class StaffController {
     }
 
     @PostMapping
-    public ResponseEntity<Staff> addStaff(@RequestBody Staff staff) {
+    public ResponseEntity<Staff> addStaff(@RequestBody StaffCreateRequest staffCreateRequest) {
+        Staff staff = new Staff();
+
+        //Mapping
+        staff.setCategory(staffCreateRequest.getCategory());
+        staff.setFirstName(staffCreateRequest.getFirstName());
+        staff.setLastName(staffCreateRequest.getLastName());
+        staff.setPosition(staffCreateRequest.getPosition());
+        staff.setAssignedWork(staffCreateRequest.getAssignedWork());
+        staff.setDescription(staffCreateRequest.getDescription());
+        staff.setImageUrl(staffCreateRequest.getImageUrl());
+        staff.setSalary(staffCreateRequest.getSalary());
+        staff.setEmail(staffCreateRequest.getEmail());
+        staff.setPhone(staffCreateRequest.getPhone());
+        staff.setAddress(staffCreateRequest.getAddress());
+        staff.setStartDate(LocalDate.now());
+
         Staff savedStaff = staffService.saveStaff(staff);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedStaff);
+    }
+    @PostMapping("/bulk")
+    public ResponseEntity<Void> addMultipleStaff(@RequestBody List<StaffCreateRequest> staffCreateRequests) {
+        for (StaffCreateRequest staffCreateRequest : staffCreateRequests) {
+            Staff staff = new Staff();
+
+            // Mapping
+            staff.setCategory(staffCreateRequest.getCategory());
+            staff.setFirstName(staffCreateRequest.getFirstName());
+            staff.setLastName(staffCreateRequest.getLastName());
+            staff.setPosition(staffCreateRequest.getPosition());
+            staff.setAssignedWork(staffCreateRequest.getAssignedWork());
+            staff.setDescription(staffCreateRequest.getDescription());
+            staff.setImageUrl(staffCreateRequest.getImageUrl());
+            staff.setSalary(staffCreateRequest.getSalary());
+            staff.setEmail(staffCreateRequest.getEmail());
+            staff.setPhone(staffCreateRequest.getPhone());
+            staff.setAddress(staffCreateRequest.getAddress());
+            staff.setStartDate(LocalDate.now());
+
+            staffService.saveStaff(staff);
+        }
+
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @PutMapping("/{id}")
