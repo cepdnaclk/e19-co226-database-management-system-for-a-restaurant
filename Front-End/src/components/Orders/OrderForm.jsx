@@ -69,7 +69,7 @@ export const OrderForm = ({ onClose, refresher }) => {
     };
 
     try {
-      handleForm(data, refresher); // Await the API call
+      dispatch(createOrder(data, refresher)); // Await the API call
       
       onClose();
       // Handle successful response here, if needed
