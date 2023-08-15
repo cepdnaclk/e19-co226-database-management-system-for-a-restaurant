@@ -7,19 +7,27 @@ import { menuItemsData,newMenu } from "../data/Menu";
 import { fetchMenu } from "../services/Menu.service";
 import { MenuItemForm } from "../components/MenuItems/MenuItemForm";
 import { MenuEdit } from "../components/MenuItems/MenuEdit";
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchMenuItems } from '../actions/menuActions'; // Import your fetchMenuItems action
 
 export const Menu = () => {
-  const [menuItems, setMenuItems] = useState(newMenu);
+  // const [menuItems, setMenuItems] = useState(newMenu);
   const [showForm, setShowForm] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
   const backgroundClick = useRef(null);
   const backgroundClickEdit = useRef(null);
   const [shouldRefresh,setShouldRefresh] = useState(true)
 
+  const dispatch = useDispatch();
+  const menuItems = useSelector(state => state.menu); // Access menu items from Redux state
+
+
   useEffect(() => {
-    if(shouldRefresh)
-    handlefetchMenu();
-  }, []);
+    if (shouldRefresh) {
+      dispatch(fetchMenuItems());
+      setShouldRefresh(false); 
+    }
+  }, [shouldRefresh, dispatch]);
 
   const handlefetchMenu = async () => {
     try {
