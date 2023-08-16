@@ -7,7 +7,7 @@
   transform: translate(-50%, -50%);
   z-index: 9996;
   margin-left: 6rem;
-  width: 320px;
+  width: 340px;
   background-color: white;
   border-radius: 30px;
   box-shadow: 0px 6px 23px -6px rgba(0, 0, 0, 0.1);
@@ -134,7 +134,7 @@
 
 .selectItems{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 0.3rem;
@@ -142,18 +142,25 @@
 }
 
 .showItems{
-  display: flex;
-flex-direction: row;
-flex-wrap: wrap;
-justify-content: center;
+  display: grid;
+  width: 100%;
+  padding: 5px 0;
+  padding-left: 20px;
+// flex-direction: row;
+// flex-wrap: wrap;
+grid-template-columns: auto 50px 40px;
+gap: 10px;
+// justify-content: center;
 align-items: center;
 font: 0.8em sans-serif;
 font-weight: 600;
 color: #794204d8;
+text-align: left;
 input[type="number"] {
-  width: 2.5rem;
+  width: 3.5rem;
   padding: 0.5rem;
   font-weight: 600;
+  text-align: center;
   margin: 0 5px;
   background-color: rgb(255, 255, 255);
   color: #794204d8;
@@ -166,14 +173,19 @@ button{
   border-radius: 1em;
   background-color: inherit;
   color: rgb(227, 104, 104);
+  width: 25px;
   padding: 0.3rem 0.5rem;
   scale: 0.8;
-
+  margin: 0;
   &:hover {
     background-color: $cancelColor;
     color: white;
   }
 }
+}
+
+.showItems:not(:first-child){
+  border-top: 1px solid #ccc;
 }
 
 .item_button {
