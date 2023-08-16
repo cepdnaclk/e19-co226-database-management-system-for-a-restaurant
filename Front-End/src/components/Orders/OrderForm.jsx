@@ -4,8 +4,15 @@ import styles from "../../styles/Orders/OrderForm.module.scss";
 import { calPrice } from "../../utils";
 import { fetchStaff } from "../../services/Staff.service";
 import { fetchCustomers } from "../../services/Customers.service";
+
 import { fetchMenu } from "../../services/Menu.service";
 import { CustomerForm } from "../customer/CustomerForm";
+
+
+import { useSelector ,useDispatch} from "react-redux";
+import { fetchStaffMembers } from "../../actions/staffActions";
+import { fetchMenuItems } from "../../actions/menuActions";
+import { createOrder } from "../../actions/orderActions"
 
 export const OrderForm = ({ onClose, refresher }) => {
   const [customerId, setCustomerId] = useState(0);
@@ -16,18 +23,29 @@ export const OrderForm = ({ onClose, refresher }) => {
   const [itemQuantities, setItemQuantities] = useState({});
   const [showCustomerForm, setShowCustomerForm] = useState(false);
   const [customers, setCustomers] = useState([]);
-  const [staff, setStaff] = useState([]);
+  const staff = useSelector(state => state.staff);
 
-  const [menuItems, setMenuItems] = useState([]);
+  const menuItems = useSelector(state=>state.menu);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    
+      dispatch(fetchStaffMembers());
+      dispatch(fetchMenuItems());
+      
+    
+     
+  }, [dispatch]);
 
   useEffect(() => {
     const fetchData = async () => {
       const fetchedCustomers = await fetchCustomers();
-      const fetchedStaff = await fetchStaff();
-      const fetchedMenu = await fetchMenu();
+      
+      
       setCustomers(fetchedCustomers);
-      setStaff(fetchedStaff);
-      setMenuItems(fetchedMenu);
+      
+      
     };
 
     fetchData();
@@ -36,10 +54,7 @@ export const OrderForm = ({ onClose, refresher }) => {
   console.log(customers);
   console.log(staff);
 
-  if (!Array.isArray(customers)) {
-    console.error("Customers prop is not an array:", customers);
-    return null; // or handle the error appropriately
-  }
+  
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -53,13 +68,15 @@ export const OrderForm = ({ onClose, refresher }) => {
       })),
       address: address,
       number: number,
+
       placementDate: new Date(), // Format date as "YYYY-MM-DD"
       placementTime: new Date().getHours + ":" + new Date().getMinutes, // Format time as "HH:mm"
+
     };
 
     try {
-      const response = await handleForm(data, refresher); // Await the API call
-      console.log("Response:", response);
+      dispatch(createOrder(data, refresher)); // Await the API call
+      
       onClose();
       // Handle successful response here, if needed
     } catch (error) {

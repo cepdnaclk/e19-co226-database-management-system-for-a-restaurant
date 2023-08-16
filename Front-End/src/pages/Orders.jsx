@@ -14,11 +14,16 @@ import { Customers } from "../data/Customers";
 import { staffData } from "../data/Staff";
 import { fetchCustomers } from "../services/Customers.service";
 import {fetchStaff} from "../services/Staff.service";
+import { useDispatch,useSelector } from "react-redux";
+import { fetchOrdersList } from "../actions/orderActions";
 
 export const Orders = () => {
+
+  const dispatch = useDispatch();
+  const orders = useSelector(state => state.orders);
   const [isWaiting, setIsWaiting] = useState(false);
   const [waitings, setWaitings] = useState(OrdersTrial);
-  const [orders, setOrders] = useState(OrdersTrial);
+  
 
   const [menuItems, setMenuItems] = useState([]);
   const [showForm, setShowForm] = useState(false);
@@ -26,18 +31,19 @@ export const Orders = () => {
   const [shouldRefresh ,setShouldRefresh] = useState(true)
 
   const handleRefreshData = () => {
-    handlefetchOrders();
+    
     handlefetchWaitings();
     setShouldRefresh(false);
   };
 
   useEffect(() => {
     if (shouldRefresh) {
+      dispatch(fetchOrdersList());
       handleRefreshData();
     }
 
 
-  }, [shouldRefresh]);
+  }, [shouldRefresh,dispatch]);
 
   useEffect(() => {
     document.addEventListener("click", handleBackgroundClick);
@@ -52,15 +58,15 @@ export const Orders = () => {
     }
   };
 
-  const handlefetchOrders = async () => {
-    try {
-      const response = await fetchOrders();
-      setOrders(response);
-      // console.log(response);
-    } catch (error) {
-      console.error("Error fetching reservatins:", error);
-    }
-  };
+  // const handlefetchOrders = async () => {
+  //   try {
+  //     const response = await fetchOrders();
+  //     setOrders(response);
+  //     // console.log(response);
+  //   } catch (error) {
+  //     console.error("Error fetching reservatins:", error);
+  //   }
+  // };
   const handlefetchWaitings = async () => {
     try {
       const response = await fetchWaitingOrders();

@@ -102,9 +102,11 @@ public class OrderService {
         circularUpdatedOrder.setAmount(totalAmount);
 
         // Save the updated order entity to the database
-        orderRepository.save(circularUpdatedOrder);
+        Order newOrder =  orderRepository.save(circularUpdatedOrder);
 
-        return circularUpdatedOrder;
+        return orderRepository.findByIdWithAssociations(newOrder.getId()).get();
+
+
     }
 
     public void deleteOrder(Long id) {
