@@ -23,6 +23,7 @@ export const OrderForm = ({ onClose, CustomerForm, refresher }) => {
   const [itemQuantities, setItemQuantities] = useState({});
   const [showCustomerForm, setShowCustomerForm] = useState(false);
   const [customers, setCustomers] = useState([]);
+  
   const staff = useSelector(state => state.staff);
 
   const menuItems = useSelector(state=>state.menu);
@@ -87,18 +88,22 @@ export const OrderForm = ({ onClose, CustomerForm, refresher }) => {
 
   const handleItemAdd = (selectedItemId) => {
     const selectedItem = menuItems.find((item) => item.id === selectedItemId);
-    itemQuantities[item.id] = 1;
     setSelectedItems([...selectedItems, selectedItem]);
+    setItemQuantities({ ...itemQuantities, [selectedItemId]: parseInt(1)});
+    
+    
   };
 
   const handleQuantityChange = (event, itemId) => {
     setItemQuantities({ ...itemQuantities, [itemId]: event.target.value });
+    
   };
 
   const handleItemRemove = (selectedItemId) => {
     setSelectedItems(
       selectedItems.filter((item) => item.id !== selectedItemId)
     );
+    
   };
 
   const ShowCustomerForm = () =>{
@@ -160,8 +165,10 @@ export const OrderForm = ({ onClose, CustomerForm, refresher }) => {
               {/* <p>Select Item :</p> */}
               <select
                 defaultValue=""
-                onChange={(input) =>
-                  handleItemAdd(parseInt(input.target.value, 10))
+                onChange={(input) =>{
+                  handleItemAdd(parseInt(input.target.value, 10));
+                }
+                  
                 }
                 id="item"
                 name="item"
@@ -180,7 +187,7 @@ export const OrderForm = ({ onClose, CustomerForm, refresher }) => {
             <div className={styles.selectItems}>
               {selectedItems.map((item) => (
                 <div key={item.id} className={styles.showItems}>
-                  <p>{item.name} - </p>
+                  <p>{item.name}</p>
                   <input
                     type="number"
                     min="1"
