@@ -8,11 +8,10 @@ import { fetchCustomers } from "../../services/Customers.service";
 import { fetchMenu } from "../../services/Menu.service";
 import { CustomerForm } from "../customer/CustomerForm";
 
-
-import { useSelector ,useDispatch} from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { fetchStaffMembers } from "../../actions/staffActions";
 import { fetchMenuItems } from "../../actions/menuActions";
-import { createOrder } from "../../actions/orderActions"
+import { createOrder } from "../../actions/orderActions";
 
 export const OrderForm = ({ onClose, CustomerForm, refresher }) => {
   const [customerId, setCustomerId] = useState(0);
@@ -23,30 +22,25 @@ export const OrderForm = ({ onClose, CustomerForm, refresher }) => {
   const [itemQuantities, setItemQuantities] = useState({});
   const [showCustomerForm, setShowCustomerForm] = useState(false);
   const [customers, setCustomers] = useState([]);
+
   
   const staff = useSelector(state => state.staff);
 
-  const menuItems = useSelector(state=>state.menu);
+
+  const menuItems = useSelector((state) => state.menu);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    
-      dispatch(fetchStaffMembers());
-      dispatch(fetchMenuItems());
-      
-    
-     
+    dispatch(fetchStaffMembers());
+    dispatch(fetchMenuItems());
   }, [dispatch]);
 
   useEffect(() => {
     const fetchData = async () => {
       const fetchedCustomers = await fetchCustomers();
-      
-      
+
       setCustomers(fetchedCustomers);
-      
-      
     };
 
     fetchData();
@@ -54,8 +48,6 @@ export const OrderForm = ({ onClose, CustomerForm, refresher }) => {
 
   console.log(customers);
   console.log(staff);
-
-  
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -69,15 +61,13 @@ export const OrderForm = ({ onClose, CustomerForm, refresher }) => {
       })),
       address: address,
       number: number,
-
-      placementDate: "",// Format date as "YYYY-MM-DD"
+      placementDate: "", // Format date as "YYYY-MM-DD"
       placementTime: "",
-
     };
 
     try {
       dispatch(createOrder(data, refresher)); // Await the API call
-      
+
       onClose();
       // Handle successful response here, if needed
     } catch (error) {
@@ -106,9 +96,9 @@ export const OrderForm = ({ onClose, CustomerForm, refresher }) => {
     
   };
 
-  const ShowCustomerForm = () =>{
+  const ShowCustomerForm = () => {
     CustomerForm = true;
-  }
+  };
 
   return (
     <div className={styles.card}>
@@ -129,17 +119,16 @@ export const OrderForm = ({ onClose, CustomerForm, refresher }) => {
                 <option value="addCustomer">Add a Customer</option>
                 {customers.map((customer) => (
                   <option key={customer.id} value={customer.id}>
-                    {customer.id} | {customer.firstName} | {customer.phone[0]}
+                    {customer.firstName} | {customer.phone[0]}
                   </option>
                 ))}
               </select>
             </div>
             <div className={styles.select}>
               {customerId === "addCustomer" && (
-                <button className={styles.item_button}
-                  onClick={() => 
-                    CustomerForm()
-                  }
+                <button
+                  className={styles.item_button}
+                  onClick={() => CustomerForm()}
                 >
                   Add a Customer
                 </button>
@@ -155,8 +144,8 @@ export const OrderForm = ({ onClose, CustomerForm, refresher }) => {
                 <option value={0}>Select a Staff Member</option>
                 {staff.map((staffMember) => (
                   <option key={staffMember.id} value={staffMember.id}>
-                    {staffMember.id} | {staffMember.firstName}{" "}
-                    {staffMember.lastName} | Position: {staffMember.position}
+                    {staffMember.firstName}{" "}
+                    {staffMember.lastName} | {staffMember.position}
                   </option>
                 ))}
               </select>

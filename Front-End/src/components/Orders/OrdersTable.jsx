@@ -2,7 +2,7 @@ import styles from "../../styles/Orders/OrdersTable.module.scss";
 import { MdClose, MdCheck } from "react-icons/md";
 import React from "react";
 import classNames from "classnames";
-import { getTimeString, getDateInFormat } from "../../utils";
+import { getTimeString, getDateInFormat, convertTimeToFormat } from "../../utils";
 import CollapsibleMenuItemsTable from "./CollapsibleMenuItemsTable";
 import {payOrder, upgradeOrder,deleteOrder} from "../../services/Orders.service";
 
@@ -107,8 +107,8 @@ const OrdersTable = ({ orders, isActionable, isAcceptable, isRemovable,refresher
         <td>{order.customer.firstName} {order.customer.lastName}</td>
         <td>{order.staff.firstName} {order.staff.lastName}</td>
 
-        <td>{order.placementDate}</td>
-        <td>{order.placementTime}</td>
+        <td>{getDateInFormat(new Date(order.placementDate))}</td>
+        <td>{getTimeString(convertTimeToFormat(order.placementTime))}</td>
         <td>Rs. {order.amount}.00</td>
         <td>{order.customer.phone[0]}</td>
         <td>{order.orderStatus}</td>
