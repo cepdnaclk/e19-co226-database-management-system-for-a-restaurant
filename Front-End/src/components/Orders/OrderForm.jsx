@@ -14,7 +14,7 @@ import { fetchStaffMembers } from "../../actions/staffActions";
 import { fetchMenuItems } from "../../actions/menuActions";
 import { createOrder } from "../../actions/orderActions"
 
-export const OrderForm = ({ onClose, refresher }) => {
+export const OrderForm = ({ onClose, CustomerForm, refresher }) => {
   const [customerId, setCustomerId] = useState(0);
   const [staffId, setStaffId] = useState(0);
   const [address, setAddress] = useState("");
@@ -101,6 +101,10 @@ export const OrderForm = ({ onClose, refresher }) => {
     );
   };
 
+  const ShowCustomerForm = () =>{
+    CustomerForm = true;
+  }
+
   return (
     <div className={styles.card}>
       <form onSubmit={handleSubmit}>
@@ -127,10 +131,10 @@ export const OrderForm = ({ onClose, refresher }) => {
             </div>
             <div className={styles.select}>
               {customerId === "addCustomer" && (
-                <button
-                  onClick={() => {
-                    setShowCustomerForm(true);
-                  }}
+                <button className={styles.item_button}
+                  onClick={() => 
+                    CustomerForm()
+                  }
                 >
                   Add a Customer
                 </button>
@@ -222,13 +226,6 @@ export const OrderForm = ({ onClose, refresher }) => {
           </div>
         </fieldset>
       </form>
-      {showCustomerForm && (
-        <CustomerForm
-          onClose={() => {
-            showCustomerForm(false);
-          }}
-        />
-      )}
     </div>
   );
 };
