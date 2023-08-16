@@ -112,7 +112,7 @@ export const OrderForm = ({ onClose, CustomerForm, refresher }) => {
                 <option value="addCustomer">Add a Customer</option>
                 {customers.map((customer) => (
                   <option key={customer.id} value={customer.id}>
-                    {customer.id} | {customer.firstName} | {customer.phone[0]}
+                    {customer.firstName} | {customer.phone[0]}
                   </option>
                 ))}
               </select>
@@ -137,8 +137,8 @@ export const OrderForm = ({ onClose, CustomerForm, refresher }) => {
                 <option value={0}>Select a Staff Member</option>
                 {staff.map((staffMember) => (
                   <option key={staffMember.id} value={staffMember.id}>
-                    {staffMember.id} | {staffMember.firstName}{" "}
-                    {staffMember.lastName} | Position: {staffMember.position}
+                    {staffMember.firstName}{" "}
+                    {staffMember.lastName} | {staffMember.position}
                   </option>
                 ))}
               </select>
