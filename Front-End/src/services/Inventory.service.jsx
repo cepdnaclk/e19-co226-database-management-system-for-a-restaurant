@@ -4,7 +4,7 @@ import { API } from "./BaseApi";
 import { authHeader } from "./auth_header";
 import { ingredients_sample, suppliers_sample, null_inventory } from "../data/InventoryAndSuppliers";
 
-const API_URL = "http://localhost:8080/api/v1";
+const API_URL = API;
 
 export const fetchIngredients = async () => {
   try {
