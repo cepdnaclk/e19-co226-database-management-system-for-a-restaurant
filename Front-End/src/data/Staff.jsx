@@ -2,7 +2,7 @@ export const staffData = [
   {
     id: 1,
     firstName: "John Smith",
-    lastName:"Restaurant Guy",
+    lastName:"",
     category: "Directors",
     position: "Chairman",
     assignedWork: "Overseeing operations and strategic planning",
@@ -14,7 +14,7 @@ export const staffData = [
   {
     id: 2,
     firstName: "Emile Johnson",
-    lastName:"Restaurant Guy",
+    lastName:"",
     category: "Directors",
     position: "Director of Marketing",
     assignedWork: "Developing marketing strategies and campaigns",
@@ -26,7 +26,7 @@ export const staffData = [
   {
     id: 3,
     firstName: "Michael Williams",
-    lastName:"Restaurant Guy",
+    lastName:"",
     category: "Directors",
     position: "Director of Financial",
     assignedWork: "Managing day-to-day restaurant operations",
@@ -39,7 +39,7 @@ export const staffData = [
     id: 4,
     category: "Managers",
     firstName: "Samantha Brown",
-    lastName:"Restaurant Guy",
+    lastName:"",
     position: "Restaurant Manager",
     assignedWork: "Supervising staff and ensuring high-quality service",
     description:
@@ -51,7 +51,7 @@ export const staffData = [
     id: 5,
     category: "Managers",
     firstName: "Andrew Wilson",
-    lastName:"Restaurant Guy",
+    lastName:"",
     position: "General Manager",
     assignedWork: "Overseeing overall restaurant operations",
     description:
@@ -63,7 +63,7 @@ export const staffData = [
     id: 6,
     category: "Managers",
     firstName: "Sophie Turner",
-    lastName:"Restaurant Guy",
+    lastName:"",
     position: "Assistant Manager",
     assignedWork: "Assisting in managing staff and service quality",
     description:
@@ -75,7 +75,7 @@ export const staffData = [
     id: 7,
     category: "Managers",
     firstName: "Ryan Mitchell",
-    lastName:"Restaurant Guy",
+    lastName:"",
     position: "Shift Manager",
     assignedWork: "Managing shifts and ensuring efficient operations",
     description:
@@ -87,7 +87,7 @@ export const staffData = [
     id: 8,
     category: "Chefs",
     firstName: "Daniel Miller",
-    lastName:"Restaurant Guy",
+    lastName:"",
     position: "Head Chef",
     assignedWork: "Creating innovative and delicious dishes",
     description: "Chef Daniel Miller brings culinary artistry to every plate.",
@@ -98,7 +98,7 @@ export const staffData = [
     id: 9,
     category: "Chefs",
     firstName: "Sophia Lee",
-    lastName:"Restaurant Guy",
+    lastName:"",
     position: "Pastry Chef",
     assignedWork: "Crafting delectable desserts and treats",
     description:
@@ -110,7 +110,7 @@ export const staffData = [
     id: 10,
     category: "Chefs",
     firstName: "David Clark",
-    lastName:"Restaurant Guy",
+    lastName:"",
     position: "Sous Chef",
     assignedWork: "Assisting the head chef in kitchen operations",
     description: "Sous Chef David Clark is a master at culinary coordination.",
@@ -121,7 +121,7 @@ export const staffData = [
     id: 11,
     category: "Chefs",
     firstName: "Isabella Garcia",
-    lastName:"Restaurant Guy",
+    lastName:"",
     position: "Chef de Partie",
     assignedWork: "Leading a specific section of the kitchen",
     description:
@@ -133,7 +133,7 @@ export const staffData = [
     id: 12,
     category: "Chefs",
     firstName: "William Johnson",
-    lastName:"Restaurant Guy",
+    lastName:"",
     position: "Line Cook",
     assignedWork: "Preparing and cooking dishes to perfection",
     description:
@@ -145,7 +145,7 @@ export const staffData = [
     id: 13,
     category: "Waiters",
     firstName: "Liam Wilson",
-    lastName:"Restaurant Guy",
+    lastName:"",
     position: "Senior Waiter",
     assignedWork:
       "Attending to guests and ensuring a memorable dining experience",
@@ -158,7 +158,7 @@ export const staffData = [
     id: 14,
     category: "Waiters",
     firstName: "Olivia Martinez",
-    lastName:"Restaurant Guy",
+    lastName:"",
     position: "Waitress",
     assignedWork: "Taking orders and providing attentive service",
     description: "Olivia Martinez delights guests with her friendly demeanor.",
@@ -169,7 +169,7 @@ export const staffData = [
     id: 15,
     category: "Waiters",
     firstName: "Ethan Turner",
-    lastName:"Restaurant Guy",
+    lastName:"",
     position: "Waiter",
     assignedWork: "Serving and assisting diners with enthusiasm",
     description: "Waiter Ethan Turner ensures a delightful dining experience.",
@@ -180,7 +180,7 @@ export const staffData = [
     id: 16,
     category: "Waiters",
     firstName: "Aria Davis",
-    lastName:"Restaurant Guy",
+    lastName:"",
     position: "Junior Waiter",
     assignedWork: "Assisting senior waitstaff and serving guests",
     description: "Junior Waiter Aria Davis brings youthful energy to the team.",
@@ -191,7 +191,7 @@ export const staffData = [
     id: 17,
     category: "Waiters",
     firstName: "Lucas Brown",
-    lastName:"Restaurant Guy",
+    lastName:"",
     position: "Trainee Waiter",
     assignedWork: "Learning the art of exceptional service",
     description:
@@ -203,7 +203,7 @@ export const staffData = [
     id: 18,
     category: "Cleaning Staff",
     firstName: "Eva Wilson",
-    lastName:"Restaurant Guy",
+    lastName:"",
     position: "Head Janitor",
     assignedWork:
       "Maintaining cleanliness and hygiene throughout the restaurant",
@@ -215,7 +215,7 @@ export const staffData = [
     id: 19,
     category: "Cleaning Staff",
     firstName: "Noah Turner",
-    lastName:"Restaurant Guy",
+    lastName:"",
     position: "Janitor",
     assignedWork: "Cleaning and tidying various areas of the restaurant",
     description:
@@ -227,7 +227,7 @@ export const staffData = [
     id: 20,
     category: "Cleaning Staff",
     firstName: "Mia Jackson",
-    lastName:"Restaurant Guy",
+    lastName:"",
     position: "Cleaner",
     assignedWork: "Ensuring a neat and welcoming restaurant environment",
     description:
@@ -239,7 +239,7 @@ export const staffData = [
     id: 21,
     category: "Cleaning Staff",
     firstName: "Henry White",
-    lastName:"Restaurant Guy",
+    lastName:"",
     position: "Trainee Cleaner",
     assignedWork: "Learning the ropes of maintaining a clean restaurant",
     description:
@@ -251,7 +251,7 @@ export const staffData = [
     id: 22,
     category: "Cleaning Staff",
     firstName: "Emma Turner",
-    lastName:"Restaurant Guy",
+    lastName:"",
     position: "Trainee Cleaner",
     assignedWork: "Assisting in various cleaning tasks",
     description:
