@@ -1,1 +1,1 @@
-export const API = "http://ambrosiabistro-env.eba-aq7m2p3f.eu-north-1.elasticbeanstalk.com";
+export const API = "http://ambrosiabistro-env.eba-aq7m2p3f.eu-north-1.elasticbeanstalk.com/api/v1";
