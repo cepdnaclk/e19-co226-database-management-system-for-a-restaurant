@@ -1,14 +1,14 @@
 @use "../variables" as *;
 
-.card {
-  position: fixed;
-  top: 50%;
-  left: 83%;
-  transform: translate(-50%, -50%);
 
-  z-index: 9998;
+.card {
+  position: absolute;
+  top: 31%;
+  left: 43%;
+
+  z-index: 9999;
   margin-left: 6rem;
-  width: 360px;
+  width: 320px;
   background-color: white;
   border-radius: 30px;
   box-shadow: 0px 6px 23px -6px rgba(0, 0, 0, 0.1);

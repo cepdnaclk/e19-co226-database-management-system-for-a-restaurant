@@ -175,3 +175,18 @@ button{
   }
 }
 }
+
+.item_button {
+  background-color: inherit;
+  padding: 0.4em 1em 0.4em 1em;
+  width: 100%;
+  color: $editColor;
+  border: 1px solid darken($color: $editColor, $amount: 2);
+  border-radius: 1rem;
+  cursor: pointer;
+  animation: fadeIn 500ms ease-in;
+  &:hover {
+    background-color: $editColor;
+    color: white;
+  }
+}

@@ -16,6 +16,7 @@ import { fetchCustomers } from "../services/Customers.service";
 import {fetchStaff} from "../services/Staff.service";
 import { useDispatch,useSelector } from "react-redux";
 import { fetchOrdersList } from "../actions/orderActions";
+import { CustomerForm } from "../components/customer/CustomerForm";
 
 export const Orders = () => {
 
@@ -27,7 +28,9 @@ export const Orders = () => {
 
   const [menuItems, setMenuItems] = useState([]);
   const [showForm, setShowForm] = useState(false);
+  const [showCustomerForm, setShowCustomerForm] = useState(false);
   const backgroundClick = useRef(null);
+  const backgroundClick2 = useRef(null);
   const [shouldRefresh ,setShouldRefresh] = useState(true)
 
   const handleRefreshData = () => {
@@ -51,10 +54,23 @@ export const Orders = () => {
       document.removeEventListener("click", handleBackgroundClick);
     };
   },[]);
+
+  useEffect(() => {
+    document.addEventListener("click", handleBackgroundClick2);
+    return () => {
+      document.removeEventListener("click", handleBackgroundClick2);
+    };
+  },[]);
   
   const handleBackgroundClick = (e) => {
     if (e.target === backgroundClick.current) {
       setShowForm(false);
+    }
+  };
+
+  const handleBackgroundClick2 = (e) => {
+    if (e.target === backgroundClick2.current) {
+      setShowCustomerForm(false);
     }
   };
 
@@ -109,9 +125,17 @@ export const Orders = () => {
               setShowForm(false);
             }}
             refresher = {setShouldRefresh}
+            CustomerForm= {() => {setShowCustomerForm(true);}}
             
           />
         </div>}
+        {showCustomerForm && <div className={styles.cardContainer2} ref={backgroundClick2}>
+        <CustomerForm
+          onClose={() => {
+            setShowCustomerForm(false);
+          }}
+        />
+          </div>}
       </div>
       <div className={styles.tableContainer}>
         {/* Conditionally Render the Confirmed Reservations and Waiting List according to state */}

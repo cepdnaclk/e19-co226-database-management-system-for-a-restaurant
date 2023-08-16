@@ -1,7 +1,8 @@
 import { Customers } from "../data/Customers";
-
+import { API } from "./BaseApi";
 import axios from "axios";
-const API_URL = "http://localhost:8080/api/v1";
+
+const API_URL = API;
 
 export const fetchCustomers = async(data) => {
     try {
@@ -12,7 +13,7 @@ export const fetchCustomers = async(data) => {
       return response.data;
     } catch (error) {
       console.error("Error fetching customers:", error);
-      return [];
+      return Customers;
     }
   };
 

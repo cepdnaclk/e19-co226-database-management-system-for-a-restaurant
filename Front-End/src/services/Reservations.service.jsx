@@ -1,12 +1,14 @@
 import axios from "axios";
+import { API } from "./BaseApi";
+
 import { cReservations, waitingList } from "../data/Reservations";
 
-const API_URL = "http://localhost:8080/api/v1";
+const API_URL = API;
 
 export const fetchReservations = async () => {
     try {
       const response = await axios.get(
-        API_URL + "/reservations"
+        API_URL + "/reservation"
       );
       console.log(response.data);
       return response.data;
@@ -19,7 +21,7 @@ export const fetchReservations = async () => {
   export const fetchWaitings = async () => {
     try {
       const response = await axios.get(
-        API_URL + "/waitingReservations"
+        API_URL + "/waitingReservation"
       );
       console.log(response.data);
       return response.data;

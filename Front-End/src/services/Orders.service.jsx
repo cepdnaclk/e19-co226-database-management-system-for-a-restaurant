@@ -1,7 +1,9 @@
 import axios from "axios";
+import { API } from "./BaseApi";
+
 import { confirmedOrders, OrdersTrial, waitingOrders } from "../data/Orders";
 
-const API_URL = "http://localhost:8080/api/v1";
+const API_URL = API;
 
 export const fetchOrders = async () => {
     try {

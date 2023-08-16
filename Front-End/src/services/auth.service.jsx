@@ -1,6 +1,7 @@
 import axios from "axios";
+import { API } from "./BaseApi";
 
-const API_URL = "http://10.30.118.183:8080/api/v1/auth";
+const API_URL = API + "/auth";
 
 // Registers a user by making a POST request to the API
 const signup = (firstname, lastname, email, password) => {
