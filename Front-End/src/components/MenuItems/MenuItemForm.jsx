@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styles from "../../styles/Menu/MenuForm.module.scss";
 import { fetchIngredients } from "../../services/Inventory.service";
+import { API } from "../../services/BaseApi";
 //TODO: Put the axios methods to service layer if possible
 export const MenuItemForm = ({ onClose }) => {
   const [name, setName] = useState("");
@@ -82,7 +83,7 @@ export const MenuItemForm = ({ onClose }) => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/v1/menuitem",
+        API + "/menuitem",
         menuItemRequest
       );
       console.log("MenuItem created:", response.data);

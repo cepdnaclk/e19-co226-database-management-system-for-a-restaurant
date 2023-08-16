@@ -4,7 +4,7 @@ import { API } from "./BaseApi";
 import { authHeader } from "./auth_header";
 import { ingredients_sample, suppliers_sample, null_inventory } from "../data/InventoryAndSuppliers";
 
-const API_URL = "http://localhost:8080/api/v1";
+const API_URL = API;
 
 export const fetchIngredients = async () => {
   try {
@@ -33,7 +33,7 @@ export const fetchSuppliers = async () => {
 export const SearchInputChangeIngredients = async (event) => {
   try {
     const response = await axios.get(
-      `http://localhost:8080/api/v1/ingredients/search?name=${event.target.value}`
+      API_URL + `/ingredients/search?name=${event.target.value}`
     );
     return response.data;
   } catch (error) {
@@ -45,7 +45,7 @@ export const SearchInputChangeIngredients = async (event) => {
 export const SearchInputChangeSupply = async (event) => {
   try {
     const response = await axios.get(
-      `http://localhost:8080/api/v1/suppliers/search?name=${event.target.value}`
+      API_URL +  `/suppliers/search?name=${event.target.value}`
     );
     return response.data;
   } catch (error) {

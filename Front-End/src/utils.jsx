@@ -27,6 +27,13 @@ export const getDateInFormat = (date) => {
   return new Intl.DateTimeFormat("en-US", dateOptions).format(date);
 };
 
+export const convertTimeToFormat = (inputTime) => {
+  const [hours, minutes] = inputTime.split(":");
+  const formattedTime = hours + minutes;
+
+  return formattedTime;
+}
+
 // export const calPrice = (selectedItems, itemQuantities) => {
 //   const [items, setItems] = useState([]);
 //   useEffect(() => {
